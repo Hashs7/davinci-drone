@@ -1,0 +1,747 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC7BD8ED2370AAA900032CEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */; };
+		CC7BD8F32370AAAB00032CEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD8F22370AAAB00032CEF /* Assets.xcassets */; };
+		CC7BD8F62370AAAB00032CEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD8F52370AAAB00032CEF /* Preview Assets.xcassets */; };
+		CC7BD8F92370AAAB00032CEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD8F72370AAAB00032CEF /* LaunchScreen.storyboard */; };
+		CC7BD9042370AAAB00032CEF /* davinci_droneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9032370AAAB00032CEF /* davinci_droneTests.swift */; };
+		CC7BD9132370ACBF00032CEF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9122370ACBF00032CEF /* Helpers.swift */; };
+		CC7BD9382370AFD500032CEF /* Scenar.json in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD9172370AFD500032CEF /* Scenar.json */; };
+		CC7BD9392370AFD500032CEF /* GimbalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9192370AFD500032CEF /* GimbalManager.swift */; };
+		CC7BD93A2370AFD500032CEF /* MovementLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD91A2370AFD500032CEF /* MovementLevelOneViewController.swift */; };
+		CC7BD93B2370AFD500032CEF /* TakeOffAndLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD91B2370AFD500032CEF /* TakeOffAndLandingViewController.swift */; };
+		CC7BD93C2370AFD500032CEF /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD91D2370AFD500032CEF /* UIImage+CVPixelBuffer.swift */; };
+		CC7BD93D2370AFD500032CEF /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD91E2370AFD500032CEF /* MobileNet.mlmodel */; };
+		CC7BD93E2370AFD500032CEF /* ImageRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD91F2370AFD500032CEF /* ImageRecognition.swift */; };
+		CC7BD93F2370AFD500032CEF /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9212370AFD500032CEF /* LocationDelegate.swift */; };
+		CC7BD9402370AFD500032CEF /* CalibrationAndHeadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9222370AFD500032CEF /* CalibrationAndHeadingViewController.swift */; };
+		CC7BD9412370AFD500032CEF /* BasicMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9242370AFD500032CEF /* BasicMove.swift */; };
+		CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9272370AFD500032CEF /* SparkMovementManager.swift */; };
+		CC7BD9452370AFD500032CEF /* GenericMovementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9282370AFD500032CEF /* GenericMovementManager.swift */; };
+		CC7BD9462370AFD500032CEF /* TP1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9292370AFD500032CEF /* TP1ViewController.swift */; };
+		CC7BD9482370AFD500032CEF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD92B2370AFD500032CEF /* CameraViewController.swift */; };
+		CC7BD9492370AFD500032CEF /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD92D2370AFD500032CEF /* ProductCommunicationManager.swift */; };
+		CC7BD94A2370AFD500032CEF /* Spark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD92F2370AFD500032CEF /* Spark.swift */; };
+		CC7BD94B2370AFD500032CEF /* DirectionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9312370AFD500032CEF /* DirectionSequence.swift */; };
+		CC7BD94C2370AFD500032CEF /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9322370AFD500032CEF /* Movement.swift */; };
+		CC7BD94D2370AFD500032CEF /* MovingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9332370AFD500032CEF /* MovingManager.swift */; };
+		CC7BD94E2370AFD500032CEF /* CGPoints+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9342370AFD500032CEF /* CGPoints+Extensions.swift */; };
+		CC7BD94F2370AFD500032CEF /* AutoMoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9352370AFD500032CEF /* AutoMoveViewController.swift */; };
+		CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */; };
+		CC7BD9512370AFD500032CEF /* TP.zip in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD9372370AFD500032CEF /* TP.zip */; };
+		CC7BD9532370BACF00032CEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD9522370BACF00032CEF /* Main.storyboard */; };
+		CC7BD9562370BE6A00032CEF /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; };
+		CC7BD9572370BE6A00032CEF /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */; };
+		F4793D01660E261CE7502893 /* Pods_davinci_drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395C4553B7A50D64E2D14082 /* Pods_davinci_drone.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC7BD9002370AAAB00032CEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC7BD8E12370AAA900032CEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC7BD8E82370AAA900032CEF;
+			remoteInfo = "davinci-drone";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC7BD9582370BE6A00032CEF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CC7BD9572370BE6A00032CEF /* VideoPreviewer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		395C4553B7A50D64E2D14082 /* Pods_davinci_drone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_davinci_drone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		556F012B20ADB417F80F07D0 /* Pods-davinci-drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.debug.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.debug.xcconfig"; sourceTree = "<group>"; };
+		5CC2FAC90B3D81BD79B7D6F4 /* Pods-davinci-drone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.release.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.release.xcconfig"; sourceTree = "<group>"; };
+		CC7BD8E92370AAA900032CEF /* davinci-drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "davinci-drone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CC7BD8F22370AAAB00032CEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC7BD8F52370AAAB00032CEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CC7BD8F82370AAAB00032CEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CC7BD8FA2370AAAB00032CEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC7BD8FF2370AAAB00032CEF /* davinci-droneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "davinci-droneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC7BD9032370AAAB00032CEF /* davinci_droneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = davinci_droneTests.swift; sourceTree = "<group>"; };
+		CC7BD9052370AAAB00032CEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC7BD9122370ACBF00032CEF /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		CC7BD9172370AFD500032CEF /* Scenar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Scenar.json; sourceTree = "<group>"; };
+		CC7BD9192370AFD500032CEF /* GimbalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalManager.swift; sourceTree = "<group>"; };
+		CC7BD91A2370AFD500032CEF /* MovementLevelOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementLevelOneViewController.swift; sourceTree = "<group>"; };
+		CC7BD91B2370AFD500032CEF /* TakeOffAndLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeOffAndLandingViewController.swift; sourceTree = "<group>"; };
+		CC7BD91D2370AFD500032CEF /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		CC7BD91E2370AFD500032CEF /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
+		CC7BD91F2370AFD500032CEF /* ImageRecognition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecognition.swift; sourceTree = "<group>"; };
+		CC7BD9212370AFD500032CEF /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
+		CC7BD9222370AFD500032CEF /* CalibrationAndHeadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationAndHeadingViewController.swift; sourceTree = "<group>"; };
+		CC7BD9242370AFD500032CEF /* BasicMove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicMove.swift; sourceTree = "<group>"; };
+		CC7BD9272370AFD500032CEF /* SparkMovementManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkMovementManager.swift; sourceTree = "<group>"; };
+		CC7BD9282370AFD500032CEF /* GenericMovementManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericMovementManager.swift; sourceTree = "<group>"; };
+		CC7BD9292370AFD500032CEF /* TP1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TP1ViewController.swift; sourceTree = "<group>"; };
+		CC7BD92B2370AFD500032CEF /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		CC7BD92D2370AFD500032CEF /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = "<group>"; };
+		CC7BD92F2370AFD500032CEF /* Spark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spark.swift; sourceTree = "<group>"; };
+		CC7BD9312370AFD500032CEF /* DirectionSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionSequence.swift; sourceTree = "<group>"; };
+		CC7BD9322370AFD500032CEF /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
+		CC7BD9332370AFD500032CEF /* MovingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingManager.swift; sourceTree = "<group>"; };
+		CC7BD9342370AFD500032CEF /* CGPoints+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoints+Extensions.swift"; sourceTree = "<group>"; };
+		CC7BD9352370AFD500032CEF /* AutoMoveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMoveViewController.swift; sourceTree = "<group>"; };
+		CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
+		CC7BD9372370AFD500032CEF /* TP.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = TP.zip; sourceTree = "<group>"; };
+		CC7BD9522370BACF00032CEF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "davinci-drone/Main.storyboard"; sourceTree = SOURCE_ROOT; };
+		CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
+		CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ArrowClassifier.mlmodel; path = "davinci-drone/ArrowClassifier.mlmodel"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC7BD8E62370AAA900032CEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7BD9562370BE6A00032CEF /* VideoPreviewer.framework in Frameworks */,
+				F4793D01660E261CE7502893 /* Pods_davinci_drone.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7BD8FC2370AAAB00032CEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		42A5238AD262DA144AF549BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */,
+				395C4553B7A50D64E2D14082 /* Pods_davinci_drone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B139F640A7555AD575B035E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				556F012B20ADB417F80F07D0 /* Pods-davinci-drone.debug.xcconfig */,
+				5CC2FAC90B3D81BD79B7D6F4 /* Pods-davinci-drone.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CC7BD8E02370AAA900032CEF = {
+			isa = PBXGroup;
+			children = (
+				CC7BD8EB2370AAA900032CEF /* davinci-drone */,
+				CC7BD9022370AAAB00032CEF /* davinci-droneTests */,
+				CC7BD8EA2370AAA900032CEF /* Products */,
+				B139F640A7555AD575B035E4 /* Pods */,
+				42A5238AD262DA144AF549BB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CC7BD8EA2370AAA900032CEF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD8E92370AAA900032CEF /* davinci-drone.app */,
+				CC7BD8FF2370AAAB00032CEF /* davinci-droneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC7BD8EB2370AAA900032CEF /* davinci-drone */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD9162370AFD500032CEF /* SparkStarter */,
+				CC7BD9122370ACBF00032CEF /* Helpers.swift */,
+				CC7BD9522370BACF00032CEF /* Main.storyboard */,
+				CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */,
+				CC7BD8F22370AAAB00032CEF /* Assets.xcassets */,
+				CC7BD8F72370AAAB00032CEF /* LaunchScreen.storyboard */,
+				CC7BD8FA2370AAAB00032CEF /* Info.plist */,
+				CC7BD8F42370AAAB00032CEF /* Preview Content */,
+			);
+			path = "davinci-drone";
+			sourceTree = "<group>";
+		};
+		CC7BD8F42370AAAB00032CEF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD8F52370AAAB00032CEF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CC7BD9022370AAAB00032CEF /* davinci-droneTests */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD9032370AAAB00032CEF /* davinci_droneTests.swift */,
+				CC7BD9052370AAAB00032CEF /* Info.plist */,
+			);
+			path = "davinci-droneTests";
+			sourceTree = "<group>";
+		};
+		CC7BD9162370AFD500032CEF /* SparkStarter */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */,
+				CC7BD9172370AFD500032CEF /* Scenar.json */,
+				CC7BD9182370AFD500032CEF /* Gimbal */,
+				CC7BD91A2370AFD500032CEF /* MovementLevelOneViewController.swift */,
+				CC7BD91B2370AFD500032CEF /* TakeOffAndLandingViewController.swift */,
+				CC7BD91C2370AFD500032CEF /* IA */,
+				CC7BD9202370AFD500032CEF /* Heading+Calibration */,
+				CC7BD9232370AFD500032CEF /* TP */,
+				CC7BD92B2370AFD500032CEF /* CameraViewController.swift */,
+				CC7BD92C2370AFD500032CEF /* HelpersFromSample */,
+				CC7BD92E2370AFD500032CEF /* Automatic */,
+				CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */,
+				CC7BD9372370AFD500032CEF /* TP.zip */,
+			);
+			path = SparkStarter;
+			sourceTree = "<group>";
+		};
+		CC7BD9182370AFD500032CEF /* Gimbal */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD9192370AFD500032CEF /* GimbalManager.swift */,
+			);
+			path = Gimbal;
+			sourceTree = "<group>";
+		};
+		CC7BD91C2370AFD500032CEF /* IA */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD91D2370AFD500032CEF /* UIImage+CVPixelBuffer.swift */,
+				CC7BD91E2370AFD500032CEF /* MobileNet.mlmodel */,
+				CC7BD91F2370AFD500032CEF /* ImageRecognition.swift */,
+			);
+			path = IA;
+			sourceTree = "<group>";
+		};
+		CC7BD9202370AFD500032CEF /* Heading+Calibration */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD9212370AFD500032CEF /* LocationDelegate.swift */,
+				CC7BD9222370AFD500032CEF /* CalibrationAndHeadingViewController.swift */,
+			);
+			path = "Heading+Calibration";
+			sourceTree = "<group>";
+		};
+		CC7BD9232370AFD500032CEF /* TP */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD9242370AFD500032CEF /* BasicMove.swift */,
+				CC7BD9272370AFD500032CEF /* SparkMovementManager.swift */,
+				CC7BD9282370AFD500032CEF /* GenericMovementManager.swift */,
+				CC7BD9292370AFD500032CEF /* TP1ViewController.swift */,
+			);
+			path = TP;
+			sourceTree = "<group>";
+		};
+		CC7BD92C2370AFD500032CEF /* HelpersFromSample */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD92D2370AFD500032CEF /* ProductCommunicationManager.swift */,
+			);
+			path = HelpersFromSample;
+			sourceTree = "<group>";
+		};
+		CC7BD92E2370AFD500032CEF /* Automatic */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD92F2370AFD500032CEF /* Spark.swift */,
+				CC7BD9302370AFD500032CEF /* Moving */,
+				CC7BD9352370AFD500032CEF /* AutoMoveViewController.swift */,
+			);
+			path = Automatic;
+			sourceTree = "<group>";
+		};
+		CC7BD9302370AFD500032CEF /* Moving */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD9312370AFD500032CEF /* DirectionSequence.swift */,
+				CC7BD9322370AFD500032CEF /* Movement.swift */,
+				CC7BD9332370AFD500032CEF /* MovingManager.swift */,
+				CC7BD9342370AFD500032CEF /* CGPoints+Extensions.swift */,
+			);
+			path = Moving;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC7BD8E82370AAA900032CEF /* davinci-drone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC7BD9082370AAAB00032CEF /* Build configuration list for PBXNativeTarget "davinci-drone" */;
+			buildPhases = (
+				1F24340A89BF637DA1C2D97A /* [CP] Check Pods Manifest.lock */,
+				CC7BD8E52370AAA900032CEF /* Sources */,
+				CC7BD8E62370AAA900032CEF /* Frameworks */,
+				CC7BD8E72370AAA900032CEF /* Resources */,
+				C407F4A4E37743CB1ED65FE2 /* [CP] Embed Pods Frameworks */,
+				CC7BD9582370BE6A00032CEF /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "davinci-drone";
+			productName = "davinci-drone";
+			productReference = CC7BD8E92370AAA900032CEF /* davinci-drone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC7BD8FE2370AAAB00032CEF /* davinci-droneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC7BD90B2370AAAB00032CEF /* Build configuration list for PBXNativeTarget "davinci-droneTests" */;
+			buildPhases = (
+				CC7BD8FB2370AAAB00032CEF /* Sources */,
+				CC7BD8FC2370AAAB00032CEF /* Frameworks */,
+				CC7BD8FD2370AAAB00032CEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC7BD9012370AAAB00032CEF /* PBXTargetDependency */,
+			);
+			name = "davinci-droneTests";
+			productName = "davinci-droneTests";
+			productReference = CC7BD8FF2370AAAB00032CEF /* davinci-droneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC7BD8E12370AAA900032CEF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Sébastien Hernoux";
+				TargetAttributes = {
+					CC7BD8E82370AAA900032CEF = {
+						CreatedOnToolsVersion = 11.2;
+					};
+					CC7BD8FE2370AAAB00032CEF = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = CC7BD8E82370AAA900032CEF;
+					};
+				};
+			};
+			buildConfigurationList = CC7BD8E42370AAA900032CEF /* Build configuration list for PBXProject "davinci-drone" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC7BD8E02370AAA900032CEF;
+			productRefGroup = CC7BD8EA2370AAA900032CEF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC7BD8E82370AAA900032CEF /* davinci-drone */,
+				CC7BD8FE2370AAAB00032CEF /* davinci-droneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC7BD8E72370AAA900032CEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7BD8F92370AAAB00032CEF /* LaunchScreen.storyboard in Resources */,
+				CC7BD8F62370AAAB00032CEF /* Preview Assets.xcassets in Resources */,
+				CC7BD8F32370AAAB00032CEF /* Assets.xcassets in Resources */,
+				CC7BD9532370BACF00032CEF /* Main.storyboard in Resources */,
+				CC7BD9382370AFD500032CEF /* Scenar.json in Resources */,
+				CC7BD9512370AFD500032CEF /* TP.zip in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7BD8FD2370AAAB00032CEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F24340A89BF637DA1C2D97A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-davinci-drone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C407F4A4E37743CB1ED65FE2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-davinci-drone/Pods-davinci-drone-frameworks.sh",
+				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-davinci-drone/Pods-davinci-drone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC7BD8E52370AAA900032CEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7BD93B2370AFD500032CEF /* TakeOffAndLandingViewController.swift in Sources */,
+				CC7BD94B2370AFD500032CEF /* DirectionSequence.swift in Sources */,
+				CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */,
+				CC7BD9482370AFD500032CEF /* CameraViewController.swift in Sources */,
+				CC7BD9412370AFD500032CEF /* BasicMove.swift in Sources */,
+				CC7BD8ED2370AAA900032CEF /* AppDelegate.swift in Sources */,
+				CC7BD9452370AFD500032CEF /* GenericMovementManager.swift in Sources */,
+				CC7BD9402370AFD500032CEF /* CalibrationAndHeadingViewController.swift in Sources */,
+				CC7BD93D2370AFD500032CEF /* MobileNet.mlmodel in Sources */,
+				CC7BD9492370AFD500032CEF /* ProductCommunicationManager.swift in Sources */,
+				CC7BD9462370AFD500032CEF /* TP1ViewController.swift in Sources */,
+				CC7BD94F2370AFD500032CEF /* AutoMoveViewController.swift in Sources */,
+				CC7BD93E2370AFD500032CEF /* ImageRecognition.swift in Sources */,
+				CC7BD9392370AFD500032CEF /* GimbalManager.swift in Sources */,
+				CC7BD9132370ACBF00032CEF /* Helpers.swift in Sources */,
+				CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */,
+				CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */,
+				CC7BD93A2370AFD500032CEF /* MovementLevelOneViewController.swift in Sources */,
+				CC7BD94D2370AFD500032CEF /* MovingManager.swift in Sources */,
+				CC7BD94C2370AFD500032CEF /* Movement.swift in Sources */,
+				CC7BD93F2370AFD500032CEF /* LocationDelegate.swift in Sources */,
+				CC7BD93C2370AFD500032CEF /* UIImage+CVPixelBuffer.swift in Sources */,
+				CC7BD94E2370AFD500032CEF /* CGPoints+Extensions.swift in Sources */,
+				CC7BD94A2370AFD500032CEF /* Spark.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7BD8FB2370AAAB00032CEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7BD9042370AAAB00032CEF /* davinci_droneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC7BD9012370AAAB00032CEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC7BD8E82370AAA900032CEF /* davinci-drone */;
+			targetProxy = CC7BD9002370AAAB00032CEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CC7BD8F72370AAAB00032CEF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC7BD8F82370AAAB00032CEF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CC7BD9062370AAAB00032CEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CC7BD9072370AAAB00032CEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CC7BD9092370AAAB00032CEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 556F012B20ADB417F80F07D0 /* Pods-davinci-drone.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"davinci-drone/Preview Content\"";
+				DEVELOPMENT_TEAM = Z2TU75QGAV;
+				ENABLE_PREVIEWS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "davinci-drone/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CC7BD90A2370AAAB00032CEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CC2FAC90B3D81BD79B7D6F4 /* Pods-davinci-drone.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"davinci-drone/Preview Content\"";
+				DEVELOPMENT_TEAM = Z2TU75QGAV;
+				ENABLE_PREVIEWS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "davinci-drone/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CC7BD90C2370AAAB00032CEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z2TU75QGAV;
+				INFOPLIST_FILE = "davinci-droneTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-droneTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/davinci-drone.app/davinci-drone";
+			};
+			name = Debug;
+		};
+		CC7BD90D2370AAAB00032CEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z2TU75QGAV;
+				INFOPLIST_FILE = "davinci-droneTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-droneTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/davinci-drone.app/davinci-drone";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC7BD8E42370AAA900032CEF /* Build configuration list for PBXProject "davinci-drone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC7BD9062370AAAB00032CEF /* Debug */,
+				CC7BD9072370AAAB00032CEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC7BD9082370AAAB00032CEF /* Build configuration list for PBXNativeTarget "davinci-drone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC7BD9092370AAAB00032CEF /* Debug */,
+				CC7BD90A2370AAAB00032CEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC7BD90B2370AAAB00032CEF /* Build configuration list for PBXNativeTarget "davinci-droneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC7BD90C2370AAAB00032CEF /* Debug */,
+				CC7BD90D2370AAAB00032CEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC7BD8E12370AAA900032CEF /* Project object */;
+}

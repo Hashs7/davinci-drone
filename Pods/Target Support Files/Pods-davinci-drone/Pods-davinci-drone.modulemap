@@ -1,0 +1,6 @@
+framework module Pods_davinci_drone {
+  umbrella header "Pods-davinci-drone-umbrella.h"
+
+  export *
+  module * { export * }
+}

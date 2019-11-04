@@ -1,0 +1,24 @@
+PODS:
+  - DJI-SDK-iOS (4.8.2)
+  - Socket.IO-Client-Swift (15.2.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.1)
+
+DEPENDENCIES:
+  - DJI-SDK-iOS (~> 4.8.2)
+  - Socket.IO-Client-Swift (~> 15.2.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - DJI-SDK-iOS
+    - Socket.IO-Client-Swift
+    - Starscream
+
+SPEC CHECKSUMS:
+  DJI-SDK-iOS: 1d29d7baa1cdeb19ea490bad47cf8419ce4f1055
+  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+
+PODFILE CHECKSUM: 397fd220f45518184be208aee70650c7f5914e89
+
+COCOAPODS: 1.6.1
