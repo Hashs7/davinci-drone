@@ -34,7 +34,7 @@ class ImageRecognition {
             // This is just to test that the CVPixelBuffer conversion works OK.
             // It should have resized the image to a square 224x224 pixels.
             var imoog: CGImage?
-            VTCreateCGImageFromCVPixelBuffer(pixelBuffer, options: nil, imageOut: &imoog)
+            VTCreateCGImageFromCVPixelBuffer(pixelBuffer, nil, &imoog)
             return (UIImage(cgImage: imoog!),s.joined())
         }
         return nil

@@ -64,7 +64,7 @@ class CameraViewController: UIViewController {
                 self.extractedFrameImageView.image = img
                 print(img.size)
                 
-                if let dataImg = img.pngData() {
+                if let dataImg = UIImagePNGRepresentation(img) {
                     let strId = UUID().uuidString
                     let dir = getDocumentsDirectory()
                     let imgName = self.pictureName.text ?? "picture"

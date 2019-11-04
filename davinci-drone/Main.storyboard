@@ -162,7 +162,6 @@
                     <navigationItem key="navigationItem" title="Connection" id="MGu-qB-XVo"/>
                     <connections>
                         <outlet property="connectionStateLabel" destination="PIj-Q7-REJ" id="Cjd-73-HgI"/>
-                        <outlet property="connectionStateSpheroLabel" destination="KLs-Sx-CnG" id="shl-QT-iez"/>
                         <outlet property="socketState" destination="hAG-W0-6AI" id="pK3-o1-0VW"/>
                     </connections>
                 </viewController>
@@ -720,10 +719,10 @@
             </objects>
             <point key="canvasLocation" x="3630" y="985"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Auto Mo-->
         <scene sceneID="MwH-QW-plz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dif-0o-Kav" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dif-0o-Kav" customClass="AutoMo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O6j-UF-hag">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

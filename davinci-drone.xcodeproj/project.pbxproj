@@ -35,11 +35,11 @@
 		CC7BD94E2370AFD500032CEF /* CGPoints+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9342370AFD500032CEF /* CGPoints+Extensions.swift */; };
 		CC7BD94F2370AFD500032CEF /* AutoMoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9352370AFD500032CEF /* AutoMoveViewController.swift */; };
 		CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */; };
-		CC7BD9512370AFD500032CEF /* TP.zip in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD9372370AFD500032CEF /* TP.zip */; };
 		CC7BD9532370BACF00032CEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD9522370BACF00032CEF /* Main.storyboard */; };
 		CC7BD9562370BE6A00032CEF /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; };
 		CC7BD9572370BE6A00032CEF /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */; };
+		CC7BD95C2370D25900032CEF /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD95B2370D25900032CEF /* ConnectionViewController.swift */; };
 		F4793D01660E261CE7502893 /* Pods_davinci_drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395C4553B7A50D64E2D14082 /* Pods_davinci_drone.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,10 +103,10 @@
 		CC7BD9342370AFD500032CEF /* CGPoints+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoints+Extensions.swift"; sourceTree = "<group>"; };
 		CC7BD9352370AFD500032CEF /* AutoMoveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMoveViewController.swift; sourceTree = "<group>"; };
 		CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
-		CC7BD9372370AFD500032CEF /* TP.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = TP.zip; sourceTree = "<group>"; };
 		CC7BD9522370BACF00032CEF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "davinci-drone/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
 		CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ArrowClassifier.mlmodel; path = "davinci-drone/ArrowClassifier.mlmodel"; sourceTree = SOURCE_ROOT; };
+		CC7BD95B2370D25900032CEF /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +172,7 @@
 			children = (
 				CC7BD9162370AFD500032CEF /* SparkStarter */,
 				CC7BD9122370ACBF00032CEF /* Helpers.swift */,
+				CC7BD95B2370D25900032CEF /* ConnectionViewController.swift */,
 				CC7BD9522370BACF00032CEF /* Main.storyboard */,
 				CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */,
 				CC7BD8F22370AAAB00032CEF /* Assets.xcassets */,
@@ -214,7 +215,6 @@
 				CC7BD92C2370AFD500032CEF /* HelpersFromSample */,
 				CC7BD92E2370AFD500032CEF /* Automatic */,
 				CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */,
-				CC7BD9372370AFD500032CEF /* TP.zip */,
 			);
 			path = SparkStarter;
 			sourceTree = "<group>";
@@ -375,7 +375,6 @@
 				CC7BD8F32370AAAB00032CEF /* Assets.xcassets in Resources */,
 				CC7BD9532370BACF00032CEF /* Main.storyboard in Resources */,
 				CC7BD9382370AFD500032CEF /* Scenar.json in Resources */,
-				CC7BD9512370AFD500032CEF /* TP.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +460,7 @@
 				CC7BD9132370ACBF00032CEF /* Helpers.swift in Sources */,
 				CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */,
 				CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */,
+				CC7BD95C2370D25900032CEF /* ConnectionViewController.swift in Sources */,
 				CC7BD93A2370AFD500032CEF /* MovementLevelOneViewController.swift in Sources */,
 				CC7BD94D2370AFD500032CEF /* MovingManager.swift in Sources */,
 				CC7BD94C2370AFD500032CEF /* Movement.swift in Sources */,
@@ -623,6 +623,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"davinci-drone/Preview Content\"";
 				DEVELOPMENT_TEAM = Z2TU75QGAV;
+				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -636,8 +637,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -649,6 +650,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"davinci-drone/Preview Content\"";
 				DEVELOPMENT_TEAM = Z2TU75QGAV;
+				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -662,8 +664,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
