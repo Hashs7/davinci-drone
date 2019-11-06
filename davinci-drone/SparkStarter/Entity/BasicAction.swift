@@ -20,4 +20,8 @@ class BasicAction{
             return "Move  during \(duration)"
         }
     }
+    
+    func talkWithSDK(){
+        print("BasicAction")
+    }
 }

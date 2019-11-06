@@ -7,21 +7,60 @@
 //
 
 import Foundation
+import DJISDK
 
-
-class BasicMove:BasicAction {
+class BasicMove: BasicAction {
     var speed: Float
     var heading: Double = 180
     var dir: Direction
+    enum Direction {
+        case front, back, up, down, translateLeft, translateRight, rotateLeft, rotateRight, rotate180, rotate90Right, rotate90Left, stop
+    }
+    
     override var description: String {
         get {
             return "Move \(dir) during \(duration)s at speed \(speed)"
         }
     }
     
-    enum Direction {
-        case front, back, up, down, translateLeft, translateRight, rotateLeft, rotateRight, stop
+    override func talkWithSDK() {
+        let speed = Float(self.speed)
+        print(self.description)
+        self.resetSticks()
+        if let mySpark = DJISDKManager.product() as? DJIAircraft {
+            switch dir {
+            case .front:
+                mySpark.mobileRemoteController?.rightStickVertical = speed
+                break
+            case .back:
+                mySpark.mobileRemoteController?.rightStickVertical = -speed
+                break
+            case .up:
+                mySpark.mobileRemoteController?.leftStickVertical = speed
+                break
+            case .down:
+                mySpark.mobileRemoteController?.leftStickVertical = -speed
+                break
+            case .rotateRight, .rotate90Right, .rotate180:
+                mySpark.mobileRemoteController?.leftStickHorizontal = speed
+                break
+            case .rotateLeft, .rotate90Left:
+                mySpark.mobileRemoteController?.leftStickHorizontal = -speed
+                break
+            default:
+                break
+            }
+        }
     }
+    
+    func resetSticks() {
+           if let mySpark = DJISDKManager.product() as? DJIAircraft {
+               mySpark.mobileRemoteController?.leftStickVertical = 0.0
+               mySpark.mobileRemoteController?.leftStickHorizontal = 0.0
+               mySpark.mobileRemoteController?.rightStickHorizontal = 0.0
+               mySpark.mobileRemoteController?.rightStickVertical = 0.0
+           }
+       }
     
     init(direction: Direction, durationInSec: Float, speed: Float) {
        
@@ -42,6 +81,12 @@ class Stop: BasicMove {
 class Front: BasicMove {
     init(duration: Float, speed: Float) {
         super.init(direction: .front, durationInSec: duration, speed: speed)
+    }
+}
+
+class Back: BasicMove {
+    init(duration: Float, speed: Float) {
+        super.init(direction: .back, durationInSec: duration, speed: speed)
     }
 }
 
@@ -73,7 +118,7 @@ class RotateLeft: BasicMove {
 class Rotate180: BasicMove {
     let rotateDuration: Float = 3
     init() {
-        super.init(direction: .rotateRight, durationInSec: rotateDuration, speed: 1)
+        super.init(direction: .rotate180, durationInSec: rotateDuration, speed: 1)
     }
 }
 

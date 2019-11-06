@@ -32,6 +32,7 @@ class TP1ViewController: UIViewController {
         print("Start")
         sparkMovementManager?.playSequence()
     }
+    
     @IBAction func rotateLeftHandler(_ sender: Any) {
         self.askForDurationAndSpeed { (speed, duration) in
             self.sequence.append(RotateLeft(duration: duration, speed: speed))
@@ -41,6 +42,19 @@ class TP1ViewController: UIViewController {
     @IBAction func frontHandler(_ sender: Any) {
         self.askForDurationAndSpeed { (speed, duration) in
             self.sequence.append(Front(duration: duration, speed: speed))
+        }
+    }
+    
+    @IBAction func upHandler(_ sender: Any) {
+        self.askForDurationAndSpeed { (speed, duration) in
+            self.sequence.append(Up(duration: duration, speed: speed))
+        }
+    }
+    
+    
+    @IBAction func downHandler(_ sender: Any) {
+        self.askForDurationAndSpeed { (speed, duration) in
+            self.sequence.append(Down(duration: duration, speed: speed))
         }
     }
     

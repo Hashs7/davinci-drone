@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dif-0o-Kav">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -445,37 +445,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="146" translatesAutoresizingMaskIntoConstraints="NO" id="JVX-T9-mah">
-                                <rect key="frame" x="87" y="108" width="240" height="754"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZ2-gv-Uw1">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
-                                        <state key="normal" title="STOP"/>
-                                        <connections>
-                                            <action selector="stopBtnHandler:" destination="Qvk-vk-hlj" eventType="touchUpInside" id="3wV-SV-ftd"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyK-7o-dAE">
-                                        <rect key="frame" x="0.0" y="176" width="240" height="30"/>
-                                        <state key="normal" title="EXO1"/>
-                                        <connections>
-                                            <action selector="exo1Handler:" destination="Qvk-vk-hlj" eventType="touchUpInside" id="YMO-fx-xzq"/>
-                                        </connections>
-                                    </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xTq-9d-Fur">
-                                        <rect key="frame" x="0.0" y="352" width="240" height="128"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1a-DD-QCU">
-                                        <rect key="frame" x="0.0" y="626" width="240" height="128"/>
-                                    </imageView>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyK-7o-dAE">
+                                <rect key="frame" x="87" y="172" width="240" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BtY-s4-6oT"/>
+                                    <constraint firstAttribute="width" constant="240" id="FvB-yB-240"/>
+                                </constraints>
+                                <state key="normal" title="EXO1"/>
+                                <connections>
+                                    <action selector="exo1Handler:" destination="Qvk-vk-hlj" eventType="touchUpInside" id="YMO-fx-xzq"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xTq-9d-Fur">
+                                <rect key="frame" x="87" y="460" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="lvq-O6-ZF2"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q1a-DD-QCU">
+                                <rect key="frame" x="87" y="609" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLl-EU-d95">
+                                <rect key="frame" x="87" y="238" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="4N6-Cc-OR0"/>
+                                    <constraint firstAttribute="width" constant="240" id="neK-kL-BFE"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZ2-gv-Uw1">
+                                <rect key="frame" x="87" y="98" width="240" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="8kb-11-xRS"/>
+                                    <constraint firstAttribute="height" constant="30" id="VLy-sP-diO"/>
+                                </constraints>
+                                <state key="normal" title="STOP"/>
+                                <connections>
+                                    <action selector="stopBtnHandler:" destination="Qvk-vk-hlj" eventType="touchUpInside" id="3wV-SV-ftd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xTq-9d-Fur" firstAttribute="leading" secondItem="fLl-EU-d95" secondAttribute="leading" id="20F-Ef-Pq2"/>
+                            <constraint firstItem="xTq-9d-Fur" firstAttribute="leading" secondItem="q1a-DD-QCU" secondAttribute="leading" id="BD5-K2-xHX"/>
+                            <constraint firstItem="xTq-9d-Fur" firstAttribute="top" secondItem="fLl-EU-d95" secondAttribute="bottom" constant="94" id="GHV-Bp-KpS"/>
+                            <constraint firstItem="q1a-DD-QCU" firstAttribute="top" secondItem="xTq-9d-Fur" secondAttribute="bottom" constant="21" id="Me1-J7-Bx8"/>
+                            <constraint firstItem="q1a-DD-QCU" firstAttribute="centerX" secondItem="ypr-VP-RuB" secondAttribute="centerX" id="Wex-gE-1zp"/>
+                            <constraint firstItem="fLl-EU-d95" firstAttribute="centerX" secondItem="ypr-VP-RuB" secondAttribute="centerX" id="aYj-R3-EZ6"/>
+                            <constraint firstItem="tyK-7o-dAE" firstAttribute="centerX" secondItem="ypr-VP-RuB" secondAttribute="centerX" id="hD7-WJ-C50"/>
+                            <constraint firstItem="GZ2-gv-Uw1" firstAttribute="centerX" secondItem="ypr-VP-RuB" secondAttribute="centerX" id="lLH-j2-FVc"/>
+                            <constraint firstItem="GZ2-gv-Uw1" firstAttribute="top" secondItem="ypr-VP-RuB" secondAttribute="top" constant="10" id="neb-tr-6yN"/>
+                            <constraint firstItem="xTq-9d-Fur" firstAttribute="centerX" secondItem="ypr-VP-RuB" secondAttribute="centerX" id="qUC-Wd-IEU"/>
+                            <constraint firstItem="tyK-7o-dAE" firstAttribute="top" secondItem="GZ2-gv-Uw1" secondAttribute="bottom" constant="44" id="qo1-5L-2ut"/>
+                            <constraint firstItem="ypr-VP-RuB" firstAttribute="bottom" secondItem="q1a-DD-QCU" secondAttribute="bottom" constant="125" id="t7O-gj-IbH"/>
+                            <constraint firstItem="fLl-EU-d95" firstAttribute="top" secondItem="tyK-7o-dAE" secondAttribute="bottom" constant="36" id="wgb-HN-3u0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ypr-VP-RuB"/>
                     </view>
                     <navigationItem key="navigationItem" id="x4c-yC-B8M"/>
                     <connections>
+                        <outlet property="cameraView" destination="fLl-EU-d95" id="pck-of-MZD"/>
                         <outlet property="extractedFrameImageView1" destination="xTq-9d-Fur" id="v7S-ys-uhA"/>
                         <outlet property="extractedFrameImageView2" destination="q1a-DD-QCU" id="bWq-Kc-GcL"/>
                     </connections>
@@ -708,7 +740,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7U-fh-bVe">
-                                <rect key="frame" x="90.5" y="447" width="46" height="56"/>
+                                <rect key="frame" x="90.5" y="447" width="233" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="194" id="Jwe-by-DgE"/>
                                     <constraint firstAttribute="height" constant="56" id="W2t-na-AjF"/>
@@ -719,7 +751,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYY-Jt-PKr">
-                                <rect key="frame" x="131" y="441.5" width="80" height="67"/>
+                                <rect key="frame" x="318" y="441.5" width="80" height="67"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67" id="1Dt-zM-geQ"/>
                                     <constraint firstAttribute="width" constant="80" id="P0E-Ug-bU7"/>
@@ -844,10 +876,10 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="79v-jl-y1B">
-                                <rect key="frame" x="20" y="462" width="374" height="407"/>
+                                <rect key="frame" x="20" y="556" width="374" height="313"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="407" id="TdG-hr-cSp"/>
+                                    <constraint firstAttribute="height" constant="313" id="cCJ-yd-AD9"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -869,12 +901,20 @@
                                     <action selector="clearHandler:" destination="KAL-Hd-jOC" eventType="touchUpInside" id="A3w-t2-Oj7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpi-vG-nhG">
-                                <rect key="frame" x="273" y="407" width="77" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIR-2c-YS9">
+                                <rect key="frame" x="188" y="407" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Draw circle"/>
+                                <state key="normal" title="Up"/>
                                 <connections>
-                                    <action selector="circleHandler:" destination="KAL-Hd-jOC" eventType="touchUpInside" id="7Bg-51-s9W"/>
+                                    <action selector="upHandler:" destination="KAL-Hd-jOC" eventType="touchUpInside" id="rxh-HH-Av5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3C-T5-P81">
+                                <rect key="frame" x="188" y="445" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Down"/>
+                                <connections>
+                                    <action selector="downHandler:" destination="KAL-Hd-jOC" eventType="touchUpInside" id="8u9-hg-4ug"/>
                                 </connections>
                             </button>
                         </subviews>

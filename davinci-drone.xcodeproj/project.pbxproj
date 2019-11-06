@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A27F923748376007FD460 /* GimbalManager.swift */; };
+		CC3A27FC23749681007FD460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3A27FB23749681007FD460 /* Main.storyboard */; };
+		CC3A280A237496C1007FD460 /* MovementLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A27FE237496C1007FD460 /* MovementLevelOneViewController.swift */; };
+		CC3A280B237496C1007FD460 /* Exo1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A27FF237496C1007FD460 /* Exo1ViewController.swift */; };
+		CC3A280C237496C1007FD460 /* TakeOffAndLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2800237496C1007FD460 /* TakeOffAndLandingViewController.swift */; };
+		CC3A280D237496C1007FD460 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2801237496C1007FD460 /* CameraViewController.swift */; };
+		CC3A280E237496C1007FD460 /* TP1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2802237496C1007FD460 /* TP1ViewController.swift */; };
+		CC3A280F237496C1007FD460 /* SparkActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2804237496C1007FD460 /* SparkActionManager.swift */; };
+		CC3A2810237496C1007FD460 /* GenericActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2805237496C1007FD460 /* GenericActionManager.swift */; };
+		CC3A2811237496C1007FD460 /* BasicMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2807237496C1007FD460 /* BasicMove.swift */; };
+		CC3A2812237496C1007FD460 /* BasicAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2808237496C1007FD460 /* BasicAction.swift */; };
+		CC3A2813237496C1007FD460 /* BasicCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2809237496C1007FD460 /* BasicCamera.swift */; };
+		CC5DE447237453550032C98F /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DE446237453550032C98F /* ConnectionViewController.swift */; };
 		CC7BD8ED2370AAA900032CEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */; };
 		CC7BD8F32370AAAB00032CEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD8F22370AAAB00032CEF /* Assets.xcassets */; };
 		CC7BD8F62370AAAB00032CEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD8F52370AAAB00032CEF /* Preview Assets.xcassets */; };
@@ -14,19 +27,13 @@
 		CC7BD9042370AAAB00032CEF /* davinci_droneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9032370AAAB00032CEF /* davinci_droneTests.swift */; };
 		CC7BD9132370ACBF00032CEF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9122370ACBF00032CEF /* Helpers.swift */; };
 		CC7BD9382370AFD500032CEF /* Scenar.json in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD9172370AFD500032CEF /* Scenar.json */; };
-		CC7BD9392370AFD500032CEF /* GimbalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9192370AFD500032CEF /* GimbalManager.swift */; };
-		CC7BD93A2370AFD500032CEF /* MovementLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD91A2370AFD500032CEF /* MovementLevelOneViewController.swift */; };
-		CC7BD93B2370AFD500032CEF /* TakeOffAndLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD91B2370AFD500032CEF /* TakeOffAndLandingViewController.swift */; };
 		CC7BD93C2370AFD500032CEF /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD91D2370AFD500032CEF /* UIImage+CVPixelBuffer.swift */; };
 		CC7BD93D2370AFD500032CEF /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD91E2370AFD500032CEF /* MobileNet.mlmodel */; };
 		CC7BD93E2370AFD500032CEF /* ImageRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD91F2370AFD500032CEF /* ImageRecognition.swift */; };
 		CC7BD93F2370AFD500032CEF /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9212370AFD500032CEF /* LocationDelegate.swift */; };
 		CC7BD9402370AFD500032CEF /* CalibrationAndHeadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9222370AFD500032CEF /* CalibrationAndHeadingViewController.swift */; };
-		CC7BD9412370AFD500032CEF /* BasicMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9242370AFD500032CEF /* BasicMove.swift */; };
 		CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9272370AFD500032CEF /* SparkMovementManager.swift */; };
 		CC7BD9452370AFD500032CEF /* GenericMovementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9282370AFD500032CEF /* GenericMovementManager.swift */; };
-		CC7BD9462370AFD500032CEF /* TP1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9292370AFD500032CEF /* TP1ViewController.swift */; };
-		CC7BD9482370AFD500032CEF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD92B2370AFD500032CEF /* CameraViewController.swift */; };
 		CC7BD9492370AFD500032CEF /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD92D2370AFD500032CEF /* ProductCommunicationManager.swift */; };
 		CC7BD94A2370AFD500032CEF /* Spark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD92F2370AFD500032CEF /* Spark.swift */; };
 		CC7BD94B2370AFD500032CEF /* DirectionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9312370AFD500032CEF /* DirectionSequence.swift */; };
@@ -35,16 +42,9 @@
 		CC7BD94E2370AFD500032CEF /* CGPoints+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9342370AFD500032CEF /* CGPoints+Extensions.swift */; };
 		CC7BD94F2370AFD500032CEF /* AutoMoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9352370AFD500032CEF /* AutoMoveViewController.swift */; };
 		CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */; };
-		CC7BD9512370AFD500032CEF /* TP.zip in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD9372370AFD500032CEF /* TP.zip */; };
-		CC7BD9532370BACF00032CEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD9522370BACF00032CEF /* Main.storyboard */; };
 		CC7BD9562370BE6A00032CEF /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; };
 		CC7BD9572370BE6A00032CEF /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */; };
-		ED868C832373761F008B1730 /* BasicAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED868C822373761F008B1730 /* BasicAction.swift */; };
-		ED868C8523737637008B1730 /* BasicCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED868C8423737637008B1730 /* BasicCamera.swift */; };
-		ED868C8723737660008B1730 /* Exo1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED868C8623737660008B1730 /* Exo1ViewController.swift */; };
-		ED868C89237376AC008B1730 /* GenericActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED868C88237376AC008B1730 /* GenericActionManager.swift */; };
-		ED868C8B237376CC008B1730 /* SparkActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED868C8A237376CC008B1730 /* SparkActionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +74,19 @@
 /* Begin PBXFileReference section */
 		556F012B20ADB417F80F07D0 /* Pods-davinci-drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.debug.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.debug.xcconfig"; sourceTree = "<group>"; };
 		5CC2FAC90B3D81BD79B7D6F4 /* Pods-davinci-drone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.release.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.release.xcconfig"; sourceTree = "<group>"; };
+		CC3A27F923748376007FD460 /* GimbalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalManager.swift; sourceTree = "<group>"; };
+		CC3A27FB23749681007FD460 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CC3A27FE237496C1007FD460 /* MovementLevelOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementLevelOneViewController.swift; sourceTree = "<group>"; };
+		CC3A27FF237496C1007FD460 /* Exo1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exo1ViewController.swift; sourceTree = "<group>"; };
+		CC3A2800237496C1007FD460 /* TakeOffAndLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeOffAndLandingViewController.swift; sourceTree = "<group>"; };
+		CC3A2801237496C1007FD460 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		CC3A2802237496C1007FD460 /* TP1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TP1ViewController.swift; sourceTree = "<group>"; };
+		CC3A2804237496C1007FD460 /* SparkActionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkActionManager.swift; sourceTree = "<group>"; };
+		CC3A2805237496C1007FD460 /* GenericActionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericActionManager.swift; sourceTree = "<group>"; };
+		CC3A2807237496C1007FD460 /* BasicMove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicMove.swift; sourceTree = "<group>"; };
+		CC3A2808237496C1007FD460 /* BasicAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAction.swift; sourceTree = "<group>"; };
+		CC3A2809237496C1007FD460 /* BasicCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCamera.swift; sourceTree = "<group>"; };
+		CC5DE446237453550032C98F /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
 		CC7BD8E92370AAA900032CEF /* davinci-drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "davinci-drone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC7BD8F22370AAAB00032CEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,19 +98,13 @@
 		CC7BD9052370AAAB00032CEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC7BD9122370ACBF00032CEF /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		CC7BD9172370AFD500032CEF /* Scenar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Scenar.json; sourceTree = "<group>"; };
-		CC7BD9192370AFD500032CEF /* GimbalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalManager.swift; sourceTree = "<group>"; };
-		CC7BD91A2370AFD500032CEF /* MovementLevelOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementLevelOneViewController.swift; sourceTree = "<group>"; };
-		CC7BD91B2370AFD500032CEF /* TakeOffAndLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeOffAndLandingViewController.swift; sourceTree = "<group>"; };
 		CC7BD91D2370AFD500032CEF /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
 		CC7BD91E2370AFD500032CEF /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		CC7BD91F2370AFD500032CEF /* ImageRecognition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecognition.swift; sourceTree = "<group>"; };
 		CC7BD9212370AFD500032CEF /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		CC7BD9222370AFD500032CEF /* CalibrationAndHeadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationAndHeadingViewController.swift; sourceTree = "<group>"; };
-		CC7BD9242370AFD500032CEF /* BasicMove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicMove.swift; sourceTree = "<group>"; };
 		CC7BD9272370AFD500032CEF /* SparkMovementManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkMovementManager.swift; sourceTree = "<group>"; };
 		CC7BD9282370AFD500032CEF /* GenericMovementManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericMovementManager.swift; sourceTree = "<group>"; };
-		CC7BD9292370AFD500032CEF /* TP1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TP1ViewController.swift; sourceTree = "<group>"; };
-		CC7BD92B2370AFD500032CEF /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		CC7BD92D2370AFD500032CEF /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = "<group>"; };
 		CC7BD92F2370AFD500032CEF /* Spark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spark.swift; sourceTree = "<group>"; };
 		CC7BD9312370AFD500032CEF /* DirectionSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionSequence.swift; sourceTree = "<group>"; };
@@ -106,15 +113,8 @@
 		CC7BD9342370AFD500032CEF /* CGPoints+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoints+Extensions.swift"; sourceTree = "<group>"; };
 		CC7BD9352370AFD500032CEF /* AutoMoveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMoveViewController.swift; sourceTree = "<group>"; };
 		CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
-		CC7BD9372370AFD500032CEF /* TP.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = TP.zip; sourceTree = "<group>"; };
-		CC7BD9522370BACF00032CEF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "davinci-drone/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
 		CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ArrowClassifier.mlmodel; path = "davinci-drone/ArrowClassifier.mlmodel"; sourceTree = SOURCE_ROOT; };
-		ED868C822373761F008B1730 /* BasicAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAction.swift; sourceTree = "<group>"; };
-		ED868C8423737637008B1730 /* BasicCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCamera.swift; sourceTree = "<group>"; };
-		ED868C8623737660008B1730 /* Exo1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exo1ViewController.swift; sourceTree = "<group>"; };
-		ED868C88237376AC008B1730 /* GenericActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericActionManager.swift; sourceTree = "<group>"; };
-		ED868C8A237376CC008B1730 /* SparkActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkActionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +153,38 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CC3A27FD237496C1007FD460 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC3A27FE237496C1007FD460 /* MovementLevelOneViewController.swift */,
+				CC3A27FF237496C1007FD460 /* Exo1ViewController.swift */,
+				CC3A2800237496C1007FD460 /* TakeOffAndLandingViewController.swift */,
+				CC3A2801237496C1007FD460 /* CameraViewController.swift */,
+				CC3A2802237496C1007FD460 /* TP1ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC3A2803237496C1007FD460 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CC3A27F923748376007FD460 /* GimbalManager.swift */,
+				CC3A2804237496C1007FD460 /* SparkActionManager.swift */,
+				CC3A2805237496C1007FD460 /* GenericActionManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		CC3A2806237496C1007FD460 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CC3A2807237496C1007FD460 /* BasicMove.swift */,
+				CC3A2808237496C1007FD460 /* BasicAction.swift */,
+				CC3A2809237496C1007FD460 /* BasicCamera.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		CC7BD8E02370AAA900032CEF = {
 			isa = PBXGroup;
 			children = (
@@ -176,9 +208,10 @@
 		CC7BD8EB2370AAA900032CEF /* davinci-drone */ = {
 			isa = PBXGroup;
 			children = (
+				CC3A27FB23749681007FD460 /* Main.storyboard */,
 				CC7BD9162370AFD500032CEF /* SparkStarter */,
 				CC7BD9122370ACBF00032CEF /* Helpers.swift */,
-				CC7BD9522370BACF00032CEF /* Main.storyboard */,
+				CC5DE446237453550032C98F /* ConnectionViewController.swift */,
 				CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */,
 				CC7BD8F22370AAAB00032CEF /* Assets.xcassets */,
 				CC7BD8F72370AAAB00032CEF /* LaunchScreen.storyboard */,
@@ -208,29 +241,19 @@
 		CC7BD9162370AFD500032CEF /* SparkStarter */ = {
 			isa = PBXGroup;
 			children = (
-				ED868C81237375AD008B1730 /* Managers */,
-				ED868C7F237374EC008B1730 /* Entity */,
+				CC3A27FD237496C1007FD460 /* Controller */,
+				CC3A2806237496C1007FD460 /* Entity */,
+				CC3A2803237496C1007FD460 /* Managers */,
 				CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */,
 				CC7BD9172370AFD500032CEF /* Scenar.json */,
-				CC7BD9182370AFD500032CEF /* Gimbal */,
-				ED868C8023737515008B1730 /* Controller */,
 				CC7BD91C2370AFD500032CEF /* IA */,
 				CC7BD9202370AFD500032CEF /* Heading+Calibration */,
 				CC7BD9232370AFD500032CEF /* TP */,
 				CC7BD92C2370AFD500032CEF /* HelpersFromSample */,
 				CC7BD92E2370AFD500032CEF /* Automatic */,
 				CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */,
-				CC7BD9372370AFD500032CEF /* TP.zip */,
 			);
 			path = SparkStarter;
-			sourceTree = "<group>";
-		};
-		CC7BD9182370AFD500032CEF /* Gimbal */ = {
-			isa = PBXGroup;
-			children = (
-				CC7BD9192370AFD500032CEF /* GimbalManager.swift */,
-			);
-			path = Gimbal;
 			sourceTree = "<group>";
 		};
 		CC7BD91C2370AFD500032CEF /* IA */ = {
@@ -288,37 +311,6 @@
 				CC7BD9342370AFD500032CEF /* CGPoints+Extensions.swift */,
 			);
 			path = Moving;
-			sourceTree = "<group>";
-		};
-		ED868C7F237374EC008B1730 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				CC7BD9242370AFD500032CEF /* BasicMove.swift */,
-				ED868C822373761F008B1730 /* BasicAction.swift */,
-				ED868C8423737637008B1730 /* BasicCamera.swift */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		ED868C8023737515008B1730 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CC7BD92B2370AFD500032CEF /* CameraViewController.swift */,
-				CC7BD9292370AFD500032CEF /* TP1ViewController.swift */,
-				CC7BD91B2370AFD500032CEF /* TakeOffAndLandingViewController.swift */,
-				CC7BD91A2370AFD500032CEF /* MovementLevelOneViewController.swift */,
-				ED868C8623737660008B1730 /* Exo1ViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		ED868C81237375AD008B1730 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				ED868C88237376AC008B1730 /* GenericActionManager.swift */,
-				ED868C8A237376CC008B1730 /* SparkActionManager.swift */,
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,11 +398,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC7BD8F92370AAAB00032CEF /* LaunchScreen.storyboard in Resources */,
+				CC3A27FC23749681007FD460 /* Main.storyboard in Resources */,
 				CC7BD8F62370AAAB00032CEF /* Preview Assets.xcassets in Resources */,
 				CC7BD8F32370AAAB00032CEF /* Assets.xcassets in Resources */,
-				CC7BD9532370BACF00032CEF /* Main.storyboard in Resources */,
 				CC7BD9382370AFD500032CEF /* Scenar.json in Resources */,
-				CC7BD9512370AFD500032CEF /* TP.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,35 +461,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC7BD93B2370AFD500032CEF /* TakeOffAndLandingViewController.swift in Sources */,
 				CC7BD94B2370AFD500032CEF /* DirectionSequence.swift in Sources */,
+				CC5DE447237453550032C98F /* ConnectionViewController.swift in Sources */,
 				CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */,
-				CC7BD9482370AFD500032CEF /* CameraViewController.swift in Sources */,
-				CC7BD9412370AFD500032CEF /* BasicMove.swift in Sources */,
+				CC3A2811237496C1007FD460 /* BasicMove.swift in Sources */,
 				CC7BD8ED2370AAA900032CEF /* AppDelegate.swift in Sources */,
 				CC7BD9452370AFD500032CEF /* GenericMovementManager.swift in Sources */,
+				CC3A280D237496C1007FD460 /* CameraViewController.swift in Sources */,
 				CC7BD9402370AFD500032CEF /* CalibrationAndHeadingViewController.swift in Sources */,
+				CC3A280F237496C1007FD460 /* SparkActionManager.swift in Sources */,
 				CC7BD93D2370AFD500032CEF /* MobileNet.mlmodel in Sources */,
 				CC7BD9492370AFD500032CEF /* ProductCommunicationManager.swift in Sources */,
-				CC7BD9462370AFD500032CEF /* TP1ViewController.swift in Sources */,
 				CC7BD94F2370AFD500032CEF /* AutoMoveViewController.swift in Sources */,
-				ED868C8723737660008B1730 /* Exo1ViewController.swift in Sources */,
-				ED868C8B237376CC008B1730 /* SparkActionManager.swift in Sources */,
-				ED868C832373761F008B1730 /* BasicAction.swift in Sources */,
 				CC7BD93E2370AFD500032CEF /* ImageRecognition.swift in Sources */,
-				CC7BD9392370AFD500032CEF /* GimbalManager.swift in Sources */,
 				CC7BD9132370ACBF00032CEF /* Helpers.swift in Sources */,
+				CC3A280B237496C1007FD460 /* Exo1ViewController.swift in Sources */,
+				CC3A280E237496C1007FD460 /* TP1ViewController.swift in Sources */,
 				CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */,
-				ED868C8523737637008B1730 /* BasicCamera.swift in Sources */,
 				CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */,
-				CC7BD93A2370AFD500032CEF /* MovementLevelOneViewController.swift in Sources */,
+				CC3A2810237496C1007FD460 /* GenericActionManager.swift in Sources */,
+				CC3A2813237496C1007FD460 /* BasicCamera.swift in Sources */,
 				CC7BD94D2370AFD500032CEF /* MovingManager.swift in Sources */,
+				CC3A280A237496C1007FD460 /* MovementLevelOneViewController.swift in Sources */,
+				CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */,
+				CC3A2812237496C1007FD460 /* BasicAction.swift in Sources */,
 				CC7BD94C2370AFD500032CEF /* Movement.swift in Sources */,
 				CC7BD93F2370AFD500032CEF /* LocationDelegate.swift in Sources */,
+				CC3A280C237496C1007FD460 /* TakeOffAndLandingViewController.swift in Sources */,
 				CC7BD93C2370AFD500032CEF /* UIImage+CVPixelBuffer.swift in Sources */,
 				CC7BD94E2370AFD500032CEF /* CGPoints+Extensions.swift in Sources */,
 				CC7BD94A2370AFD500032CEF /* Spark.swift in Sources */,
-				ED868C89237376AC008B1730 /* GenericActionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +646,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"davinci-drone/Preview Content\"";
 				DEVELOPMENT_TEAM = Z2TU75QGAV;
+				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -680,6 +673,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"davinci-drone/Preview Content\"";
 				DEVELOPMENT_TEAM = Z2TU75QGAV;
+				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

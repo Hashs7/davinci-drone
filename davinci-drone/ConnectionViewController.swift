@@ -14,7 +14,8 @@ class ConnectionViewController: UIViewController {
     
     @IBOutlet weak var socketState: UILabel!
     @IBOutlet weak var connectionStateLabel: UILabel!
-    let SSID = "Spark-473f70"
+    let SSID = "Spark-4a142b"
+    //let SSID = "Spark-473f70"
     
     override func viewDidLoad() {
         super.viewDidLoad()

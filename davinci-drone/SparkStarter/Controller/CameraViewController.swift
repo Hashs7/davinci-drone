@@ -8,11 +8,12 @@
 
 import UIKit
 import DJISDK
+
 import VideoPreviewer
 import CoreML
 import Vision
 import ImageIO
-//import ImageDetect
+
 
 class CameraViewController: UIViewController {
 
@@ -64,7 +65,7 @@ class CameraViewController: UIViewController {
                 self.extractedFrameImageView.image = img
                 print(img.size)
                 
-                if let dataImg = UIImagePNGRepresentation(img) {
+                if let dataImg = img.pngData() {
                     let strId = UUID().uuidString
                     let dir = getDocumentsDirectory()
                     let imgName = self.pictureName.text ?? "picture"

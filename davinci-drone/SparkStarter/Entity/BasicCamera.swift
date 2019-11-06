@@ -20,13 +20,16 @@ class BasicCamera:BasicAction{
            case takePic, front, under
        }
     
+    override func talkWithSDK() {
+        print("Camera Action")
+    }
+    
     init(duration:Float, action:Action) {
         self.action = action
         super.init(duration:duration)
     }
 
 }
-
 
 class PictureAction:BasicCamera{
     var imageView:UIImageView
@@ -36,16 +39,45 @@ class PictureAction:BasicCamera{
     self.previewer = previewer
     super.init(duration: 0,action: .takePic)
    }
+    
+    override func talkWithSDK() {
+        takePicture(imageView: self.imageView, previewer: self.previewer)
+    }
+    
+    func takePicture(imageView:UIImageView, previewer:VideoPreviewer) {
+        print("take picture")
+        previewer.snapshotThumnnail { (image) in
+                   if let img = image {
+                    imageView.image = img
+                   }
+               }
+       }
 }
 
 class LookUnder:BasicCamera{
-
+    func lookUnder() {
+        print("look under")
+        GimbalManager.shared.lookUnder()
+    }
+    
+    override func talkWithSDK() {
+        lookUnder()
+    }
+    
     init(duration:Float) {
     super.init(duration: duration,action: .under)
    }
 }
 
 class LookFront:BasicCamera{
+    func lookFront() {
+        print("look front")
+        GimbalManager.shared.lookFront()
+    }
+    
+    override func talkWithSDK() {
+        lookFront()
+    }
     
     init(duration:Float) {
     super.init(duration: duration,action: .front)

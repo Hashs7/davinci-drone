@@ -41,15 +41,42 @@ class Exo1ViewController: UIViewController {
 
        //EXERCICE 1
        @IBAction func exo1Handler(_ sender: Any) {
-//        sequence.append(Rotate180())
-//        sequence.append(Up(duration: 0.5, speed: 0.3))
-//        sequence.append(LookUnder(duration: 0.5))
-        if let previewer1 = prev1{
-             sequence.append(PictureAction(imageView: extractedFrameImageView1,previewer: previewer1))
-        }
-        sparkMovementManager = SparkActionManager(sequence: sequence)
-        sparkMovementManager?.playSequence()
+            sequence = []
+        /*
+            sequence.append(Rotate180())
+            sequence.append(Up(duration: 0.5, speed: 0.3))
+            sequence.append(LookUnder(duration: 0.5))
+            
+            if let previewer1 = prev1{
+                 sequence.append(PictureAction(imageView: extractedFrameImageView1,previewer: previewer1))
+            }
+            
+            sequence.append(LookFront(duration: 0.5))
+            sequence.append(Back(duration: 1.0, speed: 0.3))
+            sequence.append(Down(duration: 1.0, speed: 0.4))
+            sequence.append(Front(duration: 1.0, speed: 0.3))
+            sequence.append(Up(duration: 0.5, speed: 0.3))
+            sequence.append(LookUnder(duration: 0.5))
+            
+            if let previewer1 = prev1{
+                 sequence.append(PictureAction(imageView: extractedFrameImageView2,previewer: previewer1))
+            }
+            */
+            if let previewer1 = prev1{
+                 sequence.append(PictureAction(imageView: extractedFrameImageView1,previewer: previewer1))
+            }
+        
+            sequence.append(Up(duration: 2.9, speed: 0.3))
+            sequence.append(Down(duration: 3, speed: 0.5))
+        
+            if let previewer1 = prev1{
+                 sequence.append(PictureAction(imageView: extractedFrameImageView2,previewer: previewer1))
+            }
+     
+            sparkMovementManager = SparkActionManager(sequence: sequence)
+            sparkMovementManager?.playSequence()
        }
+    
     
        func landing(){
            print("landing")
@@ -85,7 +112,7 @@ class Exo1ViewController: UIViewController {
     
     
     
-    
+ 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let _ = DJISDKManager.product() {
