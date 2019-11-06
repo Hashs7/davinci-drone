@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-davinci-drone/Pods-davinci-drone-frameworks.sh
+${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework
+${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework
+${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework
