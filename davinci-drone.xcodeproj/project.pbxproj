@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -40,7 +40,11 @@
 		CC7BD9562370BE6A00032CEF /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; };
 		CC7BD9572370BE6A00032CEF /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */; };
-		F4793D01660E261CE7502893 /* Pods_davinci_drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395C4553B7A50D64E2D14082 /* Pods_davinci_drone.framework */; };
+		ED868C832373761F008B1730 /* BasicAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED868C822373761F008B1730 /* BasicAction.swift */; };
+		ED868C8523737637008B1730 /* BasicCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED868C8423737637008B1730 /* BasicCamera.swift */; };
+		ED868C8723737660008B1730 /* Exo1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED868C8623737660008B1730 /* Exo1ViewController.swift */; };
+		ED868C89237376AC008B1730 /* GenericActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED868C88237376AC008B1730 /* GenericActionManager.swift */; };
+		ED868C8B237376CC008B1730 /* SparkActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED868C8A237376CC008B1730 /* SparkActionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +72,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		395C4553B7A50D64E2D14082 /* Pods_davinci_drone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_davinci_drone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		556F012B20ADB417F80F07D0 /* Pods-davinci-drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.debug.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.debug.xcconfig"; sourceTree = "<group>"; };
 		5CC2FAC90B3D81BD79B7D6F4 /* Pods-davinci-drone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.release.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.release.xcconfig"; sourceTree = "<group>"; };
 		CC7BD8E92370AAA900032CEF /* davinci-drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "davinci-drone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +110,11 @@
 		CC7BD9522370BACF00032CEF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "davinci-drone/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
 		CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ArrowClassifier.mlmodel; path = "davinci-drone/ArrowClassifier.mlmodel"; sourceTree = SOURCE_ROOT; };
+		ED868C822373761F008B1730 /* BasicAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAction.swift; sourceTree = "<group>"; };
+		ED868C8423737637008B1730 /* BasicCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCamera.swift; sourceTree = "<group>"; };
+		ED868C8623737660008B1730 /* Exo1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exo1ViewController.swift; sourceTree = "<group>"; };
+		ED868C88237376AC008B1730 /* GenericActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericActionManager.swift; sourceTree = "<group>"; };
+		ED868C8A237376CC008B1730 /* SparkActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkActionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +123,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC7BD9562370BE6A00032CEF /* VideoPreviewer.framework in Frameworks */,
-				F4793D01660E261CE7502893 /* Pods_davinci_drone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */,
-				395C4553B7A50D64E2D14082 /* Pods_davinci_drone.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,15 +208,15 @@
 		CC7BD9162370AFD500032CEF /* SparkStarter */ = {
 			isa = PBXGroup;
 			children = (
+				ED868C81237375AD008B1730 /* Managers */,
+				ED868C7F237374EC008B1730 /* Entity */,
 				CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */,
 				CC7BD9172370AFD500032CEF /* Scenar.json */,
 				CC7BD9182370AFD500032CEF /* Gimbal */,
-				CC7BD91A2370AFD500032CEF /* MovementLevelOneViewController.swift */,
-				CC7BD91B2370AFD500032CEF /* TakeOffAndLandingViewController.swift */,
+				ED868C8023737515008B1730 /* Controller */,
 				CC7BD91C2370AFD500032CEF /* IA */,
 				CC7BD9202370AFD500032CEF /* Heading+Calibration */,
 				CC7BD9232370AFD500032CEF /* TP */,
-				CC7BD92B2370AFD500032CEF /* CameraViewController.swift */,
 				CC7BD92C2370AFD500032CEF /* HelpersFromSample */,
 				CC7BD92E2370AFD500032CEF /* Automatic */,
 				CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */,
@@ -249,10 +255,8 @@
 		CC7BD9232370AFD500032CEF /* TP */ = {
 			isa = PBXGroup;
 			children = (
-				CC7BD9242370AFD500032CEF /* BasicMove.swift */,
 				CC7BD9272370AFD500032CEF /* SparkMovementManager.swift */,
 				CC7BD9282370AFD500032CEF /* GenericMovementManager.swift */,
-				CC7BD9292370AFD500032CEF /* TP1ViewController.swift */,
 			);
 			path = TP;
 			sourceTree = "<group>";
@@ -284,6 +288,37 @@
 				CC7BD9342370AFD500032CEF /* CGPoints+Extensions.swift */,
 			);
 			path = Moving;
+			sourceTree = "<group>";
+		};
+		ED868C7F237374EC008B1730 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD9242370AFD500032CEF /* BasicMove.swift */,
+				ED868C822373761F008B1730 /* BasicAction.swift */,
+				ED868C8423737637008B1730 /* BasicCamera.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		ED868C8023737515008B1730 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC7BD92B2370AFD500032CEF /* CameraViewController.swift */,
+				CC7BD9292370AFD500032CEF /* TP1ViewController.swift */,
+				CC7BD91B2370AFD500032CEF /* TakeOffAndLandingViewController.swift */,
+				CC7BD91A2370AFD500032CEF /* MovementLevelOneViewController.swift */,
+				ED868C8623737660008B1730 /* Exo1ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ED868C81237375AD008B1730 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				ED868C88237376AC008B1730 /* GenericActionManager.swift */,
+				ED868C8A237376CC008B1730 /* SparkActionManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,20 +452,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-davinci-drone/Pods-davinci-drone-frameworks.sh",
-				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-davinci-drone/Pods-davinci-drone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-davinci-drone/Pods-davinci-drone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -456,10 +482,14 @@
 				CC7BD9492370AFD500032CEF /* ProductCommunicationManager.swift in Sources */,
 				CC7BD9462370AFD500032CEF /* TP1ViewController.swift in Sources */,
 				CC7BD94F2370AFD500032CEF /* AutoMoveViewController.swift in Sources */,
+				ED868C8723737660008B1730 /* Exo1ViewController.swift in Sources */,
+				ED868C8B237376CC008B1730 /* SparkActionManager.swift in Sources */,
+				ED868C832373761F008B1730 /* BasicAction.swift in Sources */,
 				CC7BD93E2370AFD500032CEF /* ImageRecognition.swift in Sources */,
 				CC7BD9392370AFD500032CEF /* GimbalManager.swift in Sources */,
 				CC7BD9132370ACBF00032CEF /* Helpers.swift in Sources */,
 				CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */,
+				ED868C8523737637008B1730 /* BasicCamera.swift in Sources */,
 				CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */,
 				CC7BD93A2370AFD500032CEF /* MovementLevelOneViewController.swift in Sources */,
 				CC7BD94D2370AFD500032CEF /* MovingManager.swift in Sources */,
@@ -468,6 +498,7 @@
 				CC7BD93C2370AFD500032CEF /* UIImage+CVPixelBuffer.swift in Sources */,
 				CC7BD94E2370AFD500032CEF /* CGPoints+Extensions.swift in Sources */,
 				CC7BD94A2370AFD500032CEF /* Spark.swift in Sources */,
+				ED868C89237376AC008B1730 /* GenericActionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
