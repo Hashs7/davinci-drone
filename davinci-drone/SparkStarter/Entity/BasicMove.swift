@@ -53,6 +53,29 @@ class BasicMove: BasicAction {
         }
     }
     
+    func drawCircle() {
+        var stickPositions: [CGPoint] = []
+
+        let radius = Double(0.4)
+        let center = CGPoint(x: 0, y: 0)
+
+        for i in stride(from: 0, to: 360.0, by: 20) {
+            let radian = i * Double.pi / 180
+            let x = Double(center.x) + radius * cos(radian)
+            let y = Double(center.y) + radius * sin(radian)
+            stickPositions.append(CGPoint(x: x, y: y))
+        }
+
+        stickPositions.append(CGPoint(x: radius, y: 0.0))
+        stickPositions.append(CGPoint(x: 0.0, y: 0.0))
+
+        stickPositions.forEach { position in
+            // Create sequence with moves
+            // add delay between each position
+            print(position.x, position.y)
+        }
+    }
+    
     func resetSticks() {
            if let mySpark = DJISDKManager.product() as? DJIAircraft {
                mySpark.mobileRemoteController?.leftStickVertical = 0.0
