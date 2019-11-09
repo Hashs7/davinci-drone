@@ -8,10 +8,10 @@
 
 import Foundation
 
-class BasicAction{
-    var duration:Float
+class BasicAction {
+    var duration: Float
     
-    init(duration:Float){
+    init(duration: Float) {
         self.duration = duration
     }
     
@@ -21,7 +21,7 @@ class BasicAction{
         }
     }
     
-    func talkWithSDK(){
+    func talkWithSDK(resetStick: Bool = true){
         print("BasicAction")
     }
 }

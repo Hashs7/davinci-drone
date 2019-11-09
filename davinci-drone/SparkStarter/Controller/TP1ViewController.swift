@@ -44,6 +44,11 @@ class TP1ViewController: UIViewController {
             self.sequence.append(Front(duration: duration, speed: speed))
         }
     }
+    @IBAction func backHandler(_ sender: Any) {
+        self.askForDurationAndSpeed { (speed, duration) in
+            self.sequence.append(Back(duration: duration, speed: speed))
+        }
+    }
     
     @IBAction func upHandler(_ sender: Any) {
         self.askForDurationAndSpeed { (speed, duration) in

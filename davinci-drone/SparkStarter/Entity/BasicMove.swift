@@ -14,7 +14,7 @@ class BasicMove: BasicAction {
     var heading: Double = 180
     var dir: Direction
     enum Direction {
-        case front, back, up, down, translateLeft, translateRight, rotateLeft, rotateRight, rotate180, rotate90Right, rotate90Left, stop
+        case front, back, up, down, translateLeft, translateRight, rotateLeft, rotateRight, rotate180, rotate90Right, rotate90Left, rotate180AndUp, stop
     }
     
     override var description: String {
@@ -23,10 +23,20 @@ class BasicMove: BasicAction {
         }
     }
     
-    override func talkWithSDK() {
+    init(direction: Direction, durationInSec: Float, speed: Float) {
+        self.dir = direction
+        self.speed = speed
+        super.init(duration: durationInSec)
+    }
+    
+    override func talkWithSDK(resetStick: Bool = true) {
         let speed = Float(self.speed)
         print(self.description)
-        self.resetSticks()
+        print("reset sticks = \(resetStick)")
+        if(resetStick) {
+            self.resetSticks()
+        }
+        
         if let mySpark = DJISDKManager.product() as? DJIAircraft {
             switch dir {
             case .front:
@@ -47,53 +57,25 @@ class BasicMove: BasicAction {
             case .rotateLeft, .rotate90Left:
                 mySpark.mobileRemoteController?.leftStickHorizontal = -speed
                 break
+            case .rotate180AndUp:
+                mySpark.mobileRemoteController?.leftStickHorizontal = 1
+                mySpark.mobileRemoteController?.leftStickVertical = speed
+                break
             default:
                 break
             }
         }
     }
     
-    func drawCircle() {
-        var stickPositions: [CGPoint] = []
-
-        let radius = Double(0.4)
-        let center = CGPoint(x: 0, y: 0)
-
-        for i in stride(from: 0, to: 360.0, by: 20) {
-            let radian = i * Double.pi / 180
-            let x = Double(center.x) + radius * cos(radian)
-            let y = Double(center.y) + radius * sin(radian)
-            stickPositions.append(CGPoint(x: x, y: y))
-        }
-
-        stickPositions.append(CGPoint(x: radius, y: 0.0))
-        stickPositions.append(CGPoint(x: 0.0, y: 0.0))
-
-        stickPositions.forEach { position in
-            // Create sequence with moves
-            // add delay between each position
-            print(position.x, position.y)
-        }
-    }
-    
     func resetSticks() {
-           if let mySpark = DJISDKManager.product() as? DJIAircraft {
-               mySpark.mobileRemoteController?.leftStickVertical = 0.0
-               mySpark.mobileRemoteController?.leftStickHorizontal = 0.0
-               mySpark.mobileRemoteController?.rightStickHorizontal = 0.0
-               mySpark.mobileRemoteController?.rightStickVertical = 0.0
-           }
+       if let mySpark = DJISDKManager.product() as? DJIAircraft {
+           mySpark.mobileRemoteController?.leftStickVertical = 0.0
+           mySpark.mobileRemoteController?.leftStickHorizontal = 0.0
+           mySpark.mobileRemoteController?.rightStickHorizontal = 0.0
+           mySpark.mobileRemoteController?.rightStickVertical = 0.0
        }
-    
-    init(direction: Direction, durationInSec: Float, speed: Float) {
-       
-        self.dir = direction
-        self.speed = speed
-         super.init(duration: durationInSec)
     }
 }
-
-
 
 class Stop: BasicMove {
     init() {
@@ -159,10 +141,9 @@ class RotateLeft90: BasicMove {
     }
 }
 
-
-class SpheroMove: BasicMove {
-    init(heading: Double, duration: Float, speed: Float) {
-        super.init(direction: .front, durationInSec: duration, speed: speed)
-        self.heading = heading
+class Rotate180AndUp: BasicMove {
+    let rotateDuration: Float = 1.4
+    init(speed: Float) {
+        super.init(direction: .rotate180AndUp, durationInSec: rotateDuration, speed: speed)
     }
 }

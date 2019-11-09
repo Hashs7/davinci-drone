@@ -19,6 +19,30 @@ func getDocumentsDirectory() -> URL {
     return documentsDirectory
 }
 
+func drawCircle(radius: Double = 1.0) -> [CGPoint] {
+    var stickPositions: [CGPoint] = []
+
+    let center = CGPoint(x: 0, y: 0)
+
+    for i in stride(from: 0, to: 360.0, by: 20) {
+        let radian = i * Double.pi / 180
+        let x = Double(center.x) + radius * cos(radian)
+        let y = Double(center.y) + radius * sin(radian)
+        stickPositions.append(CGPoint(x: x, y: y))
+    }
+
+    stickPositions.append(CGPoint(x: radius, y: 0.0))
+    stickPositions.append(CGPoint(x: 0.0, y: 0.0))
+
+    stickPositions.forEach { position in
+        // Create sequence with moves
+        // add delay between each position
+        print(position.x, position.y)
+    }
+    
+    return stickPositions
+}
+
 extension UIViewController {
     func askForDurationAndSpeed(callback: @escaping(Float, Float)->()) {
         let ac = UIAlertController(title: "Fill values", message: nil, preferredStyle: .alert)

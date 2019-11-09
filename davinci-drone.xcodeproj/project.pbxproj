@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946D23770D1B002A6BB9 /* MultipleMove.swift */; };
 		CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A27F923748376007FD460 /* GimbalManager.swift */; };
 		CC3A27FC23749681007FD460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3A27FB23749681007FD460 /* Main.storyboard */; };
 		CC3A280A237496C1007FD460 /* MovementLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A27FE237496C1007FD460 /* MovementLevelOneViewController.swift */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		556F012B20ADB417F80F07D0 /* Pods-davinci-drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.debug.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.debug.xcconfig"; sourceTree = "<group>"; };
 		5CC2FAC90B3D81BD79B7D6F4 /* Pods-davinci-drone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.release.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.release.xcconfig"; sourceTree = "<group>"; };
+		CC19946D23770D1B002A6BB9 /* MultipleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleMove.swift; sourceTree = "<group>"; };
 		CC3A27F923748376007FD460 /* GimbalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalManager.swift; sourceTree = "<group>"; };
 		CC3A27FB23749681007FD460 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CC3A27FE237496C1007FD460 /* MovementLevelOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementLevelOneViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				CC3A2807237496C1007FD460 /* BasicMove.swift */,
 				CC3A2808237496C1007FD460 /* BasicAction.swift */,
 				CC3A2809237496C1007FD460 /* BasicCamera.swift */,
+				CC19946D23770D1B002A6BB9 /* MultipleMove.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -208,7 +211,6 @@
 		CC7BD8EB2370AAA900032CEF /* davinci-drone */ = {
 			isa = PBXGroup;
 			children = (
-				CC3A27FB23749681007FD460 /* Main.storyboard */,
 				CC7BD9162370AFD500032CEF /* SparkStarter */,
 				CC7BD9122370ACBF00032CEF /* Helpers.swift */,
 				CC5DE446237453550032C98F /* ConnectionViewController.swift */,
@@ -245,6 +247,7 @@
 				CC3A2806237496C1007FD460 /* Entity */,
 				CC3A2803237496C1007FD460 /* Managers */,
 				CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */,
+				CC3A27FB23749681007FD460 /* Main.storyboard */,
 				CC7BD9172370AFD500032CEF /* Scenar.json */,
 				CC7BD91C2370AFD500032CEF /* IA */,
 				CC7BD9202370AFD500032CEF /* Heading+Calibration */,
@@ -485,6 +488,7 @@
 				CC3A280A237496C1007FD460 /* MovementLevelOneViewController.swift in Sources */,
 				CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */,
 				CC3A2812237496C1007FD460 /* BasicAction.swift in Sources */,
+				CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */,
 				CC7BD94C2370AFD500032CEF /* Movement.swift in Sources */,
 				CC7BD93F2370AFD500032CEF /* LocationDelegate.swift in Sources */,
 				CC3A280C237496C1007FD460 /* TakeOffAndLandingViewController.swift in Sources */,

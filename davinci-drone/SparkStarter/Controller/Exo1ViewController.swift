@@ -42,35 +42,26 @@ class Exo1ViewController: UIViewController {
        //EXERCICE 1
        @IBAction func exo1Handler(_ sender: Any) {
             sequence = []
-        /*
-            sequence.append(Rotate180())
-            sequence.append(Up(duration: 0.5, speed: 0.3))
+
+            sequence.append(MultipleMove(actions: [ Up(duration: 3, speed: 0.2), RotateRight(duration: 3, speed: 1.0)] ))
+            //sequence.append(Rotate180AndUp(speed: 0.2))
+            sequence.append(Stop())
             sequence.append(LookUnder(duration: 0.5))
-            
-            if let previewer1 = prev1{
-                 sequence.append(PictureAction(imageView: extractedFrameImageView1,previewer: previewer1))
+            sequence.append(BasicAction(duration: 1.0))
+            if let previewer1 = prev1 {
+                 sequence.append(PictureAction(imageView: extractedFrameImageView1, previewer: previewer1))
             }
-            
+            sequence.append(BasicAction(duration: 0.5))
             sequence.append(LookFront(duration: 0.5))
             sequence.append(Back(duration: 1.0, speed: 0.3))
-            sequence.append(Down(duration: 1.0, speed: 0.4))
-            sequence.append(Front(duration: 1.0, speed: 0.3))
-            sequence.append(Up(duration: 0.5, speed: 0.3))
+            sequence.append(Down(duration: 1.4, speed: 0.7))
+            sequence.append(Front(duration: 2.0, speed: 0.3))
+            sequence.append(Up(duration: 1.4, speed: 0.3))
             sequence.append(LookUnder(duration: 0.5))
             
-            if let previewer1 = prev1{
-                 sequence.append(PictureAction(imageView: extractedFrameImageView2,previewer: previewer1))
-            }
-            */
-            if let previewer1 = prev1{
-                 sequence.append(PictureAction(imageView: extractedFrameImageView1,previewer: previewer1))
-            }
-        
-            sequence.append(Up(duration: 2.9, speed: 0.3))
-            sequence.append(Down(duration: 3, speed: 0.5))
-        
-            if let previewer1 = prev1{
-                 sequence.append(PictureAction(imageView: extractedFrameImageView2,previewer: previewer1))
+            sequence.append(BasicAction(duration: 1.0))
+            if let previewer1 = prev1 {
+                sequence.append(PictureAction(imageView: extractedFrameImageView2, previewer: previewer1))
             }
      
             sparkMovementManager = SparkActionManager(sequence: sequence)
@@ -89,28 +80,25 @@ class Exo1ViewController: UIViewController {
            }
        }
     
-    @IBAction func takeOff(_ sender: Any){
-           if let mySpark = DJISDKManager.product() as? DJIAircraft {
-                      if let flightController = mySpark.flightController {
-                          flightController.startTakeoff(completion: { (err) in
-                              print(err.debugDescription)
-                          })
-                      }
-        }}
+    @IBAction func takeOff(_ sender: Any) {
+       if let mySpark = DJISDKManager.product() as? DJIAircraft {
+          if let flightController = mySpark.flightController {
+              flightController.startTakeoff(completion: { (err) in
+                  print(err.debugDescription)
+              })
+          }
+    }}
               
-       func stop() {
-           print("Stop")
-           sparkMovementManager?.stopSequence()
-           if let mySpark = DJISDKManager.product() as? DJIAircraft {
-               mySpark.mobileRemoteController?.leftStickVertical = 0.0
-               mySpark.mobileRemoteController?.leftStickHorizontal = 0.0
-               mySpark.mobileRemoteController?.rightStickHorizontal = 0.0
-               mySpark.mobileRemoteController?.rightStickVertical = 0.0
-           }
+    func stop() {
+       print("Stop")
+       sparkMovementManager?.stopSequence()
+       if let mySpark = DJISDKManager.product() as? DJIAircraft {
+           mySpark.mobileRemoteController?.leftStickVertical = 0.0
+           mySpark.mobileRemoteController?.leftStickHorizontal = 0.0
+           mySpark.mobileRemoteController?.rightStickHorizontal = 0.0
+           mySpark.mobileRemoteController?.rightStickVertical = 0.0
        }
-    
-    
-    
+    }
     
  
     override func viewWillAppear(_ animated: Bool) {
@@ -122,7 +110,6 @@ class Exo1ViewController: UIViewController {
             }
             
             GimbalManager.shared.setup(withDuration: 1.0, defaultPitch: -28.0)
-            
         }
     }
 

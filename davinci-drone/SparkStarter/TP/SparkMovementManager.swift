@@ -44,6 +44,15 @@ class SparkMovementManager: GenericMovementManager {
             case is RotateLeft90:
                 mySpark.mobileRemoteController?.leftStickHorizontal = -speed
                 break
+            case is Back:
+                mySpark.mobileRemoteController?.rightStickVertical = -speed
+                break
+            case is Up:
+                mySpark.mobileRemoteController?.leftStickVertical = speed
+                break
+            case is Down:
+                mySpark.mobileRemoteController?.leftStickVertical = -speed
+                break
             default:
                 break
             }
