@@ -21,7 +21,6 @@ func getDocumentsDirectory() -> URL {
 
 func drawCircle(radius: Double = 1.0) -> [CGPoint] {
     var stickPositions: [CGPoint] = []
-
     let center = CGPoint(x: 0, y: 0)
 
     for i in stride(from: 0, to: 360.0, by: 20) {
@@ -30,15 +29,10 @@ func drawCircle(radius: Double = 1.0) -> [CGPoint] {
         let y = Double(center.y) + radius * sin(radian)
         stickPositions.append(CGPoint(x: x, y: y))
     }
-
+    
+    // Reset sticks to neutral position
     stickPositions.append(CGPoint(x: radius, y: 0.0))
     stickPositions.append(CGPoint(x: 0.0, y: 0.0))
-
-    stickPositions.forEach { position in
-        // Create sequence with moves
-        // add delay between each position
-        print(position.x, position.y)
-    }
     
     return stickPositions
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 import DJISDK
-
 import VideoPreviewer
 import CoreML
 import Vision

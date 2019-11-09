@@ -32,53 +32,62 @@ class Exo1ViewController: UIViewController {
     
  
     @IBAction func stopBtnHandler(_ sender: Any) {
-           stop()
-       }
-       
-       @IBAction func startBtnHandler(_ sender: Any) {
-           print("Start")
-       }
+       stop()
+    }
 
-       //EXERCICE 1
-       @IBAction func exo1Handler(_ sender: Any) {
-            sequence = []
+    @IBAction func startBtnHandler(_ sender: Any) {
+       print("Start")
+    }
 
-            sequence.append(MultipleMove(actions: [ Up(duration: 3, speed: 0.2), RotateRight(duration: 3, speed: 1.0)] ))
-            //sequence.append(Rotate180AndUp(speed: 0.2))
-            sequence.append(Stop())
-            sequence.append(LookUnder(duration: 0.5))
-            sequence.append(BasicAction(duration: 1.0))
-            if let previewer1 = prev1 {
-                 sequence.append(PictureAction(imageView: extractedFrameImageView1, previewer: previewer1))
-            }
-            sequence.append(BasicAction(duration: 0.5))
-            sequence.append(LookFront(duration: 0.5))
-            sequence.append(Back(duration: 1.0, speed: 0.3))
-            sequence.append(Down(duration: 1.4, speed: 0.7))
-            sequence.append(Front(duration: 2.0, speed: 0.3))
-            sequence.append(Up(duration: 1.4, speed: 0.3))
-            sequence.append(LookUnder(duration: 0.5))
-            
-            sequence.append(BasicAction(duration: 1.0))
-            if let previewer1 = prev1 {
-                sequence.append(PictureAction(imageView: extractedFrameImageView2, previewer: previewer1))
-            }
-     
-            sparkMovementManager = SparkActionManager(sequence: sequence)
-            sparkMovementManager?.playSequence()
-       }
+    //EXERCICE 1
+    @IBAction func exo1Handler(_ sender: Any) {
+        sequence = []
+
+        sequence.append(MultipleMove(actions: [ Up(duration: 3, speed: 0.2), RotateRight(duration: 3, speed: 1.0)] ))
+        //sequence.append(Rotate180AndUp(speed: 0.2))
+        sequence.append(Stop())
+        sequence.append(LookUnder(duration: 0.5))
+        sequence.append(BasicAction(duration: 1.0))
+        if let previewer1 = prev1 {
+             sequence.append(PictureAction(imageView: extractedFrameImageView1, previewer: previewer1))
+        }
+        sequence.append(BasicAction(duration: 0.5))
+        sequence.append(LookFront(duration: 0.5))
+        sequence.append(Back(duration: 1.0, speed: 0.3))
+        sequence.append(Down(duration: 1.4, speed: 0.7))
+        sequence.append(Front(duration: 2.0, speed: 0.3))
+        sequence.append(Up(duration: 1.4, speed: 0.3))
+        sequence.append(LookUnder(duration: 0.5))
+        
+        sequence.append(BasicAction(duration: 1.0))
+        if let previewer1 = prev1 {
+            sequence.append(PictureAction(imageView: extractedFrameImageView2, previewer: previewer1))
+        }
+
+        sparkMovementManager = SparkActionManager(sequence: sequence)
+        sparkMovementManager?.playSequence()
+    }
     
+    @IBAction func exo2Handler(_ sender: Any) {
+        sequence = []
+        let circlePoints = drawCircle(radius: 0.3)
+        for point in circlePoints {
+            sequence.append(CircleMove(durationInSec: 0.2, stickPos: point))
+        }
+        sparkMovementManager = SparkActionManager(sequence: sequence)
+        sparkMovementManager?.playSequence()
+    }
     
-       func landing(){
-           print("landing")
-           if let mySpark = DJISDKManager.product() as? DJIAircraft {
-               if let flightController = mySpark.flightController {
-                   flightController.startLanding(completion: { (err) in
-                       print(err.debugDescription)
-                   })
-               }
+    func landing(){
+       print("landing")
+       if let mySpark = DJISDKManager.product() as? DJIAircraft {
+           if let flightController = mySpark.flightController {
+               flightController.startLanding(completion: { (err) in
+                   print(err.debugDescription)
+               })
            }
        }
+    }
     
     @IBAction func takeOff(_ sender: Any) {
        if let mySpark = DJISDKManager.product() as? DJIAircraft {
@@ -118,19 +127,13 @@ class Exo1ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func lookFront() {
         GimbalManager.shared.lookFront()
     }
     
     func lookUnder() {
         GimbalManager.shared.lookUnder()
-    }
-    
-
-    
-    
-    @IBAction func captureModeValueChanged(_ sender: UISegmentedControl) {
-        
     }
     
     func getCamera() -> DJICamera? {
@@ -143,14 +146,12 @@ class Exo1ViewController: UIViewController {
     }
     
     func setupVideoPreview() {
-        
         // Prev1 est de type VideoPreviewer
         // Camera view est une view liée depuis le storyboard
         prev1?.setView(self.cameraView)
 
         if let _ = DJISDKManager.product(){
             let video = DJISDKManager.videoFeeder()
-            
             DJISDKManager.videoFeeder()?.primaryVideoFeed.add(self, with: nil)
         }
         prev1?.start()
@@ -160,7 +161,6 @@ class Exo1ViewController: UIViewController {
     func resetVideoPreview() {
         prev1?.unSetView()
         DJISDKManager.videoFeeder()?.primaryVideoFeed.remove(self)
-        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -170,7 +170,6 @@ class Exo1ViewController: UIViewController {
         }
         self.resetVideoPreview()
     }
-
 }
 
 extension Exo1ViewController:DJIVideoFeedListener {
@@ -179,17 +178,13 @@ extension Exo1ViewController:DJIVideoFeedListener {
         videoData.withUnsafeBytes { (bytes:UnsafePointer<UInt8>) in
             prev1?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(videoData.count))
         }
-        
     }
-
 }
 
 extension Exo1ViewController:DJISDKManagerDelegate {
     func appRegisteredWithError(_ error: Error?) {
         
     }
-    
-    
 }
 
 extension Exo1ViewController:DJICameraDelegate {
