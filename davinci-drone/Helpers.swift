@@ -31,6 +31,7 @@ func drawCircle(radius: Double = 1.0) -> [CGPoint] {
     }
     
     // Reset sticks to neutral position
+    stickPositions.append(CGPoint(x: radius, y: 0.0))
     stickPositions.append(CGPoint(x: 0.0, y: 0.0))
     
     return stickPositions

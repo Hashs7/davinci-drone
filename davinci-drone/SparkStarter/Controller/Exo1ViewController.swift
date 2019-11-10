@@ -65,6 +65,7 @@ class Exo1ViewController: UIViewController {
         sequence.append(Up(duration: 1.4, speed: 0.3))
         sequence.append(LookUnder(duration: 0.5))
         sequence.append(BasicAction(duration: 1.5))
+        
         if let previewer1 = prev1 {
             sequence.append(PictureAction(imageView: extractedFrameImageView2, previewer: previewer1))
         }
