@@ -23,7 +23,7 @@ func drawCircle(radius: Double = 1.0) -> [CGPoint] {
     var stickPositions: [CGPoint] = []
     let center = CGPoint(x: 0, y: 0)
 
-    for i in stride(from: 0, to: 360.0, by: 20) {
+    for i in stride(from: 0, to: 360.0, by: 10) {
         let radian = i * Double.pi / 180
         let x = Double(center.x) + radius * cos(radian)
         let y = Double(center.y) + radius * sin(radian)
@@ -31,7 +31,6 @@ func drawCircle(radius: Double = 1.0) -> [CGPoint] {
     }
     
     // Reset sticks to neutral position
-    stickPositions.append(CGPoint(x: radius, y: 0.0))
     stickPositions.append(CGPoint(x: 0.0, y: 0.0))
     
     return stickPositions

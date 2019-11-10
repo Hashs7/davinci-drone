@@ -53,13 +53,18 @@ class Exo1ViewController: UIViewController {
         }
         sequence.append(BasicAction(duration: 0.5))
         sequence.append(LookFront(duration: 0.5))
-        sequence.append(Back(duration: 1.0, speed: 0.3))
+        sequence.append(Back(duration: 2.5, speed: 0.3))
+        sequence.append(Stop())
+        sequence.append(BasicAction(duration: 0.5))
+        
         sequence.append(Down(duration: 1.4, speed: 0.7))
-        sequence.append(Front(duration: 2.0, speed: 0.3))
+        sequence.append(Stop())
+        sequence.append(BasicAction(duration: 0.5))
+        
+        sequence.append(Front(duration: 2.8, speed: 0.3))
         sequence.append(Up(duration: 1.4, speed: 0.3))
         sequence.append(LookUnder(duration: 0.5))
-        
-        sequence.append(BasicAction(duration: 1.0))
+        sequence.append(BasicAction(duration: 1.5))
         if let previewer1 = prev1 {
             sequence.append(PictureAction(imageView: extractedFrameImageView2, previewer: previewer1))
         }
@@ -70,7 +75,7 @@ class Exo1ViewController: UIViewController {
     
     @IBAction func exo2Handler(_ sender: Any) {
         sequence = []
-        let circlePoints = drawCircle(radius: 0.3)
+        let circlePoints = drawCircle(radius: 0.5)
         for point in circlePoints {
             sequence.append(CircleMove(durationInSec: 0.2, stickPos: point))
         }
