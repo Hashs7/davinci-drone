@@ -1,7 +1,7 @@
 # Swift App - Robots project
 
 ## Technical schema
-![Technical schema](https://imgur.com/a/l8ATrnC)
+![Technical schema](https://i.imgur.com/VaQ2sg8.jpg)
 
 
 ## Exercice 1 - Actions sequence
