@@ -47,6 +47,8 @@
 		CC7BD9562370BE6A00032CEF /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; };
 		CC7BD9572370BE6A00032CEF /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */; };
+		CC8680A8237C8BE100D8DA99 /* LabyrintheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8680A7237C8BE100D8DA99 /* LabyrintheViewController.swift */; };
+		CC8680AA237C8D3600D8DA99 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
 		CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
 		CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ArrowClassifier.mlmodel; path = "davinci-drone/ArrowClassifier.mlmodel"; sourceTree = SOURCE_ROOT; };
+		CC8680A7237C8BE100D8DA99 /* LabyrintheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabyrintheViewController.swift; sourceTree = "<group>"; };
+		CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,7 @@
 				CC3A2800237496C1007FD460 /* TakeOffAndLandingViewController.swift */,
 				CC3A2801237496C1007FD460 /* CameraViewController.swift */,
 				CC3A2802237496C1007FD460 /* TP1ViewController.swift */,
+				CC8680A7237C8BE100D8DA99 /* LabyrintheViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				CC3A27F923748376007FD460 /* GimbalManager.swift */,
 				CC3A2804237496C1007FD460 /* SparkActionManager.swift */,
 				CC3A2805237496C1007FD460 /* GenericActionManager.swift */,
+				CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -219,6 +225,7 @@
 				CC5DE446237453550032C98F /* ConnectionViewController.swift */,
 				CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */,
 				CC7BD8F22370AAAB00032CEF /* Assets.xcassets */,
+				CC3A27FB23749681007FD460 /* Main.storyboard */,
 				CC7BD8F72370AAAB00032CEF /* LaunchScreen.storyboard */,
 				CC7BD8FA2370AAAB00032CEF /* Info.plist */,
 				CC7BD8F42370AAAB00032CEF /* Preview Content */,
@@ -250,7 +257,6 @@
 				CC3A2806237496C1007FD460 /* Entity */,
 				CC3A2803237496C1007FD460 /* Managers */,
 				CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */,
-				CC3A27FB23749681007FD460 /* Main.storyboard */,
 				CC7BD9172370AFD500032CEF /* Scenar.json */,
 				CC7BD91C2370AFD500032CEF /* IA */,
 				CC7BD9202370AFD500032CEF /* Heading+Calibration */,
@@ -471,6 +477,7 @@
 				CC5DE447237453550032C98F /* ConnectionViewController.swift in Sources */,
 				CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */,
 				CC3A2811237496C1007FD460 /* BasicMove.swift in Sources */,
+				CC8680AA237C8D3600D8DA99 /* SocketIOManager.swift in Sources */,
 				CC7BD8ED2370AAA900032CEF /* AppDelegate.swift in Sources */,
 				CC7BD9452370AFD500032CEF /* GenericMovementManager.swift in Sources */,
 				CC3A280D237496C1007FD460 /* CameraViewController.swift in Sources */,
@@ -484,6 +491,7 @@
 				CC3A280B237496C1007FD460 /* Exo1ViewController.swift in Sources */,
 				CC3A280E237496C1007FD460 /* TP1ViewController.swift in Sources */,
 				CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */,
+				CC8680A8237C8BE100D8DA99 /* LabyrintheViewController.swift in Sources */,
 				CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */,
 				CC3A2810237496C1007FD460 /* GenericActionManager.swift in Sources */,
 				CC3A2813237496C1007FD460 /* BasicCamera.swift in Sources */,

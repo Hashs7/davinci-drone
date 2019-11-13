@@ -12,10 +12,8 @@ import DJISDK
 
 class ConnectionViewController: UIViewController {
     
-    @IBOutlet weak var socketState: UILabel!
     @IBOutlet weak var connectionStateLabel: UILabel!
-    let SSID = "Spark-4a142b"
-    //let SSID = "Spark-473f70"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +24,6 @@ class ConnectionViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-    }
-    @IBAction func connectSocket(_ sender: Any) {
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
