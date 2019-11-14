@@ -64,7 +64,17 @@ class CalibrationAndHeadingViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.phoneHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
-            print("iOS \(CGFloat(heading).degreesToRadians)")
+            
+            let normalHeading = (heading + 44).truncatingRemainder(dividingBy: 360)
+            print("iOS \(CGFloat(normalHeading))")
+            if normalHeading < 176 {
+                print("go to right")
+            } else if normalHeading > 184 {
+                print("go to left")
+            } else {
+                print("center")
+            }
+            
         }
         locationManager.startUpdatingHeading()
     }
@@ -74,8 +84,9 @@ class CalibrationAndHeadingViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.sparkHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
-            print("Spark: \(CGFloat(heading).degreesToRadians)")
-            
+            print("Spark: \(CGFloat(heading))")
+            /*136.55
+            140 max   134 min*/
         }
         
     }
