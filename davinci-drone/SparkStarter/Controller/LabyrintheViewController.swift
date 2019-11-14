@@ -19,8 +19,10 @@ class LabyrintheViewController: UIViewController {
              self.socketStatus.text = result
         }
         SocketIOManager.instance.listenToChannel(channel: "droneCombination") { (combination) in
-            print(combination)
-            self.combinationText.text = combination
+            if let combi = combination {
+                self.combinationText.text = combi.joined(separator:",")
+            }
+            
         }
     }
     

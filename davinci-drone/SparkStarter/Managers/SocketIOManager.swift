@@ -19,7 +19,7 @@ class SocketIOManager {
             return "http://\(ip):\(port)"
         }
         static func debugContext() -> Ctx {
-            return Ctx(ip: "192.168.1.40", port: "3000", modeVerbose: false)
+            return Ctx(ip: "172.28.59.136", port: "3000", modeVerbose: false)
         }
     }
     
@@ -56,15 +56,15 @@ class SocketIOManager {
         }
     }
     
-    func listenToChannel(channel: String, callback: @escaping (String?)->()) {
+    func listenToChannel(channel: String, callback: @escaping (Array<String>?)->()) {
         socket?.on(channel) {data, ack in
-            print()
             if let d = data.first,
-               let dataStr = d as? String {
-                callback(dataStr)
+               let dataArray = d as? Array<String> {
+                callback(dataArray)
             } else {
                 callback(nil)
             }
+            
             ack.with("Got it", "cc")
         }
     }
