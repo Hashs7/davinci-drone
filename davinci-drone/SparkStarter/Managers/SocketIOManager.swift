@@ -65,7 +65,7 @@ class SocketIOManager {
                 callback(nil)
             }
             
-            ack.with("Got it", "cc")
+            //ack.with("Got it", "cc")
         }
     }
     

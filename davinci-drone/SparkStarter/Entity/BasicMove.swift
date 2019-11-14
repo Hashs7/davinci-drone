@@ -11,7 +11,6 @@ import DJISDK
 
 class BasicMove: BasicAction {
     var speed: Float
-    var heading: Double = 180
     var dir: Direction
     enum Direction {
         case front, back, up, down, translateLeft, translateRight, rotateLeft, rotateRight, rotate180, rotate90Right, rotate90Left, rotate180AndUp, stop
