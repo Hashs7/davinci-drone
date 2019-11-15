@@ -108,8 +108,7 @@ class CalibrationAndHeadingViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.phoneHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
-            
-            while !isCentered {
+        
                 let normalHeading = (heading + 44).truncatingRemainder(dividingBy: 360)
                 print("iOS \(CGFloat(normalHeading))")
                 if normalHeading < 176 {
@@ -124,7 +123,7 @@ class CalibrationAndHeadingViewController: UIViewController {
                 }
                 self.sparkMovementManager = SparkActionManager(sequence: sequence)
                 self.sparkMovementManager?.playSequence()
-            }
+            
         }
         locationManager.startUpdatingHeading()
     }
