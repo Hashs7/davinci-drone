@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 import DJISDK
-import VideoPreviewer
+//import VideoPreviewer
 //import ImageDetect
 
 class Exo1ViewController: UIViewController {
-
+/*
     var sequence = [BasicAction]()
     @IBOutlet weak var extractedFrameImageView1: UIImageView!
     
@@ -176,8 +176,9 @@ class Exo1ViewController: UIViewController {
         }
         self.resetVideoPreview()
     }
+ */
 }
-
+ /*
 extension Exo1ViewController:DJIVideoFeedListener {
     func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
         //print([UInt8](videoData).count)
@@ -195,6 +196,6 @@ extension Exo1ViewController:DJISDKManagerDelegate {
 
 extension Exo1ViewController:DJICameraDelegate {
     
-}
+}*/
 
 
