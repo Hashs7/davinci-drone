@@ -11,11 +11,13 @@ import DJISDK
 import VideoPreviewer
 
 class CalibrationAndHeadingViewController: UIViewController {
-
+    
+    var isCentered = false;
+    
     var timer:Timer? = nil
     var sparkMovementManager: SparkActionManager? = nil
     @IBOutlet weak var extractedFrameImageView: UIImageView!
-
+    
     
     let locationDelegate = LocationDelegate()
     let locationManager: CLLocationManager = {
@@ -40,13 +42,12 @@ class CalibrationAndHeadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SocketIOManager.instance.connect { result in
-             self.socketStatus.text = result
+            self.socketStatus.text = result
         }
         SocketIOManager.instance.listenToChannel(channel: "droneCombination") { (combination) in
             if let combi = combination {
                 self.combinationText.text = combi.joined(separator:",")
             }
-            
         }
     }
     
@@ -70,25 +71,23 @@ class CalibrationAndHeadingViewController: UIViewController {
         SocketIOManager.instance.emitValue("5", toChannel: SocketChannels.detectSymbol)
     }
     
-   
-
+    
+    
     @IBAction func startButtonClicked(_ sender: UIButton) {
         // ---------------------
         // Spark
         // ---------------------
         if let mySpark = DJISDKManager.product() as? DJIAircraft {
             if let flightController = mySpark.flightController {
-                
                 if let compass = flightController.compass {
                     print("Calibration state before start: \(compass.calibrationState.rawValue)")
                     compass.startCalibration(completion: { (err) in
                         print(err ?? "Calibration OK")
                         print("Updated calibration state: \(compass.calibrationState.rawValue)")
                         
-                        self.timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { (t) in
+                        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (t) in
                             self.readHeading()
                         })
-                        
                     })
                 }
             }
@@ -99,13 +98,9 @@ class CalibrationAndHeadingViewController: UIViewController {
         // ---------------------
         // iOS
         // ---------------------
-        var sequence = [BasicAction]()
-        var isCentered = false
-        var endRotation = true
         locationManager.delegate = locationDelegate
-        
+       
         locationDelegate.headingCallback = { heading in
-            print("Callback")
             UIView.animate(withDuration: 0.5) {
                 self.phoneHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
@@ -136,7 +131,6 @@ class CalibrationAndHeadingViewController: UIViewController {
         locationManager.startUpdatingHeading()
     }
     
-  
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,81 +149,81 @@ class CalibrationAndHeadingViewController: UIViewController {
     }
     
     @IBAction func startStopCameraButtonClicked(_ sender: UIButton) {
-          self.prev1?.snapshotPreview({ (image) in
-              if let img = image {
-                  let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
-                  let ciImage: CIImage =  CIImage(image: img)!
-                  let features = detector.features(in: ciImage)
-                  for feature in features as! [CIQRCodeFeature] {
-                      print(feature.bounds)
-                      print("feature.bounds \(feature.bounds)")
-                      
-                      let topRightX = feature.topRight.x / 1000
-                      let topLeftX = feature.topLeft.x / 1000
-                      let topLeftY = feature.topLeft.y / 800
-                      let bottomLeftY = feature.bottomLeft.y / 800
-                      let center = CGPoint(x: 0.5, y: 0.43)
-                      
-                      let x = CGFloat(((topRightX - topLeftX) / 2) + topLeftX)
-                      let y = CGFloat(((topLeftY - bottomLeftY) / 2) + topLeftY)
-                      let codePosition = CGPoint(x: x, y: y)
-                      
-                      let gap = CGFloat(0.1)
-                      let centerRect = CGRect(x: 0.5 - gap, y: 0.43 - gap, width: gap, height: gap)
-                      
-                      if !centerRect.contains(codePosition) {
-                          var sequence = [BasicAction]()
-                          if center.x > codePosition.x {
-                              print("à gauche")
-                              sequence.append(Left(duration: 0.3, speed: 0.2))
-                          } else {
-                              print("à droite")
-                              sequence.append(Right(duration: 0.3, speed: 0.2))
-                          }
-                          if center.y > codePosition.y {
-                              print("en bas")
-                              sequence.append(Back(duration: 0.3, speed: 0.2))
-                          } else {
-                              print("en haut")
-                              sequence.append(Front(duration: 0.3, speed: 0.2))
-                          }
-                          
-                          self.sparkMovementManager = SparkActionManager(sequence: sequence)
-                          self.sparkMovementManager?.playSequence()
-                      } else {
-                          print("c'est centré")
-                      }
-                      
-                      print("qr position \(codePosition)")
-                  }
-              }
-          })
+        self.prev1?.snapshotPreview({ (image) in
+            if let img = image {
+                let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
+                let ciImage: CIImage =  CIImage(image: img)!
+                let features = detector.features(in: ciImage)
+                for feature in features as! [CIQRCodeFeature] {
+                    print(feature.bounds)
+                    print("feature.bounds \(feature.bounds)")
+                    
+                    let topRightX = feature.topRight.x / 1000
+                    let topLeftX = feature.topLeft.x / 1000
+                    let topLeftY = feature.topLeft.y / 800
+                    let bottomLeftY = feature.bottomLeft.y / 800
+                    let center = CGPoint(x: 0.5, y: 0.43)
+                    
+                    let x = CGFloat(((topRightX - topLeftX) / 2) + topLeftX)
+                    let y = CGFloat(((topLeftY - bottomLeftY) / 2) + topLeftY)
+                    let codePosition = CGPoint(x: x, y: y)
+                    
+                    let gap = CGFloat(0.1)
+                    let centerRect = CGRect(x: 0.5 - gap, y: 0.43 - gap, width: gap, height: gap)
+                    
+                    if !centerRect.contains(codePosition) {
+                        var sequence = [BasicAction]()
+                        if center.x > codePosition.x {
+                            print("à gauche")
+                            sequence.append(Left(duration: 0.3, speed: 0.2))
+                        } else {
+                            print("à droite")
+                            sequence.append(Right(duration: 0.3, speed: 0.2))
+                        }
+                        if center.y > codePosition.y {
+                            print("en bas")
+                            sequence.append(Back(duration: 0.3, speed: 0.2))
+                        } else {
+                            print("en haut")
+                            sequence.append(Front(duration: 0.3, speed: 0.2))
+                        }
+                        
+                        self.sparkMovementManager = SparkActionManager(sequence: sequence)
+                        self.sparkMovementManager?.playSequence()
+                    } else {
+                        print("c'est centré")
+                    }
+                    
+                    print("qr position \(codePosition)")
+                }
+            }
+        })
         
-      }
+    }
     
     
     func resetVideoPreview() {
-           prev1?.unSetView()
-           //prev2?.unSetView()
-           DJISDKManager.videoFeeder()?.primaryVideoFeed.remove(self)
-           
-       }
-
-       override func viewWillDisappear(_ animated: Bool) {
-           super.viewWillDisappear(animated)
-           if let camera = self.getCamera() {
-               camera.delegate = nil
-           }
-           self.resetVideoPreview()
-       }
+        prev1?.unSetView()
+        //prev2?.unSetView()
+        DJISDKManager.videoFeeder()?.primaryVideoFeed.remove(self)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let camera = self.getCamera() {
+            camera.delegate = nil
+        }
+        self.resetVideoPreview()
+    }
     func getCamera() -> DJICamera? {
-           // Check if it's an aircraft
-           if let mySpark = DJISDKManager.product() as? DJIAircraft {
-                return mySpark.camera
-           }
-           
-           return nil
-       }
+        // Check if it's an aircraft
+        if let mySpark = DJISDKManager.product() as? DJIAircraft {
+            return mySpark.camera
+        }
+        
+        return nil
+    }
     
     
     func setupVideoPreview() {
@@ -239,18 +233,18 @@ class CalibrationAndHeadingViewController: UIViewController {
         
         prev1?.setView(self.cameraView)
         /*
-        // ...
-        // plus loin
-        // ...
-        // ReceivedData est l'équivalent de ton callBack de reception
-        WebSocketManager.shared.receivedData{ data in
-            // On extrait les bytes de data sous la forme d'un pointeur sur UInt8
-            data.withUnsafeBytes { (bytes:UnsafePointer<UInt8>) in
-                // On push ces fameux bytes dans la vue
-                prev1?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(data.count))
-            }
-        }
-        */
+         // ...
+         // plus loin
+         // ...
+         // ReceivedData est l'équivalent de ton callBack de reception
+         WebSocketManager.shared.receivedData{ data in
+         // On extrait les bytes de data sous la forme d'un pointeur sur UInt8
+         data.withUnsafeBytes { (bytes:UnsafePointer<UInt8>) in
+         // On push ces fameux bytes dans la vue
+         prev1?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(data.count))
+         }
+         }
+         */
         
         
         //prev2?.setView(self.camera2View)
@@ -269,18 +263,46 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     func readHeading() {
         if let heading = (DJISDKManager.product() as? DJIAircraft)?.flightController?.compass?.heading {
+            print(heading)
             UIView.animate(withDuration: 0.5) {
                 self.sparkHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
-            print("Spark: \(CGFloat(heading))")
-            /*136.55
-            140 max   134 min*/
+            
+            if(!isCentered){
+                rotateToCenter(heading: heading)
+            }
+            
         }
         
     }
     
+    func rotateToCenter(heading:Double){
+        var sequence = [BasicAction]()
+        
+        let headingAdd = heading+180
+        let normalHeading = (headingAdd + 44).truncatingRemainder(dividingBy: 360)
+        print("iOS \(CGFloat(normalHeading))")
+        
+        if normalHeading < 176 {
+            print("go to right")
+            sequence.append(RotateRight(duration: 0.5, speed: 1))
+            
+            
+        } else if normalHeading > 184 {
+            print("go to left")
+            sequence.append(RotateLeft(duration: 0.5, speed: 1))
 
-
+            
+        } else {
+            self.isCentered = true
+            print("center")
+        }
+        
+        self.sparkMovementManager = SparkActionManager(sequence: sequence)
+        self.sparkMovementManager?.playSequence()
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -332,7 +354,7 @@ extension CalibrationAndHeadingViewController:DJIVideoFeedListener {
         }
         
     }
-
+    
 }
 
 extension CalibrationAndHeadingViewController:DJISDKManagerDelegate {

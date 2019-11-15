@@ -335,4 +335,3 @@ extension CameraViewController:DJISDKManagerDelegate {
 extension CameraViewController:DJICameraDelegate {
     
 }
-
