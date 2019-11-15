@@ -99,25 +99,32 @@ class CalibrationAndHeadingViewController: UIViewController {
         // ---------------------
         // iOS
         // ---------------------
+        var sequence = [BasicAction]()
+        var isCentered = false;
         locationManager.delegate = locationDelegate
         
         locationDelegate.headingCallback = { heading in
-            
+            print("Callback")
             UIView.animate(withDuration: 0.5) {
                 self.phoneHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
             
-            let normalHeading = (heading + 44).truncatingRemainder(dividingBy: 360)
-            print("iOS \(CGFloat(normalHeading))")
-            if normalHeading < 176 {
-                
-                print("go to right")
-            } else if normalHeading > 184 {
-                print("go to left")
-            } else {
-                print("center")
+            while !isCentered {
+                let normalHeading = (heading + 44).truncatingRemainder(dividingBy: 360)
+                print("iOS \(CGFloat(normalHeading))")
+                if normalHeading < 176 {
+                     sequence.append(RotateRight(duration: 0.3, speed: 0.2))
+                    print("go to right")
+                } else if normalHeading > 184 {
+                    print("go to left")
+                    sequence.append(RotateLeft(duration: 0.3, speed: 0.2))
+                } else {
+                    isCentered = true
+                    print("center")
+                }
+                self.sparkMovementManager = SparkActionManager(sequence: sequence)
+                self.sparkMovementManager?.playSequence()
             }
-            
         }
         locationManager.startUpdatingHeading()
     }
