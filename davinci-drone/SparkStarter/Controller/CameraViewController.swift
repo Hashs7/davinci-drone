@@ -8,13 +8,13 @@
 
 import UIKit
 import DJISDK
-//import VideoPreviewer
+import VideoPreviewer
 import CoreML
 import Vision
 import ImageIO
 
 
-class CameraViewController: UIViewController {/*
+class CameraViewController: UIViewController {
 
     @IBOutlet weak var extractedFrameImageView: UIImageView!
     
@@ -312,9 +312,9 @@ class CameraViewController: UIViewController {/*
         // Pass the selected object to the new view controller.
     }
     
-*/
+
 }
-/*
+
 extension CameraViewController:DJIVideoFeedListener {
     func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
         //print([UInt8](videoData).count)
@@ -338,5 +338,5 @@ extension CameraViewController:DJISDKManagerDelegate {
 extension CameraViewController:DJICameraDelegate {
     
 }
-*/
+
 
