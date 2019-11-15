@@ -86,7 +86,7 @@ class CalibrationAndHeadingViewController: UIViewController {
                         print(err ?? "Calibration OK")
                         print("Updated calibration state: \(compass.calibrationState.rawValue)")
                         
-                        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (t) in
+                        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (t) in
                             self.readHeading()
                            
                         })
@@ -264,17 +264,17 @@ class CalibrationAndHeadingViewController: UIViewController {
         var sequence = [BasicAction]()
         
         let headingAdd = heading+180
-        let normalHeading = (headingAdd + 44).truncatingRemainder(dividingBy: 360)
+        let normalHeading = (headingAdd).truncatingRemainder(dividingBy: 360)
         print("iOS \(CGFloat(normalHeading))")
         
         if normalHeading < 176 {
             print("go to right")
-            sequence.append(RotateRight(duration: 0.5, speed: 1))
+            sequence.append(RotateRight(duration: 0.3, speed: 0.5))
             
             
         } else if normalHeading > 184 {
             print("go to left")
-            sequence.append(RotateLeft(duration: 0.5, speed: 1))
+            sequence.append(RotateLeft(duration: 0.3, speed: 0.5))
 
             
         } else {
