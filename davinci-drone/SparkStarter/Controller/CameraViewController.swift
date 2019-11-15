@@ -335,3 +335,8 @@ extension CameraViewController:DJISDKManagerDelegate {
 extension CameraViewController:DJICameraDelegate {
     
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1f218a4... Rotate

@@ -87,6 +87,7 @@ class CalibrationAndHeadingViewController: UIViewController {
                         
                         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (t) in
                             self.readHeading()
+                           
                         })
                     })
                 }
@@ -98,12 +99,17 @@ class CalibrationAndHeadingViewController: UIViewController {
         // ---------------------
         // iOS
         // ---------------------
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 1f218a4... Rotate
         locationManager.delegate = locationDelegate
        
         locationDelegate.headingCallback = { heading in
             UIView.animate(withDuration: 0.5) {
                 self.phoneHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
+<<<<<<< HEAD
         
                 let normalHeading = (heading + 44).truncatingRemainder(dividingBy: 360)
                 print("iOS \(CGFloat(normalHeading))")
@@ -127,9 +133,15 @@ class CalibrationAndHeadingViewController: UIViewController {
                 self.sparkMovementManager = SparkActionManager(sequence: sequence)
                 self.sparkMovementManager?.playSequence()
             }
+=======
+            
+>>>>>>> 1f218a4... Rotate
         }
         locationManager.startUpdatingHeading()
     }
+    
+ 
+    
     
     
     
