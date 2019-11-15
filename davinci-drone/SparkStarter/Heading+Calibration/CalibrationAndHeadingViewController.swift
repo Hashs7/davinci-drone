@@ -99,51 +99,16 @@ class CalibrationAndHeadingViewController: UIViewController {
         // ---------------------
         // iOS
         // ---------------------
-<<<<<<< HEAD
-=======
         
->>>>>>> 1f218a4... Rotate
         locationManager.delegate = locationDelegate
        
         locationDelegate.headingCallback = { heading in
             UIView.animate(withDuration: 0.5) {
                 self.phoneHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
-<<<<<<< HEAD
-        
-                let normalHeading = (heading + 44).truncatingRemainder(dividingBy: 360)
-                print("iOS \(CGFloat(normalHeading))")
-            if(!isCentered && endRotation){
-                if normalHeading < 176 {
-                    print("go to right")
-                     sequence.append(RotateRight(duration: 0.3, speed: 0.2))
-                    delay(0.3) {
-                        endRotation = true
-                    }
-                } else if normalHeading > 184 {
-                    print("go to left")
-                    sequence.append(RotateLeft(duration: 0.3, speed: 0.2))
-                    delay(0.3) {
-                        endRotation = true
-                    }
-                } else {
-                    isCentered = true
-                    print("center")
-                }
-                self.sparkMovementManager = SparkActionManager(sequence: sequence)
-                self.sparkMovementManager?.playSequence()
-            }
-=======
-            
->>>>>>> 1f218a4... Rotate
         }
         locationManager.startUpdatingHeading()
     }
-    
- 
-    
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -283,9 +248,7 @@ class CalibrationAndHeadingViewController: UIViewController {
             if(!isCentered){
                 rotateToCenter(heading: heading)
             }
-            
         }
-        
     }
     
     func rotateToCenter(heading:Double){

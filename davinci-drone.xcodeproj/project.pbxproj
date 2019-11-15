@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CC046CF8237ED72200E83EE9 /* SymbolClassifierV1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */; };
 		CC046CFA237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */; };
+		CC046CFC237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */; };
 		CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946D23770D1B002A6BB9 /* MultipleMove.swift */; };
 		CC19947023775A6C002A6BB9 /* CircleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946F23775A6C002A6BB9 /* CircleMove.swift */; };
 		CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A27F923748376007FD460 /* GimbalManager.swift */; };
@@ -81,6 +82,7 @@
 		5CC2FAC90B3D81BD79B7D6F4 /* Pods-davinci-drone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.release.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.release.xcconfig"; sourceTree = "<group>"; };
 		CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV1.mlmodel; path = "davinci-drone/SymbolClassifierV1.mlmodel"; sourceTree = SOURCE_ROOT; };
 		CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV2.mlmodel; path = "davinci-drone/SymbolClassifierV2.mlmodel"; sourceTree = SOURCE_ROOT; };
+		CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV3.mlmodel; path = "davinci-drone/SymbolClassifierV3.mlmodel"; sourceTree = SOURCE_ROOT; };
 		CC19946D23770D1B002A6BB9 /* MultipleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleMove.swift; sourceTree = "<group>"; };
 		CC19946F23775A6C002A6BB9 /* CircleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleMove.swift; sourceTree = "<group>"; };
 		CC3A27F923748376007FD460 /* GimbalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalManager.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				CC3A2806237496C1007FD460 /* Entity */,
 				CC3A2803237496C1007FD460 /* Managers */,
 				CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */,
+				CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */,
 				CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */,
 				CC7BD9172370AFD500032CEF /* Scenar.json */,
 				CC7BD91C2370AFD500032CEF /* IA */,
@@ -498,6 +501,7 @@
 				CC8680A8237C8BE100D8DA99 /* LabyrintheViewController.swift in Sources */,
 				CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */,
 				CC3A2810237496C1007FD460 /* GenericActionManager.swift in Sources */,
+				CC046CFC237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel in Sources */,
 				CC3A2813237496C1007FD460 /* BasicCamera.swift in Sources */,
 				CC19947023775A6C002A6BB9 /* CircleMove.swift in Sources */,
 				CC7BD94D2370AFD500032CEF /* MovingManager.swift in Sources */,
