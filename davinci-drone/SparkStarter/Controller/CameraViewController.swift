@@ -22,6 +22,8 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var pictureName: UITextField!
     
+    var sparkMovementManager: SparkActionManager? = nil
+    
     let prev1 = VideoPreviewer()
     @IBOutlet weak var cameraView: UIView!
     
@@ -58,13 +60,75 @@ class CameraViewController: UIViewController {
         GimbalManager.shared.lookUnder()
     }
     
+    @IBAction func stopHandler(_ sender: Any) {
+        print("Stop")
+        sparkMovementManager?.stopSequence()
+        if let mySpark = DJISDKManager.product() as? DJIAircraft {
+            mySpark.mobileRemoteController?.leftStickVertical = 0.0
+            mySpark.mobileRemoteController?.leftStickHorizontal = 0.0
+            mySpark.mobileRemoteController?.rightStickHorizontal = 0.0
+            mySpark.mobileRemoteController?.rightStickVertical = 0.0
+        }
+    }
+    
     @IBAction func startStopCameraButtonClicked(_ sender: UIButton) {
+        self.prev1?.snapshotPreview({ (image) in
+            if let img = image {
+                let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
+                let ciImage: CIImage =  CIImage(image: img)!
+                let features = detector.features(in: ciImage)
+                for feature in features as! [CIQRCodeFeature] {
+                    print(feature.bounds)
+                    print("feature.bounds \(feature.bounds)")
+                    
+                    let topRightX = feature.topRight.x / 1000
+                    let topLeftX = feature.topLeft.x / 1000
+                    let topLeftY = feature.topLeft.y / 800
+                    let bottomLeftY = feature.bottomLeft.y / 800
+                    let center = CGPoint(x: 0.5, y: 0.43)
+                    
+                    let x = CGFloat(((topRightX - topLeftX) / 2) + topLeftX)
+                    let y = CGFloat(((topLeftY - bottomLeftY) / 2) + topLeftY)
+                    let codePosition = CGPoint(x: x, y: y)
+                    
+                    let gap = CGFloat(0.1)
+                    let centerRect = CGRect(x: 0.5 - gap, y: 0.43 - gap, width: gap, height: gap)
+                    
+                    if !centerRect.contains(codePosition) {
+                        var sequence = [BasicAction]()
+                        if center.x > codePosition.x {
+                            print("à gauche")
+                            sequence.append(Left(duration: 0.3, speed: 0.2))
+                        } else {
+                            print("à droite")
+                            sequence.append(Right(duration: 0.3, speed: 0.2))
+                        }
+                        if center.y > codePosition.y {
+                            print("en bas")
+                            sequence.append(Back(duration: 0.3, speed: 0.2))
+                        } else {
+                            print("en haut")
+                            sequence.append(Front(duration: 0.3, speed: 0.2))
+                        }
+                        
+                        self.sparkMovementManager = SparkActionManager(sequence: sequence)
+                        self.sparkMovementManager?.playSequence()
+                    } else {
+                        print("c'est centré")
+                    }
+                    
+                    print("qr position \(codePosition)")
+                }
+            }
+        })
+            
         self.prev1?.snapshotThumnnail { image in
-            if let img = image?.cropToBounds(width: 180, height: 180) {
-                self.extractedFrameImageView.image = img
-                print(img.size)
+            if let img = image {
+                let croppedImg = img.cropToBounds(width: 180, height: 180)
+                self.extractedFrameImageView.image = croppedImg
+                print(croppedImg.size)
                 
-                if let dataImg = img.pngData() {
+                if let dataImg = croppedImg.pngData() {
                     let strId = UUID().uuidString
                     let dir = getDocumentsDirectory()
                     let imgName = self.pictureName.text ?? "picture"
@@ -239,7 +303,7 @@ class CameraViewController: UIViewController {
         }
         self.resetVideoPreview()
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -247,7 +311,7 @@ class CameraViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
 

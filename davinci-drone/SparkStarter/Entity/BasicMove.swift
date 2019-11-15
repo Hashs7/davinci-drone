@@ -11,10 +11,9 @@ import DJISDK
 
 class BasicMove: BasicAction {
     var speed: Float
-    var heading: Double = 180
     var dir: Direction
     enum Direction {
-        case front, back, up, down, translateLeft, translateRight, rotateLeft, rotateRight, rotate180, rotate90Right, rotate90Left, rotate180AndUp, stop
+        case front, back, left, right, up, down, translateLeft, translateRight, rotateLeft, rotateRight, rotate180, rotate90Right, rotate90Left, rotate180AndUp, stop
     }
     
     override var description: String {
@@ -44,6 +43,12 @@ class BasicMove: BasicAction {
                 break
             case .back:
                 mySpark.mobileRemoteController?.rightStickVertical = -speed
+                break
+            case .left:
+                mySpark.mobileRemoteController?.rightStickHorizontal = -speed
+                break
+            case .right:
+                mySpark.mobileRemoteController?.rightStickHorizontal = speed
                 break
             case .up:
                 mySpark.mobileRemoteController?.leftStickVertical = speed
@@ -92,6 +97,18 @@ class Front: BasicMove {
 class Back: BasicMove {
     init(duration: Float, speed: Float) {
         super.init(direction: .back, durationInSec: duration, speed: speed)
+    }
+}
+
+class Left: BasicMove {
+    init(duration: Float, speed: Float) {
+        super.init(direction: .left, durationInSec: duration, speed: speed)
+    }
+}
+
+class Right: BasicMove {
+    init(duration: Float, speed: Float) {
+        super.init(direction: .right, durationInSec: duration, speed: speed)
     }
 }
 
