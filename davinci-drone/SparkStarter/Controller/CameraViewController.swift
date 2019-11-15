@@ -8,13 +8,13 @@
 
 import UIKit
 import DJISDK
-//import VideoPreviewer
+import VideoPreviewer
 import CoreML
 import Vision
 import ImageIO
 
 
-class CameraViewController: UIViewController {/*
+class CameraViewController: UIViewController {
 
     @IBOutlet weak var extractedFrameImageView: UIImageView!
     
@@ -74,6 +74,23 @@ class CameraViewController: UIViewController {/*
     @IBAction func startStopCameraButtonClicked(_ sender: UIButton) {
         self.prev1?.snapshotPreview({ (image) in
             if let img = image {
+                // Crop image
+                print("img.size \(img.size)")
+                
+                let resoImg = img.resized(to: CGSize(width: 480/2, height: 360/2))
+                let croppedImg = resoImg.cropToBounds(width: 360/2, height: 360/2)
+                self.extractedFrameImageView.image = resoImg
+                print(resoImg.size)
+                
+                if let dataImg = croppedImg.pngData() {
+                    let strId = UUID().uuidString
+                    let dir = getDocumentsDirectory()
+                    let imgName = self.pictureName.text ?? "picture"
+                    let imgUrl = dir.appendingPathComponent("\(imgName)-\(strId).png")
+                    try! dataImg.write(to: imgUrl)
+                }
+                
+                // Detector
                 let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
                 let ciImage: CIImage =  CIImage(image: img)!
                 let features = detector.features(in: ciImage)
@@ -121,22 +138,6 @@ class CameraViewController: UIViewController {/*
                 }
             }
         })
-            
-        self.prev1?.snapshotThumnnail { image in
-            if let img = image {
-                let croppedImg = img.cropToBounds(width: 180, height: 180)
-                self.extractedFrameImageView.image = croppedImg
-                print(croppedImg.size)
-                
-                if let dataImg = croppedImg.pngData() {
-                    let strId = UUID().uuidString
-                    let dir = getDocumentsDirectory()
-                    let imgName = self.pictureName.text ?? "picture"
-                    let imgUrl = dir.appendingPathComponent("\(imgName)-\(strId).png")
-                    try! dataImg.write(to: imgUrl)
-                }
-            }
-        }
     }
         /*
          Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
@@ -211,7 +212,7 @@ class CameraViewController: UIViewController {/*
     
     lazy var classificationRequest: VNCoreMLRequest = {
         do {
-            let model = try VNCoreMLModel(for: ArrowClassifier().model)
+            let model = try VNCoreMLModel(for: SymbolClassifierV2().model)
             
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processClassifications(for: request, error: error)
@@ -312,9 +313,9 @@ class CameraViewController: UIViewController {/*
         // Pass the selected object to the new view controller.
     }
     
-*/
+
 }
-/*
+
 extension CameraViewController:DJIVideoFeedListener {
     func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
         //print([UInt8](videoData).count)
@@ -322,21 +323,16 @@ extension CameraViewController:DJIVideoFeedListener {
             prev1?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(videoData.count))
             //prev2?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(videoData.count))
         }
-        
     }
-
 }
 
 extension CameraViewController:DJISDKManagerDelegate {
     func appRegisteredWithError(_ error: Error?) {
         
     }
-    
-    
 }
 
 extension CameraViewController:DJICameraDelegate {
     
 }
-*/
 

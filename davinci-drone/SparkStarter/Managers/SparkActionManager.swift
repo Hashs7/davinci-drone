@@ -24,4 +24,30 @@ class SparkActionManager: GenericActionManager {
         }
     }
     
+    static func createSymbolSequence(sequence: Array<String>) -> Array<BasicAction> {
+        var symbolSequence: [BasicAction] = []
+        for move in sequence {
+            switch move {
+            case "front":
+                symbolSequence.append(Front(duration: 0.5, speed: 0.3))
+                break
+            case "back":
+                symbolSequence.append(Back(duration: 0.5, speed: 0.3))
+                break
+            case "left":
+                symbolSequence.append(Left(duration: 0.5, speed: 0.3))
+                break
+            case "right":
+                symbolSequence.append(Right(duration: 0.5, speed: 0.3))
+                break
+            case "blocked":
+                print("Blocked move")
+                break
+            default:
+                print("default move")
+                break
+            }
+        }
+        return symbolSequence
+    }
 }

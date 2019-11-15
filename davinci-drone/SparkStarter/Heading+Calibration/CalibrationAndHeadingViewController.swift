@@ -100,7 +100,8 @@ class CalibrationAndHeadingViewController: UIViewController {
         // iOS
         // ---------------------
         var sequence = [BasicAction]()
-        var isCentered = false;
+        var isCentered = false
+        var endRotation = true
         locationManager.delegate = locationDelegate
         
         locationDelegate.headingCallback = { heading in
@@ -111,22 +112,31 @@ class CalibrationAndHeadingViewController: UIViewController {
         
                 let normalHeading = (heading + 44).truncatingRemainder(dividingBy: 360)
                 print("iOS \(CGFloat(normalHeading))")
+            if(!isCentered && endRotation){
                 if normalHeading < 176 {
-                     sequence.append(RotateRight(duration: 0.3, speed: 0.2))
                     print("go to right")
+                     sequence.append(RotateRight(duration: 0.3, speed: 0.2))
+                    delay(0.3) {
+                        endRotation = true
+                    }
                 } else if normalHeading > 184 {
                     print("go to left")
                     sequence.append(RotateLeft(duration: 0.3, speed: 0.2))
+                    delay(0.3) {
+                        endRotation = true
+                    }
                 } else {
                     isCentered = true
                     print("center")
                 }
                 self.sparkMovementManager = SparkActionManager(sequence: sequence)
                 self.sparkMovementManager?.playSequence()
-            
+            }
         }
         locationManager.startUpdatingHeading()
     }
+    
+  
     
     
     override func viewWillAppear(_ animated: Bool) {

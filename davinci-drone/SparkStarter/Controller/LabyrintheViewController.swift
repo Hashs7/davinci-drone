@@ -21,8 +21,9 @@ class LabyrintheViewController: UIViewController {
         SocketIOManager.instance.listenToChannel(channel: "droneCombination") { (combination) in
             if let combi = combination {
                 self.combinationText.text = combi.joined(separator:",")
+                let sequence = SparkActionManager.createSymbolSequence(sequence: combi)
+                print("sequence: \(sequence)")
             }
-            
         }
     }
     
