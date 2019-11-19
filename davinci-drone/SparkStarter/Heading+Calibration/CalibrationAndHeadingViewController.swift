@@ -12,7 +12,9 @@ import VideoPreviewer
 
 class CalibrationAndHeadingViewController: UIViewController {
     
-    var isCentered = false;
+    var isCenteredRotation = false;
+    var isCenteredQR = false;
+    
     
     var timer:Timer? = nil
     var sparkMovementManager: SparkActionManager? = nil
@@ -73,6 +75,7 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     
     
+    //START CALIBRATION
     @IBAction func startButtonClicked(_ sender: UIButton) {
         // ---------------------
         // Spark
@@ -86,9 +89,12 @@ class CalibrationAndHeadingViewController: UIViewController {
                         print("Updated calibration state: \(compass.calibrationState.rawValue)")
                         
                         self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (t) in
-                            self.readHeading()
-                           
+                            if(!self.isCenteredRotation){
+                                self.readHeading()
+                            }
+                            
                         })
+                        
                     })
                 }
             }
@@ -101,7 +107,7 @@ class CalibrationAndHeadingViewController: UIViewController {
         // ---------------------
         
         locationManager.delegate = locationDelegate
-       
+        
         locationDelegate.headingCallback = { heading in
             UIView.animate(withDuration: 0.5) {
                 self.phoneHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
@@ -125,7 +131,7 @@ class CalibrationAndHeadingViewController: UIViewController {
         }
     }
     
-    @IBAction func startStopCameraButtonClicked(_ sender: UIButton) {
+    func startStopCameraButtonClicked() {
         self.prev1?.snapshotPreview({ (image) in
             if let img = image {
                 let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
@@ -168,7 +174,8 @@ class CalibrationAndHeadingViewController: UIViewController {
                         self.sparkMovementManager = SparkActionManager(sequence: sequence)
                         self.sparkMovementManager?.playSequence()
                     } else {
-                        print("c'est centré")
+                        print("c'est centré\(codePosition)")
+                        self.isCenteredQR = true;
                     }
                     
                     print("qr position \(codePosition)")
@@ -238,17 +245,23 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     
     
+    
     func readHeading() {
         if let heading = (DJISDKManager.product() as? DJIAircraft)?.flightController?.compass?.heading {
             print(heading)
             UIView.animate(withDuration: 0.5) {
                 self.sparkHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
-            
-            if(!isCentered){
-                rotateToCenter(heading: heading)
-            }
+            rotateToCenter(heading: heading)
         }
+    }
+    
+    func moveToQR(){
+        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (t) in
+            if(!self.isCenteredQR){
+                self.startStopCameraButtonClicked()
+            }
+        })
     }
     
     func rotateToCenter(heading:Double){
@@ -266,17 +279,17 @@ class CalibrationAndHeadingViewController: UIViewController {
         } else if normalHeading > 184 {
             print("go to left")
             sequence.append(RotateLeft(duration: 0.3, speed: 0.5))
-
+            
             
         } else {
-            self.isCentered = true
+            self.isCenteredRotation = true
             print("center")
+            self.moveToQR()
         }
         
         self.sparkMovementManager = SparkActionManager(sequence: sequence)
         self.sparkMovementManager?.playSequence()
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
