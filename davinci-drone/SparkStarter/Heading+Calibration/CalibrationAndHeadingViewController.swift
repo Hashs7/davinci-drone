@@ -248,7 +248,7 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     func readHeading() {
         if let heading = (DJISDKManager.product() as? DJIAircraft)?.flightController?.compass?.heading {
-            print(heading)
+            print("Base heading \(heading)")
             UIView.animate(withDuration: 0.5) {
                 self.sparkHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
@@ -257,6 +257,7 @@ class CalibrationAndHeadingViewController: UIViewController {
     }
     
     func moveToQR(){
+        GimbalManager.shared.lookUnder()
         self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (t) in
             if(!self.isCenteredQR){
                 self.startStopCameraButtonClicked()
@@ -269,22 +270,17 @@ class CalibrationAndHeadingViewController: UIViewController {
         
         let headingAdd = heading+180
         let normalHeading = (headingAdd).truncatingRemainder(dividingBy: 360)
-        print("iOS \(CGFloat(normalHeading))")
+        print("headingAdd ddddddddddddddd \(CGFloat(headingAdd))")
         
-        if normalHeading < 176 {
-            print("go to right")
-            sequence.append(RotateRight(duration: 0.3, speed: 0.5))
-            
-            
-        } else if normalHeading > 184 {
-            print("go to left")
-            sequence.append(RotateLeft(duration: 0.3, speed: 0.5))
-            
-            
-        } else {
+        if headingAdd > 354 || headingAdd < 6 {
             self.isCenteredRotation = true
             print("center")
             self.moveToQR()
+        }
+        else if headingAdd < 6 || headingAdd > 180 {
+            sequence.append(RotateRight(duration: 0.3, speed: 0.4))
+        } else if headingAdd > 354 || headingAdd < 180 {
+            sequence.append(RotateLeft(duration: 0.3, speed: 0.4))
         }
         
         self.sparkMovementManager = SparkActionManager(sequence: sequence)
