@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC046CF8237ED72200E83EE9 /* SymbolClassifierV1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */; };
+		CC046CFA237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */; };
+		CC046CFC237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */; };
 		CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946D23770D1B002A6BB9 /* MultipleMove.swift */; };
 		CC19947023775A6C002A6BB9 /* CircleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946F23775A6C002A6BB9 /* CircleMove.swift */; };
 		CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A27F923748376007FD460 /* GimbalManager.swift */; };
@@ -46,7 +49,6 @@
 		CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */; };
 		CC7BD9562370BE6A00032CEF /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; };
 		CC7BD9572370BE6A00032CEF /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */; };
 		CC8680A8237C8BE100D8DA99 /* LabyrintheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8680A7237C8BE100D8DA99 /* LabyrintheViewController.swift */; };
 		CC8680AA237C8D3600D8DA99 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +80,9 @@
 /* Begin PBXFileReference section */
 		556F012B20ADB417F80F07D0 /* Pods-davinci-drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.debug.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.debug.xcconfig"; sourceTree = "<group>"; };
 		5CC2FAC90B3D81BD79B7D6F4 /* Pods-davinci-drone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-davinci-drone.release.xcconfig"; path = "Target Support Files/Pods-davinci-drone/Pods-davinci-drone.release.xcconfig"; sourceTree = "<group>"; };
+		CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV1.mlmodel; path = "davinci-drone/SymbolClassifierV1.mlmodel"; sourceTree = SOURCE_ROOT; };
+		CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV2.mlmodel; path = "davinci-drone/SymbolClassifierV2.mlmodel"; sourceTree = SOURCE_ROOT; };
+		CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV3.mlmodel; path = "davinci-drone/SymbolClassifierV3.mlmodel"; sourceTree = SOURCE_ROOT; };
 		CC19946D23770D1B002A6BB9 /* MultipleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleMove.swift; sourceTree = "<group>"; };
 		CC19946F23775A6C002A6BB9 /* CircleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleMove.swift; sourceTree = "<group>"; };
 		CC3A27F923748376007FD460 /* GimbalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalManager.swift; sourceTree = "<group>"; };
@@ -120,7 +125,6 @@
 		CC7BD9352370AFD500032CEF /* AutoMoveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMoveViewController.swift; sourceTree = "<group>"; };
 		CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
 		CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
-		CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ArrowClassifier.mlmodel; path = "davinci-drone/ArrowClassifier.mlmodel"; sourceTree = SOURCE_ROOT; };
 		CC8680A7237C8BE100D8DA99 /* LabyrintheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabyrintheViewController.swift; sourceTree = "<group>"; };
 		CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -256,7 +260,9 @@
 				CC3A27FD237496C1007FD460 /* Controller */,
 				CC3A2806237496C1007FD460 /* Entity */,
 				CC3A2803237496C1007FD460 /* Managers */,
-				CC7BD9592370BFDC00032CEF /* ArrowClassifier.mlmodel */,
+				CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */,
+				CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */,
+				CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */,
 				CC7BD9172370AFD500032CEF /* Scenar.json */,
 				CC7BD91C2370AFD500032CEF /* IA */,
 				CC7BD9202370AFD500032CEF /* Heading+Calibration */,
@@ -483,17 +489,19 @@
 				CC3A280D237496C1007FD460 /* CameraViewController.swift in Sources */,
 				CC7BD9402370AFD500032CEF /* CalibrationAndHeadingViewController.swift in Sources */,
 				CC3A280F237496C1007FD460 /* SparkActionManager.swift in Sources */,
+				CC046CF8237ED72200E83EE9 /* SymbolClassifierV1.mlmodel in Sources */,
 				CC7BD93D2370AFD500032CEF /* MobileNet.mlmodel in Sources */,
 				CC7BD9492370AFD500032CEF /* ProductCommunicationManager.swift in Sources */,
 				CC7BD94F2370AFD500032CEF /* AutoMoveViewController.swift in Sources */,
 				CC7BD93E2370AFD500032CEF /* ImageRecognition.swift in Sources */,
 				CC7BD9132370ACBF00032CEF /* Helpers.swift in Sources */,
 				CC3A280B237496C1007FD460 /* Exo1ViewController.swift in Sources */,
+				CC046CFA237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel in Sources */,
 				CC3A280E237496C1007FD460 /* TP1ViewController.swift in Sources */,
-				CC7BD95A2370BFDC00032CEF /* ArrowClassifier.mlmodel in Sources */,
 				CC8680A8237C8BE100D8DA99 /* LabyrintheViewController.swift in Sources */,
 				CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */,
 				CC3A2810237496C1007FD460 /* GenericActionManager.swift in Sources */,
+				CC046CFC237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel in Sources */,
 				CC3A2813237496C1007FD460 /* BasicCamera.swift in Sources */,
 				CC19947023775A6C002A6BB9 /* CircleMove.swift in Sources */,
 				CC7BD94D2370AFD500032CEF /* MovingManager.swift in Sources */,
@@ -661,7 +669,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"davinci-drone/Preview Content\"";
-				DEVELOPMENT_TEAM = 8XFGQM7QG6;
+				DEVELOPMENT_TEAM = Z2TU75QGAV;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -674,7 +682,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.clement;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -701,7 +709,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.clement;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

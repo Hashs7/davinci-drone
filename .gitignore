@@ -33,6 +33,9 @@ davinci-drone/Info.plist
 timeline.xctimeline
 playground.xcworkspace
 
+davinci-drone.xcodeproj/project.pbxproj
+davinci-drone/Info.plist
+
 # Swift Package Manager
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
