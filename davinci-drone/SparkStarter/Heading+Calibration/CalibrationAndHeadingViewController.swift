@@ -51,6 +51,17 @@ class CalibrationAndHeadingViewController: UIViewController {
                 self.combinationText.text = combi.joined(separator:",")
             }
         }
+        /*
+        USBBridge.shared.connect {}
+        USBBridge.shared.receivedMessage({ (str) in
+            print("Received \(str)")
+        })
+         */
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //USBBridge.shared.disconnect()
     }
     
     @IBAction func figure1Handler(_ sender: Any) {
@@ -75,7 +86,7 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     
     
-    //START CALIBRATION
+    // MARK: - START CALIBRATION
     @IBAction func startButtonClicked(_ sender: UIButton) {
         // ---------------------
         // Spark
@@ -100,14 +111,7 @@ class CalibrationAndHeadingViewController: UIViewController {
             }
         }
         
-        
-        
-        // ---------------------
-        // iOS
-        // ---------------------
-        
         locationManager.delegate = locationDelegate
-        
         locationDelegate.headingCallback = { heading in
             UIView.animate(withDuration: 0.5) {
                 self.phoneHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
@@ -127,7 +131,6 @@ class CalibrationAndHeadingViewController: UIViewController {
             }
             
             GimbalManager.shared.setup(withDuration: 1.0, defaultPitch: -28.0)
-            
         }
     }
     
@@ -157,17 +160,13 @@ class CalibrationAndHeadingViewController: UIViewController {
                     if !centerRect.contains(codePosition) {
                         var sequence = [BasicAction]()
                         if center.x > codePosition.x {
-                            print("à gauche")
                             sequence.append(Left(duration: 0.3, speed: 0.2))
                         } else {
-                            print("à droite")
                             sequence.append(Right(duration: 0.3, speed: 0.2))
                         }
                         if center.y > codePosition.y {
-                            print("en bas")
                             sequence.append(Back(duration: 0.3, speed: 0.2))
                         } else {
-                            print("en haut")
                             sequence.append(Front(duration: 0.3, speed: 0.2))
                         }
                         
@@ -200,6 +199,7 @@ class CalibrationAndHeadingViewController: UIViewController {
         }
         self.resetVideoPreview()
     }
+    
     func getCamera() -> DJICamera? {
         // Check if it's an aircraft
         if let mySpark = DJISDKManager.product() as? DJIAircraft {
@@ -267,10 +267,7 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     func rotateToCenter(heading:Double){
         var sequence = [BasicAction]()
-        
-        let headingAdd = heading+180
-        let normalHeading = (headingAdd).truncatingRemainder(dividingBy: 360)
-        print("headingAdd ddddddddddddddd \(CGFloat(headingAdd))")
+        let headingAdd = heading + 180
         
         if headingAdd > 354 || headingAdd < 6 {
             self.isCenteredRotation = true

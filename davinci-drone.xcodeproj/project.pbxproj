@@ -10,6 +10,7 @@
 		CC046CF8237ED72200E83EE9 /* SymbolClassifierV1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */; };
 		CC046CFA237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */; };
 		CC046CFC237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */; };
+		CC122096238989F00088C66D /* SymbolClassifierV4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC122095238989F00088C66D /* SymbolClassifierV4.mlmodel */; };
 		CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946D23770D1B002A6BB9 /* MultipleMove.swift */; };
 		CC19947023775A6C002A6BB9 /* CircleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946F23775A6C002A6BB9 /* CircleMove.swift */; };
 		CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A27F923748376007FD460 /* GimbalManager.swift */; };
@@ -24,6 +25,10 @@
 		CC3A2811237496C1007FD460 /* BasicMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2807237496C1007FD460 /* BasicMove.swift */; };
 		CC3A2812237496C1007FD460 /* BasicAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2808237496C1007FD460 /* BasicAction.swift */; };
 		CC3A2813237496C1007FD460 /* BasicCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2809237496C1007FD460 /* BasicCamera.swift */; };
+		CC44E78C238608D7002F1A9A /* USBBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC44E780238608D7002F1A9A /* USBBridge.swift */; };
+		CC44E78D238608D7002F1A9A /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = CC44E782238608D7002F1A9A /* PTUSBHub.m */; };
+		CC44E78E238608D7002F1A9A /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = CC44E783238608D7002F1A9A /* PTProtocol.m */; };
+		CC44E78F238608D7002F1A9A /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC44E786238608D7002F1A9A /* PTChannel.m */; };
 		CC5DE447237453550032C98F /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DE446237453550032C98F /* ConnectionViewController.swift */; };
 		CC7BD8ED2370AAA900032CEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */; };
 		CC7BD8F32370AAAB00032CEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD8F22370AAAB00032CEF /* Assets.xcassets */; };
@@ -49,6 +54,8 @@
 		CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */; };
 		CC7BD9562370BE6A00032CEF /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; };
 		CC7BD9572370BE6A00032CEF /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CC834B8E23871C8800BA2DB5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC834B8D23871C8800BA2DB5 /* Utilities.swift */; };
+		CC834B902387534400BA2DB5 /* VisionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC834B8F2387534400BA2DB5 /* VisionHelpers.swift */; };
 		CC8680A8237C8BE100D8DA99 /* LabyrintheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8680A7237C8BE100D8DA99 /* LabyrintheViewController.swift */; };
 		CC8680AA237C8D3600D8DA99 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +90,7 @@
 		CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV1.mlmodel; path = "davinci-drone/SymbolClassifierV1.mlmodel"; sourceTree = SOURCE_ROOT; };
 		CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV2.mlmodel; path = "davinci-drone/SymbolClassifierV2.mlmodel"; sourceTree = SOURCE_ROOT; };
 		CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV3.mlmodel; path = "davinci-drone/SymbolClassifierV3.mlmodel"; sourceTree = SOURCE_ROOT; };
+		CC122095238989F00088C66D /* SymbolClassifierV4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SymbolClassifierV4.mlmodel; sourceTree = "<group>"; };
 		CC19946D23770D1B002A6BB9 /* MultipleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleMove.swift; sourceTree = "<group>"; };
 		CC19946F23775A6C002A6BB9 /* CircleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleMove.swift; sourceTree = "<group>"; };
 		CC3A27F923748376007FD460 /* GimbalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalManager.swift; sourceTree = "<group>"; };
@@ -97,6 +105,17 @@
 		CC3A2807237496C1007FD460 /* BasicMove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicMove.swift; sourceTree = "<group>"; };
 		CC3A2808237496C1007FD460 /* BasicAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAction.swift; sourceTree = "<group>"; };
 		CC3A2809237496C1007FD460 /* BasicCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCamera.swift; sourceTree = "<group>"; };
+		CC44E780238608D7002F1A9A /* USBBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USBBridge.swift; sourceTree = "<group>"; };
+		CC44E782238608D7002F1A9A /* PTUSBHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUSBHub.m; sourceTree = "<group>"; };
+		CC44E783238608D7002F1A9A /* PTProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProtocol.m; sourceTree = "<group>"; };
+		CC44E784238608D7002F1A9A /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
+		CC44E785238608D7002F1A9A /* Peertalk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peertalk.h; sourceTree = "<group>"; };
+		CC44E786238608D7002F1A9A /* PTChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTChannel.m; sourceTree = "<group>"; };
+		CC44E787238608D7002F1A9A /* PTPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPrivate.h; sourceTree = "<group>"; };
+		CC44E788238608D7002F1A9A /* PTExampleProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTExampleProtocol.h; sourceTree = "<group>"; };
+		CC44E789238608D7002F1A9A /* PTProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProtocol.h; sourceTree = "<group>"; };
+		CC44E78A238608D7002F1A9A /* PTUSBHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUSBHub.h; sourceTree = "<group>"; };
+		CC44E78B238608D7002F1A9A /* PTChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTChannel.h; sourceTree = "<group>"; };
 		CC5DE446237453550032C98F /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
 		CC7BD8E92370AAA900032CEF /* davinci-drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "davinci-drone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +144,8 @@
 		CC7BD9352370AFD500032CEF /* AutoMoveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMoveViewController.swift; sourceTree = "<group>"; };
 		CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
 		CC7BD9542370BE6600032CEF /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
+		CC834B8D23871C8800BA2DB5 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		CC834B8F2387534400BA2DB5 /* VisionHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionHelpers.swift; sourceTree = "<group>"; };
 		CC8680A7237C8BE100D8DA99 /* LabyrintheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabyrintheViewController.swift; sourceTree = "<group>"; };
 		CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +222,32 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		CC44E77F238608D7002F1A9A /* USBBridge */ = {
+			isa = PBXGroup;
+			children = (
+				CC44E780238608D7002F1A9A /* USBBridge.swift */,
+				CC44E781238608D7002F1A9A /* USB */,
+			);
+			path = USBBridge;
+			sourceTree = "<group>";
+		};
+		CC44E781238608D7002F1A9A /* USB */ = {
+			isa = PBXGroup;
+			children = (
+				CC44E782238608D7002F1A9A /* PTUSBHub.m */,
+				CC44E783238608D7002F1A9A /* PTProtocol.m */,
+				CC44E784238608D7002F1A9A /* prefix.pch */,
+				CC44E785238608D7002F1A9A /* Peertalk.h */,
+				CC44E786238608D7002F1A9A /* PTChannel.m */,
+				CC44E787238608D7002F1A9A /* PTPrivate.h */,
+				CC44E788238608D7002F1A9A /* PTExampleProtocol.h */,
+				CC44E789238608D7002F1A9A /* PTProtocol.h */,
+				CC44E78A238608D7002F1A9A /* PTUSBHub.h */,
+				CC44E78B238608D7002F1A9A /* PTChannel.h */,
+			);
+			path = USB;
+			sourceTree = "<group>";
+		};
 		CC7BD8E02370AAA900032CEF = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +271,8 @@
 		CC7BD8EB2370AAA900032CEF /* davinci-drone */ = {
 			isa = PBXGroup;
 			children = (
+				CC834B8D23871C8800BA2DB5 /* Utilities.swift */,
+				CC44E77F238608D7002F1A9A /* USBBridge */,
 				CC7BD9162370AFD500032CEF /* SparkStarter */,
 				CC7BD9122370ACBF00032CEF /* Helpers.swift */,
 				CC5DE446237453550032C98F /* ConnectionViewController.swift */,
@@ -261,6 +310,7 @@
 				CC3A2806237496C1007FD460 /* Entity */,
 				CC3A2803237496C1007FD460 /* Managers */,
 				CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */,
+				CC122095238989F00088C66D /* SymbolClassifierV4.mlmodel */,
 				CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */,
 				CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */,
 				CC7BD9172370AFD500032CEF /* Scenar.json */,
@@ -270,6 +320,7 @@
 				CC7BD92C2370AFD500032CEF /* HelpersFromSample */,
 				CC7BD92E2370AFD500032CEF /* Automatic */,
 				CC7BD9362370AFD500032CEF /* AccelerometerViewController.swift */,
+				CC834B8F2387534400BA2DB5 /* VisionHelpers.swift */,
 			);
 			path = SparkStarter;
 			sourceTree = "<group>";
@@ -482,12 +533,15 @@
 				CC7BD94B2370AFD500032CEF /* DirectionSequence.swift in Sources */,
 				CC5DE447237453550032C98F /* ConnectionViewController.swift in Sources */,
 				CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */,
+				CC44E78F238608D7002F1A9A /* PTChannel.m in Sources */,
 				CC3A2811237496C1007FD460 /* BasicMove.swift in Sources */,
 				CC8680AA237C8D3600D8DA99 /* SocketIOManager.swift in Sources */,
 				CC7BD8ED2370AAA900032CEF /* AppDelegate.swift in Sources */,
 				CC7BD9452370AFD500032CEF /* GenericMovementManager.swift in Sources */,
+				CC44E78C238608D7002F1A9A /* USBBridge.swift in Sources */,
 				CC3A280D237496C1007FD460 /* CameraViewController.swift in Sources */,
 				CC7BD9402370AFD500032CEF /* CalibrationAndHeadingViewController.swift in Sources */,
+				CC834B902387534400BA2DB5 /* VisionHelpers.swift in Sources */,
 				CC3A280F237496C1007FD460 /* SparkActionManager.swift in Sources */,
 				CC046CF8237ED72200E83EE9 /* SymbolClassifierV1.mlmodel in Sources */,
 				CC7BD93D2370AFD500032CEF /* MobileNet.mlmodel in Sources */,
@@ -496,8 +550,10 @@
 				CC7BD93E2370AFD500032CEF /* ImageRecognition.swift in Sources */,
 				CC7BD9132370ACBF00032CEF /* Helpers.swift in Sources */,
 				CC3A280B237496C1007FD460 /* Exo1ViewController.swift in Sources */,
+				CC122096238989F00088C66D /* SymbolClassifierV4.mlmodel in Sources */,
 				CC046CFA237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel in Sources */,
 				CC3A280E237496C1007FD460 /* TP1ViewController.swift in Sources */,
+				CC44E78E238608D7002F1A9A /* PTProtocol.m in Sources */,
 				CC8680A8237C8BE100D8DA99 /* LabyrintheViewController.swift in Sources */,
 				CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */,
 				CC3A2810237496C1007FD460 /* GenericActionManager.swift in Sources */,
@@ -505,7 +561,9 @@
 				CC3A2813237496C1007FD460 /* BasicCamera.swift in Sources */,
 				CC19947023775A6C002A6BB9 /* CircleMove.swift in Sources */,
 				CC7BD94D2370AFD500032CEF /* MovingManager.swift in Sources */,
+				CC834B8E23871C8800BA2DB5 /* Utilities.swift in Sources */,
 				CC3A280A237496C1007FD460 /* MovementLevelOneViewController.swift in Sources */,
+				CC44E78D238608D7002F1A9A /* PTUSBHub.m in Sources */,
 				CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */,
 				CC3A2812237496C1007FD460 /* BasicAction.swift in Sources */,
 				CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */,

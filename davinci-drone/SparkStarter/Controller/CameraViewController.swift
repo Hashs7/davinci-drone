@@ -26,6 +26,8 @@ class CameraViewController: UIViewController {
     
     let prev1 = VideoPreviewer()
     @IBOutlet weak var cameraView: UIView!
+    var pathLayer: CALayer?
+    var currentImage: UIImage?
     
     
     override func viewDidLoad() {
@@ -71,74 +73,103 @@ class CameraViewController: UIViewController {
         }
     }
     
+    
     @IBAction func startStopCameraButtonClicked(_ sender: UIButton) {
         self.prev1?.snapshotPreview({ (image) in
             if let img = image {
-                // Crop image
-                print("img.size \(img.size)")
+                self.currentImage = img
+                print("CGImage", img.cgImage)
+                print("CIImage", img.ciImage)
+                //print("img.size \(img.size)")
                 
+                // Crop image in square and lower resolution
                 let resoImg = img.resized(to: CGSize(width: 480/2, height: 360/2))
                 let croppedImg = resoImg.cropToBounds(width: 360/2, height: 360/2)
-                self.extractedFrameImageView.image = resoImg
+                self.extractedFrameImageView.image = croppedImg
                 print(resoImg.size)
-                
+                /* Acquisition
                 if let dataImg = croppedImg.pngData() {
                     let strId = UUID().uuidString
                     let dir = getDocumentsDirectory()
                     let imgName = self.pictureName.text ?? "picture"
                     let imgUrl = dir.appendingPathComponent("\(imgName)-\(strId).png")
                     try! dataImg.write(to: imgUrl)
+                }*/
+                
+                let cgOrientation = CGImagePropertyOrientation(img.imageOrientation)
+                // Fire off request based on URL of chosen photo.
+                guard let cgImage = img.cgImage else {
+                    return
                 }
                 
-                // Detector
-                let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
-                let ciImage: CIImage =  CIImage(image: img)!
-                let features = detector.features(in: ciImage)
-                for feature in features as! [CIQRCodeFeature] {
-                    print(feature.bounds)
-                    print("feature.bounds \(feature.bounds)")
-                    
-                    let topRightX = feature.topRight.x / 1000
-                    let topLeftX = feature.topLeft.x / 1000
-                    let topLeftY = feature.topLeft.y / 800
-                    let bottomLeftY = feature.bottomLeft.y / 800
-                    let center = CGPoint(x: 0.5, y: 0.43)
-                    
-                    let x = CGFloat(((topRightX - topLeftX) / 2) + topLeftX)
-                    let y = CGFloat(((topLeftY - bottomLeftY) / 2) + topLeftY)
-                    let codePosition = CGPoint(x: x, y: y)
-                    
-                    let gap = CGFloat(0.1)
-                    let centerRect = CGRect(x: 0.5 - gap, y: 0.43 - gap, width: gap, height: gap)
-                    
-                    if !centerRect.contains(codePosition) {
-                        var sequence = [BasicAction]()
-                        if center.x > codePosition.x {
-                            print("à gauche")
-                            sequence.append(Left(duration: 0.3, speed: 0.2))
-                        } else {
-                            print("à droite")
-                            sequence.append(Right(duration: 0.3, speed: 0.2))
-                        }
-                        if center.y > codePosition.y {
-                            print("en bas")
-                            sequence.append(Back(duration: 0.3, speed: 0.2))
-                        } else {
-                            print("en haut")
-                            sequence.append(Front(duration: 0.3, speed: 0.2))
-                        }
-                        
-                        self.sparkMovementManager = SparkActionManager(sequence: sequence)
-                        self.sparkMovementManager?.playSequence()
-                    } else {
-                        print("c'est centré")
+                let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage,
+                                                                orientation: cgOrientation,
+                                                                options: [:])
+                
+                let requests: [VNRequest] = [self.rectangleDetectionRequest]
+                
+                DispatchQueue.global(qos: .userInitiated).async {
+                    do {
+                        try imageRequestHandler.perform(requests)
+                    } catch let error as NSError {
+                        print("Failed to perform image request: \(error)")
+                        //self.presentAlert("Image Request Failed", error: error)
+                        return
                     }
-                    
-                    print("qr position \(codePosition)")
                 }
             }
         })
     }
+    
+    lazy var rectangleDetectionRequest: VNDetectRectanglesRequest = {
+        let rectDetectRequest = VNDetectRectanglesRequest(completionHandler: self.handleDetectedRectangles)
+        // Customize & configure the request to detect only certain rectangles.
+        rectDetectRequest.maximumObservations = 8 // Vision currently supports up to 16.
+        rectDetectRequest.minimumConfidence = 0.6 // Be confident.
+        rectDetectRequest.minimumAspectRatio = 0.3 // height / width
+        return rectDetectRequest
+    }()
+    
+    
+    func handleDetectedRectangles(request: VNRequest?, error: Error?) {
+        if let nsError = error as NSError? {
+            print("Rectangle Detection Error", nsError)
+            //self.presentAlert("Rectangle Detection Error", error: nsError)
+            return
+        }
+        
+        if let results = request?.results as? [VNRectangleObservation] {
+            print("requestSSSS", results)
+            
+            for observation in results {
+                let bounds = CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: self.currentImage!.size)
+                let rectBox = boundingBox(forRegionOfInterest: observation.boundingBox, withinImageBounds: bounds)
+                //let rectLayer = shapeLayer(color: .blue, frame: rectBox)
+                
+                let symbolCropped = self.currentImage!.croppedWithRect(boundingBox: rectBox);
+                //self.extractedFrameImageView.image = symbolCropped
+                
+                // Add to pathLayer on top of image.
+                //pathLayer?.addSublayer(rectLayer)
+            }
+            
+        } 
+        /*
+        // Since handlers are executing on a background thread, explicitly send draw calls to the main thread.
+        DispatchQueue.main.async {
+            guard let drawLayer = self.pathLayer,
+                let results = request?.results as? [VNRectangleObservation] else {
+                    return
+            }
+            print("results", results)
+            self.draw(rectangles: results, onImageWithBounds: drawLayer.bounds)
+            drawLayer.setNeedsDisplay()
+        }*/
+    }
+    
+
+    
+    
         /*
          Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             self.prev1?.snapshotThumnnail { (image) in
@@ -188,10 +219,14 @@ class CameraViewController: UIViewController {
     @IBAction func detectArrowHandler(_ sender: Any) {
         self.prev1?.snapshotThumnnail { image in
             if let img = image {
-                self.extractedFrameImageView.image = img
+                
                 print(img.size)
-                let orientation = CGImagePropertyOrientation(rawValue: UInt32(img.imageOrientation.rawValue))
-                guard let ciImage = CIImage(image: img) else { fatalError("Unable to create \(CIImage.self) from \(img).") }
+                let resoImg = img.resized(to: CGSize(width: 480/2, height: 360/2))
+                let croppedImg = resoImg.cropToBounds(width: 360/2, height: 360/2)
+                self.extractedFrameImageView.image = croppedImg
+                
+                let orientation = CGImagePropertyOrientation(rawValue: UInt32(croppedImg.imageOrientation.rawValue))
+                guard let ciImage = CIImage(image: croppedImg) else { fatalError("Unable to create \(CIImage.self) from \(croppedImg).") }
                 
                 DispatchQueue.global(qos: .userInitiated).async {
                     let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation!)
@@ -212,7 +247,7 @@ class CameraViewController: UIViewController {
     
     lazy var classificationRequest: VNCoreMLRequest = {
         do {
-            let model = try VNCoreMLModel(for: SymbolClassifierV3().model)
+            let model = try VNCoreMLModel(for: SymbolClassifierV4().model)
             
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processClassifications(for: request, error: error)
@@ -258,10 +293,6 @@ class CameraViewController: UIViewController {
     }
     
     func setupVideoPreview() {
-        
-        // Prev1 est de type VideoPreviewer
-        // Camera view est une view liée depuis le storyboard
-        
         prev1?.setView(self.cameraView)
         /*
         // ...

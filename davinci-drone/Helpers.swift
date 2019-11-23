@@ -119,10 +119,28 @@ extension UIImage {
         return UIImage(cgImage: imageRef, scale: self.scale, orientation: self.imageOrientation)
     }
     
+    
+    func croppedWithRect(boundingBox: CGRect) -> UIImage? {
+        guard let cgImage = self.cgImage?.cropping(to: boundingBox) else {
+            return nil
+        }
+
+        return UIImage(cgImage: cgImage)
+    }
+    
+    
     func resized(to size: CGSize) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: size)
         return renderer.image { (context) in
             self.draw(in: CGRect(origin: .zero, size: size))
         }
     }
+}
+
+func convertCIImageToCGImage(inputImage: CIImage) -> CGImage! {
+    let context = CIContext(options: nil)
+    if context != nil {
+        return context.createCGImage(inputImage, from: inputImage.extent)
+    }
+    return nil
 }
