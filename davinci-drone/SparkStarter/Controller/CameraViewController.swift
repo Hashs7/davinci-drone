@@ -130,6 +130,7 @@ class CameraViewController: UIViewController {
         return rectDetectRequest
     }()
     
+   
     
     func handleDetectedRectangles(request: VNRequest?, error: Error?) {
         if let nsError = error as NSError? {
@@ -144,11 +145,18 @@ class CameraViewController: UIViewController {
             for observation in results {
                 let bounds = CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: self.currentImage!.size)
                 let rectBox = boundingBox(forRegionOfInterest: observation.boundingBox, withinImageBounds: bounds)
+                
+                let newRectangle = CGRect(x: rectBox.origin.x,y: rectBox.origin.y-rectBox.size.height,width: rectBox.size.width,height: rectBox.size.height)
                 //let rectLayer = shapeLayer(color: .blue, frame: rectBox)
                 
-                let symbolCropped = self.currentImage!.croppedWithRect(boundingBox: rectBox);
-                //self.extractedFrameImageView.image = symbolCropped
+                let symbolCropped = self.currentImage!.croppedWithRect(boundingBox: newRectangle);
                 
+                if let myImage = symbolCropped{
+                    self.currentImage = myImage
+                }
+                
+                //self.extractedFrameImageView.image = symbolCropped
+                print("resized")
                 // Add to pathLayer on top of image.
                 //pathLayer?.addSublayer(rectLayer)
             }
