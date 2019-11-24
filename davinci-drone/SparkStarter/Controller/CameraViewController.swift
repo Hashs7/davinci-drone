@@ -124,9 +124,11 @@ class CameraViewController: UIViewController {
     lazy var rectangleDetectionRequest: VNDetectRectanglesRequest = {
         let rectDetectRequest = VNDetectRectanglesRequest(completionHandler: self.handleDetectedRectangles)
         // Customize & configure the request to detect only certain rectangles.
-        rectDetectRequest.maximumObservations = 8 // Vision currently supports up to 16.
+        rectDetectRequest.maximumObservations = 1 // Vision currently supports up to 16.
         rectDetectRequest.minimumConfidence = 0.6 // Be confident.
         rectDetectRequest.minimumAspectRatio = 0.3 // height / width
+        rectDetectRequest.minimumSize = 400
+        
         return rectDetectRequest
     }()
     
@@ -149,7 +151,8 @@ class CameraViewController: UIViewController {
                 let newRectangle = CGRect(x: rectBox.origin.x,y: rectBox.origin.y-rectBox.size.height,width: rectBox.size.width,height: rectBox.size.height)
                 //let rectLayer = shapeLayer(color: .blue, frame: rectBox)
                 
-                let symbolCropped = self.currentImage!.croppedWithRect(boundingBox: newRectangle);
+                var symbolCropped = self.currentImage!.croppedWithRect(boundingBox: newRectangle);
+                
                 
                 if let myImage = symbolCropped{
                     self.currentImage = myImage
