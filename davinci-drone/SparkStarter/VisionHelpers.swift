@@ -16,7 +16,6 @@ func boundingBox(forRegionOfInterest: CGRect, withinImageBounds bounds: CGRect) 
     
     // Begin with input rect.
     var rect = forRegionOfInterest
-    
     // Reposition origin.
     rect.origin.x *= imageWidth
     rect.origin.x += bounds.origin.x

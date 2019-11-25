@@ -772,7 +772,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sebhernoux.davinci-drone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/hash/Documents/workspace/davinci-drone/davinci-drone/USBBridge/CommUSB-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
