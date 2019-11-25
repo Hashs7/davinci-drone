@@ -10,8 +10,8 @@ import UIKit
 import DJISDK
 
 class TP1ViewController: UIViewController {
-    var sparkMovementManager: SparkMovementManager? = nil
-    var sequence = [BasicMove]() {
+    var sparkMovementManager: SparkActionManager? = nil
+    var sequence = [BasicAction]() {
         didSet {
             DispatchQueue.main.async {
                 self.displaySequence()
@@ -70,22 +70,49 @@ class TP1ViewController: UIViewController {
     }
     
     @IBAction func rotate180Handler(_ sender: Any) {
-        self.sequence.append(Rotate180())
+        self.sequence.append(Right(duration: 1.3, speed: 0.2))
+        self.sequence.append(Stop())
+        self.sequence.append(BasicAction(duration: 1.0))
+        self.sequence.append(Right(duration: 1.3, speed: 0.2))
+        self.sequence.append(Stop())
+        self.sequence.append(BasicAction(duration: 1.0))
+        self.sequence.append(Front(duration: 1.3, speed: 0.2))
+        self.sequence.append(Stop())
+        self.sequence.append(BasicAction(duration: 1.0))
+        self.sequence.append(Left(duration: 1.3, speed: 0.2))
+        self.sequence.append(Stop())
+        self.sequence.append(BasicAction(duration: 1.0))
+        self.sequence.append(Left(duration: 1.3, speed: 0.2))
     }
     
     
     @IBAction func multipleFrontHandler(_ sender: Any) {
         self.askForDurationAndSpeed { (speed, duration) in
             self.sequence.append(Front(duration: duration, speed: speed))
+            self.sequence.append(Stop())
+            self.sequence.append(BasicAction(duration: 1.0))
             self.sequence.append(Front(duration: duration, speed: speed))
+            self.sequence.append(Stop())
+            self.sequence.append(BasicAction(duration: 1.0))
             self.sequence.append(Front(duration: duration, speed: speed))
+            self.sequence.append(Stop())
+            self.sequence.append(BasicAction(duration: 1.0))
+            self.sequence.append(Front(duration: duration, speed: speed))
+            self.sequence.append(Stop())
+            self.sequence.append(BasicAction(duration: 1.0))
+            self.sequence.append(Front(duration: duration, speed: speed))
+            self.sequence.append(Stop())
+            self.sequence.append(BasicAction(duration: 1.0))
+            self.sequence.append(Front(duration: duration, speed: speed))
+            self.sequence.append(Stop())
+            self.sequence.append(BasicAction(duration: 1.0))
+            self.sequence.append(Front(duration: duration, speed: speed))
+            self.sequence.append(Stop())
+            self.sequence.append(BasicAction(duration: 1.0))
             self.sequence.append(Front(duration: duration, speed: speed))
         }
     }
-    
-    @IBAction func circleHandler(_ sender: Any) {
-        
-    }
+
     
     @IBAction func clearHandler(_ sender: Any) {
         sparkMovementManager?.clearSequence()
@@ -94,7 +121,7 @@ class TP1ViewController: UIViewController {
     }
     
     func displaySequence() {
-        sparkMovementManager = SparkMovementManager(sequence: sequence)
+        sparkMovementManager = SparkActionManager(sequence: sequence)
         if let desc = sparkMovementManager?.sequenceDescription() {
             sequenceView.text = desc
         }

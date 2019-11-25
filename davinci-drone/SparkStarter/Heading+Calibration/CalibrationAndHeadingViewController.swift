@@ -100,6 +100,11 @@ class CalibrationAndHeadingViewController: UIViewController {
                     compass.startCalibration(completion: { (err) in
                         print(err ?? "Calibration OK")
                         print("Updated calibration state: \(compass.calibrationState.rawValue)")
+                        GimbalManager.shared.lookUnder()
+                        var sequence: [BasicAction] = []
+                        sequence.append(Down(duration: 0.7, speed: 0.7))
+                        self.sparkMovementManager = SparkActionManager(sequence: sequence)
+                        self.sparkMovementManager?.playSequence()
                         
                         self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (t) in
                             if(!self.isCenteredRotation){
@@ -136,7 +141,7 @@ class CalibrationAndHeadingViewController: UIViewController {
         }
     }
     
-    func startStopCameraButtonClicked() {
+    func calibrateWithQR() {
         self.prev1?.snapshotPreview({ (image) in
             if let img = image {
                 let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
@@ -158,18 +163,19 @@ class CalibrationAndHeadingViewController: UIViewController {
                     
                     let gap = CGFloat(0.1)
                     let centerRect = CGRect(x: 0.5 - gap, y: 0.43 - gap, width: gap, height: gap)
+                    var sequence = [BasicAction]()
                     
                     if !centerRect.contains(codePosition) {
-                        var sequence = [BasicAction]()
+                        
                         if center.x > codePosition.x {
-                            sequence.append(Left(duration: 0.3, speed: 0.2))
+                            sequence.append(Left(duration: 0.3, speed: 0.1))
                         } else {
-                            sequence.append(Right(duration: 0.3, speed: 0.2))
+                            sequence.append(Right(duration: 0.3, speed: 0.1))
                         }
                         if center.y > codePosition.y {
-                            sequence.append(Back(duration: 0.3, speed: 0.2))
+                            sequence.append(Back(duration: 0.3, speed: 0.1))
                         } else {
-                            sequence.append(Front(duration: 0.3, speed: 0.2))
+                            sequence.append(Front(duration: 0.3, speed: 0.1))
                         }
                         
                         self.sparkMovementManager = SparkActionManager(sequence: sequence)
@@ -177,6 +183,13 @@ class CalibrationAndHeadingViewController: UIViewController {
                     } else {
                         print("c'est centré\(codePosition)")
                         self.isCenteredQR = true;
+                        sequence.append(BasicAction(duration: 1.0))
+                        sequence.append(Front(duration: 2.2, speed: 0.2))
+                        sequence.append(Stop())
+                        sequence.append(BasicAction(duration: 1.0))
+                        sequence.append(Down(duration: 1.6, speed: 1.0))
+                        self.sparkMovementManager = SparkActionManager(sequence: sequence)
+                        self.sparkMovementManager?.playSequence()
                     }
                     
                     print("qr position \(codePosition)")
@@ -250,7 +263,7 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     func readHeading() {
         if let heading = (DJISDKManager.product() as? DJIAircraft)?.flightController?.compass?.heading {
-            print("Base heading \(heading)")
+            print("Base heading \(heading+180)")
             UIView.animate(withDuration: 0.5) {
                 self.sparkHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
             }
@@ -259,10 +272,9 @@ class CalibrationAndHeadingViewController: UIViewController {
     }
     
     func moveToQR(){
-        GimbalManager.shared.lookUnder()
         self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (t) in
             if(!self.isCenteredQR){
-                self.startStopCameraButtonClicked()
+                self.calibrateWithQR()
             }
         })
     }
@@ -270,7 +282,7 @@ class CalibrationAndHeadingViewController: UIViewController {
     func rotateToCenter(heading:Double){
         var sequence = [BasicAction]()
         let headingAdd = heading + 180
-        
+        /*
         if headingAdd > 354 || headingAdd < 6 {
             self.isCenteredRotation = true
             print("center")
@@ -279,6 +291,17 @@ class CalibrationAndHeadingViewController: UIViewController {
         else if headingAdd < 6 || headingAdd > 180 {
             sequence.append(RotateRight(duration: 0.3, speed: 0.4))
         } else if headingAdd > 354 || headingAdd < 180 {
+            sequence.append(RotateLeft(duration: 0.3, speed: 0.4))
+        }*/
+        
+        if headingAdd > 78 && headingAdd < 82 {
+            self.isCenteredRotation = true
+            print("center")
+            self.moveToQR()
+        }
+        else if headingAdd < 78 || headingAdd > 250 {
+            sequence.append(RotateRight(duration: 0.3, speed: 0.4))
+        } else if headingAdd > 82 || headingAdd < 250 {
             sequence.append(RotateLeft(duration: 0.3, speed: 0.4))
         }
         
@@ -344,8 +367,6 @@ extension CalibrationAndHeadingViewController:DJISDKManagerDelegate {
     func appRegisteredWithError(_ error: Error?) {
         
     }
-    
-    
 }
 
 extension CalibrationAndHeadingViewController:DJICameraDelegate {

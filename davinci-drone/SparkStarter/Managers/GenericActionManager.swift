@@ -16,6 +16,14 @@ class GenericActionManager {
         self.sequence = sequence
     }
     
+    func sequenceDescription() -> String {
+        var fullDescription = ""
+        for move in sequence {
+            fullDescription += "\(move.description)\n"
+        }
+        return fullDescription
+    }
+    
   
     func playSequence() {
         stopAll = false

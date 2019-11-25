@@ -19,8 +19,8 @@ class MovementLevelOneViewController: UIViewController {
             case forward,backward,left,right,up,down
         }
 
-        var value:Float
-        var type:MovementType
+        var value: Float
+        var type: MovementType
     }
     
     override func viewDidLoad() {

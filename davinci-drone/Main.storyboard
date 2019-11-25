@@ -997,9 +997,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f49-LB-NbQ">
-                                <rect key="frame" x="43" y="351" width="70" height="30"/>
+                                <rect key="frame" x="31" y="351" width="95" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Rotate180"/>
+                                <state key="normal" title="symbolMoves"/>
                                 <connections>
                                     <action selector="rotate180Handler:" destination="KAL-Hd-jOC" eventType="touchUpInside" id="Sep-Nn-PQ0"/>
                                 </connections>
