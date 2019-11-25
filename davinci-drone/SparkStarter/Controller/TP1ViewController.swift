@@ -69,11 +69,18 @@ class TP1ViewController: UIViewController {
         }
     }
     
-    @IBAction func squareHandler(_ sender: Any) {
-        self.sequence += [Front(duration: 1.0, speed: 0.4), RotateRight90(),
-                          Front(duration: 1.0, speed: 0.4), RotateRight90(),
-                          Front(duration: 1.0, speed: 0.4), RotateRight90(),
-                          Front(duration: 1.0, speed: 0.4), RotateRight90()]
+    @IBAction func rotate180Handler(_ sender: Any) {
+        self.sequence.append(Rotate180())
+    }
+    
+    
+    @IBAction func multipleFrontHandler(_ sender: Any) {
+        self.askForDurationAndSpeed { (speed, duration) in
+            self.sequence.append(Front(duration: duration, speed: speed))
+            self.sequence.append(Front(duration: duration, speed: speed))
+            self.sequence.append(Front(duration: duration, speed: speed))
+            self.sequence.append(Front(duration: duration, speed: speed))
+        }
     }
     
     @IBAction func circleHandler(_ sender: Any) {
