@@ -20,6 +20,10 @@ class CalibrationAndHeadingViewController: UIViewController {
     var sparkMovementManager: SparkActionManager? = nil
     @IBOutlet weak var extractedFrameImageView: UIImageView!
     
+    // Properties
+    let ptManager = PTManager.instance
+    let imagePicker = UIImagePickerController()
+    
     
     let locationDelegate = LocationDelegate()
     let locationManager: CLLocationManager = {
@@ -51,12 +55,10 @@ class CalibrationAndHeadingViewController: UIViewController {
                 self.combinationText.text = combi.joined(separator:",")
             }
         }
-        /*
-        USBBridge.shared.connect {}
-        USBBridge.shared.receivedMessage({ (str) in
-            print("Received \(str)")
-        })
-         */
+        
+        ptManager.delegate = self
+        ptManager.connect(portNumber: PORT_NUMBER)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -347,6 +349,37 @@ extension CalibrationAndHeadingViewController:DJISDKManagerDelegate {
 }
 
 extension CalibrationAndHeadingViewController:DJICameraDelegate {
+    
+}
+
+
+
+extension CalibrationAndHeadingViewController: PTManagerDelegate {
+    
+    func peertalk(shouldAcceptDataOfType type: UInt32) -> Bool {
+        return true
+    }
+    
+    func peertalk(didReceiveData data: Data, ofType type: UInt32) {
+        /* if type == PTType.number.rawValue {
+            let count = data.convert() as! Int
+            print("count: \(count)")
+           // self.label.text = "\(count)"
+        } else if type == PTType.image.rawValue {
+            let image = UIImage(data: data)
+            //self.imageView.image = image
+        } */
+        if type == PTType.string.rawValue {
+            let string = data.convert() as! String
+            print("string Received: \(string)")
+           // self.label.text = "\(count)"
+        }
+    }
+    
+    func peertalk(didChangeConnection connected: Bool) {
+        print("Connection: \(connected)")
+        //self.statusLabel.text = connected ? "Connected" : "Disconnected"
+    }
     
 }
 

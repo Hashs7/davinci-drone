@@ -10,6 +10,10 @@
 		CC046CF8237ED72200E83EE9 /* SymbolClassifierV1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */; };
 		CC046CFA237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */; };
 		CC046CFC237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */; };
+		CC103F9D238BD921008A0EDC /* PTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC103F9C238BD921008A0EDC /* PTManager.swift */; };
+		CC103FAA238BD940008A0EDC /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = CC103FA1238BD940008A0EDC /* PTProtocol.m */; };
+		CC103FAB238BD940008A0EDC /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = CC103FA2238BD940008A0EDC /* PTUSBHub.m */; };
+		CC103FAD238BD940008A0EDC /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC103FA6238BD940008A0EDC /* PTChannel.m */; };
 		CC122096238989F00088C66D /* SymbolClassifierV4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC122095238989F00088C66D /* SymbolClassifierV4.mlmodel */; };
 		CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946D23770D1B002A6BB9 /* MultipleMove.swift */; };
 		CC19947023775A6C002A6BB9 /* CircleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946F23775A6C002A6BB9 /* CircleMove.swift */; };
@@ -25,10 +29,6 @@
 		CC3A2811237496C1007FD460 /* BasicMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2807237496C1007FD460 /* BasicMove.swift */; };
 		CC3A2812237496C1007FD460 /* BasicAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2808237496C1007FD460 /* BasicAction.swift */; };
 		CC3A2813237496C1007FD460 /* BasicCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A2809237496C1007FD460 /* BasicCamera.swift */; };
-		CC44E78C238608D7002F1A9A /* USBBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC44E780238608D7002F1A9A /* USBBridge.swift */; };
-		CC44E78D238608D7002F1A9A /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = CC44E782238608D7002F1A9A /* PTUSBHub.m */; };
-		CC44E78E238608D7002F1A9A /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = CC44E783238608D7002F1A9A /* PTProtocol.m */; };
-		CC44E78F238608D7002F1A9A /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC44E786238608D7002F1A9A /* PTChannel.m */; };
 		CC5DE447237453550032C98F /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DE446237453550032C98F /* ConnectionViewController.swift */; };
 		CC7BD8ED2370AAA900032CEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */; };
 		CC7BD8F32370AAAB00032CEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7BD8F22370AAAB00032CEF /* Assets.xcassets */; };
@@ -90,6 +90,17 @@
 		CC046CF7237ED72200E83EE9 /* SymbolClassifierV1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV1.mlmodel; path = "davinci-drone/SymbolClassifierV1.mlmodel"; sourceTree = SOURCE_ROOT; };
 		CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV2.mlmodel; path = "davinci-drone/SymbolClassifierV2.mlmodel"; sourceTree = SOURCE_ROOT; };
 		CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SymbolClassifierV3.mlmodel; path = "davinci-drone/SymbolClassifierV3.mlmodel"; sourceTree = SOURCE_ROOT; };
+		CC103F9C238BD921008A0EDC /* PTManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTManager.swift; sourceTree = "<group>"; };
+		CC103F9F238BD940008A0EDC /* Peertalk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peertalk.h; sourceTree = "<group>"; };
+		CC103FA0238BD940008A0EDC /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
+		CC103FA1238BD940008A0EDC /* PTProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProtocol.m; sourceTree = "<group>"; };
+		CC103FA2238BD940008A0EDC /* PTUSBHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUSBHub.m; sourceTree = "<group>"; };
+		CC103FA3238BD940008A0EDC /* PTPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPrivate.h; sourceTree = "<group>"; };
+		CC103FA5238BD940008A0EDC /* PTChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTChannel.h; sourceTree = "<group>"; };
+		CC103FA6238BD940008A0EDC /* PTChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTChannel.m; sourceTree = "<group>"; };
+		CC103FA7238BD940008A0EDC /* PTProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProtocol.h; sourceTree = "<group>"; };
+		CC103FA8238BD940008A0EDC /* PTUSBHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUSBHub.h; sourceTree = "<group>"; };
+		CC103FAE238BDA05008A0EDC /* PeertalkSimple-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeertalkSimple-Bridging-Header.h"; sourceTree = "<group>"; };
 		CC122095238989F00088C66D /* SymbolClassifierV4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SymbolClassifierV4.mlmodel; sourceTree = "<group>"; };
 		CC19946D23770D1B002A6BB9 /* MultipleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleMove.swift; sourceTree = "<group>"; };
 		CC19946F23775A6C002A6BB9 /* CircleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleMove.swift; sourceTree = "<group>"; };
@@ -105,17 +116,6 @@
 		CC3A2807237496C1007FD460 /* BasicMove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicMove.swift; sourceTree = "<group>"; };
 		CC3A2808237496C1007FD460 /* BasicAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAction.swift; sourceTree = "<group>"; };
 		CC3A2809237496C1007FD460 /* BasicCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCamera.swift; sourceTree = "<group>"; };
-		CC44E780238608D7002F1A9A /* USBBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USBBridge.swift; sourceTree = "<group>"; };
-		CC44E782238608D7002F1A9A /* PTUSBHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUSBHub.m; sourceTree = "<group>"; };
-		CC44E783238608D7002F1A9A /* PTProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProtocol.m; sourceTree = "<group>"; };
-		CC44E784238608D7002F1A9A /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
-		CC44E785238608D7002F1A9A /* Peertalk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peertalk.h; sourceTree = "<group>"; };
-		CC44E786238608D7002F1A9A /* PTChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTChannel.m; sourceTree = "<group>"; };
-		CC44E787238608D7002F1A9A /* PTPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPrivate.h; sourceTree = "<group>"; };
-		CC44E788238608D7002F1A9A /* PTExampleProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTExampleProtocol.h; sourceTree = "<group>"; };
-		CC44E789238608D7002F1A9A /* PTProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProtocol.h; sourceTree = "<group>"; };
-		CC44E78A238608D7002F1A9A /* PTUSBHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUSBHub.h; sourceTree = "<group>"; };
-		CC44E78B238608D7002F1A9A /* PTChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTChannel.h; sourceTree = "<group>"; };
 		CC5DE446237453550032C98F /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
 		CC7BD8E92370AAA900032CEF /* davinci-drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "davinci-drone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7BD8EC2370AAA900032CEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -225,27 +225,19 @@
 		CC44E77F238608D7002F1A9A /* USBBridge */ = {
 			isa = PBXGroup;
 			children = (
-				CC44E780238608D7002F1A9A /* USBBridge.swift */,
-				CC44E781238608D7002F1A9A /* USB */,
+				CC103FAE238BDA05008A0EDC /* PeertalkSimple-Bridging-Header.h */,
+				CC103F9F238BD940008A0EDC /* Peertalk.h */,
+				CC103FA0238BD940008A0EDC /* prefix.pch */,
+				CC103FA5238BD940008A0EDC /* PTChannel.h */,
+				CC103FA6238BD940008A0EDC /* PTChannel.m */,
+				CC103FA3238BD940008A0EDC /* PTPrivate.h */,
+				CC103FA7238BD940008A0EDC /* PTProtocol.h */,
+				CC103FA1238BD940008A0EDC /* PTProtocol.m */,
+				CC103FA8238BD940008A0EDC /* PTUSBHub.h */,
+				CC103FA2238BD940008A0EDC /* PTUSBHub.m */,
+				CC103F9C238BD921008A0EDC /* PTManager.swift */,
 			);
 			path = USBBridge;
-			sourceTree = "<group>";
-		};
-		CC44E781238608D7002F1A9A /* USB */ = {
-			isa = PBXGroup;
-			children = (
-				CC44E782238608D7002F1A9A /* PTUSBHub.m */,
-				CC44E783238608D7002F1A9A /* PTProtocol.m */,
-				CC44E784238608D7002F1A9A /* prefix.pch */,
-				CC44E785238608D7002F1A9A /* Peertalk.h */,
-				CC44E786238608D7002F1A9A /* PTChannel.m */,
-				CC44E787238608D7002F1A9A /* PTPrivate.h */,
-				CC44E788238608D7002F1A9A /* PTExampleProtocol.h */,
-				CC44E789238608D7002F1A9A /* PTProtocol.h */,
-				CC44E78A238608D7002F1A9A /* PTUSBHub.h */,
-				CC44E78B238608D7002F1A9A /* PTChannel.h */,
-			);
-			path = USB;
 			sourceTree = "<group>";
 		};
 		CC7BD8E02370AAA900032CEF = {
@@ -533,18 +525,19 @@
 				CC7BD94B2370AFD500032CEF /* DirectionSequence.swift in Sources */,
 				CC5DE447237453550032C98F /* ConnectionViewController.swift in Sources */,
 				CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */,
-				CC44E78F238608D7002F1A9A /* PTChannel.m in Sources */,
 				CC3A2811237496C1007FD460 /* BasicMove.swift in Sources */,
 				CC8680AA237C8D3600D8DA99 /* SocketIOManager.swift in Sources */,
 				CC7BD8ED2370AAA900032CEF /* AppDelegate.swift in Sources */,
 				CC7BD9452370AFD500032CEF /* GenericMovementManager.swift in Sources */,
-				CC44E78C238608D7002F1A9A /* USBBridge.swift in Sources */,
+				CC103F9D238BD921008A0EDC /* PTManager.swift in Sources */,
 				CC3A280D237496C1007FD460 /* CameraViewController.swift in Sources */,
 				CC7BD9402370AFD500032CEF /* CalibrationAndHeadingViewController.swift in Sources */,
 				CC834B902387534400BA2DB5 /* VisionHelpers.swift in Sources */,
 				CC3A280F237496C1007FD460 /* SparkActionManager.swift in Sources */,
+				CC103FAA238BD940008A0EDC /* PTProtocol.m in Sources */,
 				CC046CF8237ED72200E83EE9 /* SymbolClassifierV1.mlmodel in Sources */,
 				CC7BD93D2370AFD500032CEF /* MobileNet.mlmodel in Sources */,
+				CC103FAD238BD940008A0EDC /* PTChannel.m in Sources */,
 				CC7BD9492370AFD500032CEF /* ProductCommunicationManager.swift in Sources */,
 				CC7BD94F2370AFD500032CEF /* AutoMoveViewController.swift in Sources */,
 				CC7BD93E2370AFD500032CEF /* ImageRecognition.swift in Sources */,
@@ -553,17 +546,16 @@
 				CC122096238989F00088C66D /* SymbolClassifierV4.mlmodel in Sources */,
 				CC046CFA237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel in Sources */,
 				CC3A280E237496C1007FD460 /* TP1ViewController.swift in Sources */,
-				CC44E78E238608D7002F1A9A /* PTProtocol.m in Sources */,
 				CC8680A8237C8BE100D8DA99 /* LabyrintheViewController.swift in Sources */,
 				CC7BD9442370AFD500032CEF /* SparkMovementManager.swift in Sources */,
 				CC3A2810237496C1007FD460 /* GenericActionManager.swift in Sources */,
 				CC046CFC237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel in Sources */,
 				CC3A2813237496C1007FD460 /* BasicCamera.swift in Sources */,
+				CC103FAB238BD940008A0EDC /* PTUSBHub.m in Sources */,
 				CC19947023775A6C002A6BB9 /* CircleMove.swift in Sources */,
 				CC7BD94D2370AFD500032CEF /* MovingManager.swift in Sources */,
 				CC834B8E23871C8800BA2DB5 /* Utilities.swift in Sources */,
 				CC3A280A237496C1007FD460 /* MovementLevelOneViewController.swift in Sources */,
-				CC44E78D238608D7002F1A9A /* PTUSBHub.m in Sources */,
 				CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */,
 				CC3A2812237496C1007FD460 /* BasicAction.swift in Sources */,
 				CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */,
@@ -724,10 +716,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 556F012B20ADB417F80F07D0 /* Pods-davinci-drone.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"davinci-drone/Preview Content\"";
-				DEVELOPMENT_TEAM = 8XFGQM7QG6;
+				DEVELOPMENT_TEAM = Z2TU75QGAV;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -740,8 +733,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.clement;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/hash/Documents/workspace/davinci-drone/davinci-drone/USBBridge/PeertalkSimple-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -751,6 +745,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5CC2FAC90B3D81BD79B7D6F4 /* Pods-davinci-drone.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"davinci-drone/Preview Content\"";
@@ -767,8 +762,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.clement;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/hash/Documents/workspace/davinci-drone/davinci-drone/USBBridge/PeertalkSimple-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
