@@ -19,7 +19,7 @@ class SocketIOManager {
             return "http://\(ip):\(port)"
         }
         static func debugContext() -> Ctx {
-            return Ctx(ip: "172.28.59.136", port: "3000", modeVerbose: false)
+            return Ctx(ip: "172.28.59.137", port: "3000", modeVerbose: false)
         }
     }
     
