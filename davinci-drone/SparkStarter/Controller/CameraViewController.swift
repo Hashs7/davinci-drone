@@ -124,12 +124,15 @@ class CameraViewController: UIViewController {
     lazy var rectangleDetectionRequest: VNDetectRectanglesRequest = {
         let rectDetectRequest = VNDetectRectanglesRequest(completionHandler: self.handleDetectedRectangles)
         // Customize & configure the request to detect only certain rectangles.
-        rectDetectRequest.maximumObservations = 8 // Vision currently supports up to 16.
+        rectDetectRequest.maximumObservations = 1 // Vision currently supports up to 16.
         rectDetectRequest.minimumConfidence = 0.6 // Be confident.
         rectDetectRequest.minimumAspectRatio = 0.3 // height / width
+        rectDetectRequest.minimumSize = 400
+        
         return rectDetectRequest
     }()
     
+   
     
     func handleDetectedRectangles(request: VNRequest?, error: Error?) {
         if let nsError = error as NSError? {
@@ -144,11 +147,19 @@ class CameraViewController: UIViewController {
             for observation in results {
                 let bounds = CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: self.currentImage!.size)
                 let rectBox = boundingBox(forRegionOfInterest: observation.boundingBox, withinImageBounds: bounds)
+                
+                let newRectangle = CGRect(x: rectBox.origin.x,y: rectBox.origin.y-rectBox.size.height,width: rectBox.size.width,height: rectBox.size.height)
                 //let rectLayer = shapeLayer(color: .blue, frame: rectBox)
                 
-                let symbolCropped = self.currentImage!.croppedWithRect(boundingBox: rectBox);
-                //self.extractedFrameImageView.image = symbolCropped
+                var symbolCropped = self.currentImage!.croppedWithRect(boundingBox: newRectangle);
                 
+                
+                if let myImage = symbolCropped{
+                    self.currentImage = myImage
+                }
+                
+                //self.extractedFrameImageView.image = symbolCropped
+                print("resized")
                 // Add to pathLayer on top of image.
                 //pathLayer?.addSublayer(rectLayer)
             }
