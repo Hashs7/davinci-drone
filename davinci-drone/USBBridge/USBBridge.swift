@@ -7,7 +7,7 @@
 //
 
 import Foundation
-/*
+
 class USBBridge:NSObject,PTChannelDelegate {
     
     static let shared = USBBridge()
@@ -96,4 +96,3 @@ class USBBridge:NSObject,PTChannelDelegate {
         isConnected = false
     }
 }
-*/

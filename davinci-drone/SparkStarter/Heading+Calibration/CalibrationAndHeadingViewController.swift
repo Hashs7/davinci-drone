@@ -51,12 +51,13 @@ class CalibrationAndHeadingViewController: UIViewController {
                 self.combinationText.text = combi.joined(separator:",")
             }
         }
-        /*
-        USBBridge.shared.connect {}
+        
+        USBBridge.shared.connect {
+            print("connected usb")
+        }
         USBBridge.shared.receivedMessage({ (str) in
             print("Received \(str)")
         })
-         */
     }
     
     override func viewDidDisappear(_ animated: Bool) {
