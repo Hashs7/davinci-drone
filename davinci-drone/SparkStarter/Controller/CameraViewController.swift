@@ -22,6 +22,7 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var pictureName: UITextField!
     
+    let ptManager = PTManager.instance
     var sparkMovementManager: SparkActionManager? = nil
     
     let prev1 = VideoPreviewer()
@@ -34,7 +35,8 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        ptManager.delegate = self
+        ptManager.connect(portNumber: PORT_NUMBER)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +48,6 @@ class CameraViewController: UIViewController {
             }
             
             GimbalManager.shared.setup(withDuration: 1.0, defaultPitch: -28.0)
-            
         }
     }
     
@@ -151,10 +152,6 @@ class CameraViewController: UIViewController {
                         return
                     }
                 }
-                
-                
-                
-                
             }
         }
     }
@@ -188,7 +185,6 @@ class CameraViewController: UIViewController {
                 let rectBox = boundingBox(forRegionOfInterest: observation.boundingBox, withinImageBounds: bounds)
                 
                 let newRectangle = CGRect(x: rectBox.origin.x,y: rectBox.origin.y-rectBox.size.height,width: rectBox.size.width,height: rectBox.size.height)
-                //let rectLayer = shapeLayer(color: .blue, frame: rectBox)
                 
                 var symbolCropped = self.currentImage!.croppedWithRect(boundingBox: newRectangle);
                 
@@ -250,50 +246,6 @@ class CameraViewController: UIViewController {
     }
     
     
-    
-    
-    /*
-     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-     self.prev1?.snapshotThumnnail { (image) in
-     
-     if let img = image {
-     print(img.size)
-     // Resize it and put it in a neural network! :)
-     
-     if let infos = ImageRecognition.shared.predictUsingCoreML(image: img){
-     self.extractedFrameImageView.image = infos.0
-     self.resultLabel.text = infos.1
-     } else{
-     self.extractedFrameImageView.image = nil
-     self.resultLabel.text = ""
-     }
-     
-     
-     img.detector.crop(type: DetectionType.face) { result in
-     DispatchQueue.main.async { [weak self] in
-     switch result {
-     case .success(let croppedImages):
-     // When the `Vision` successfully find type of object you set and successfuly crops it.
-     self?.extractedFrameImageView.image = croppedImages.first
-     case .notFound:
-     // When the image doesn't contain any type of object you did set, `result` will be `.notFound`.
-     print("Not Found")
-     case .failure(let error):
-     // When the any error occured, `result` will be `failure`.
-     print(error.localizedDescription)
-     }
-     }
-     }
-     
-     
-     }
-     
-     }
-     }
-     
-     }
-     */
-    
     @IBAction func captureModeValueChanged(_ sender: UISegmentedControl) {
         
     }
@@ -314,6 +266,7 @@ class CameraViewController: UIViewController {
         }
     }()
     
+    // MARK: DETECTION SYMBOL
     func processClassifications(for request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
             guard let results = request.results else {
@@ -327,11 +280,29 @@ class CameraViewController: UIViewController {
                 self.classificationLabel.text = "Nothing recognized."
             } else {
                 // Display top classifications ranked by confidence in the UI.
-                let topClassifications = classifications.prefix(2)
+                let topClassifications = classifications.prefix(1)
                 let descriptions = topClassifications.map { classification in
                     // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
                     return String(format: "  (%.2f) %@", classification.confidence, classification.identifier)
                 }
+                let confidence = topClassifications.map { classification in
+                    // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
+                    return Float(classification.confidence)
+                }
+                let indentifier = topClassifications.map { classification in
+                    // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
+                    return String(classification.identifier)
+                }
+                
+                if let realConfidence = confidence.first,
+                    realConfidence > Float(0.5) {
+                    let string = convertSocketToString(channel: "detectSymbol", data: indentifier.first!)
+                    self.ptManager.sendObject(object: string, type: PTType.string.rawValue)
+                } else {
+                    // TODO Retrigger detection
+                }
+                
+                
                 print(descriptions.joined(separator: "\n"))
                 self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
             }
@@ -420,4 +391,60 @@ extension CameraViewController:DJISDKManagerDelegate {
 
 extension CameraViewController:DJICameraDelegate {
     
+}
+
+
+
+extension CameraViewController: PTManagerDelegate {
+    
+    func peertalk(shouldAcceptDataOfType type: UInt32) -> Bool {
+        return true
+    }
+    
+    func peertalk(didReceiveData data: Data, ofType type: UInt32) {
+        /* if type == PTType.number.rawValue {
+            let count = data.convert() as! Int
+            print("count: \(count)")
+           // self.label.text = "\(count)"
+        } else if type == PTType.image.rawValue {
+            let image = UIImage(data: data)
+            //self.imageView.image = image
+        } */
+        if type == PTType.string.rawValue {
+            let string = data.convert() as! String
+            print("string Received: \(string)")
+            let decoder = JSONDecoder()
+            let socketData = try! decoder.decode(SocketDataDecode.self, from: string.data(using: .utf8)!)
+            switch socketData.channel {
+            case "drone_combination":
+                print("drone_combination: \(socketData.data)")
+                let sequence = SparkActionManager.createSymbolSequence(sequence: socketData.data)
+                print("sequence: \(sequence)")
+                break
+            default:
+                break
+            }
+            print("datas received", socketData.data)
+            
+            //let data = String(decoding: string, as: UTF8.self)
+            //print(data)
+           // self.label.text = "\(count)"
+            /*if let values = SocketData.map(JSONString: string) {
+                print("SkocketData \(values.channel) \(values.data)")
+            }*/
+        }
+    }
+    
+    func peertalk(didChangeConnection connected: Bool) {
+        print("Connection: \(connected)")
+        //self.statusLabel.text = connected ? "Connected" : "Disconnected"
+    }
+    
+}
+
+
+func convertSocketToString(channel: String, data: String) -> String {
+    let encoder = JSONEncoder()
+    let data = try! encoder.encode(SocketDataCodable(channel: channel, data: data))
+    return String(data: data, encoding: .utf8)!
 }
