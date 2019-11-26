@@ -81,9 +81,26 @@ class CalibrationAndHeadingViewController: UIViewController {
     }
     
     
+    @IBAction func takeOffCalibrateButtonClicked(_ sender: Any) {
+        takeOff()
+        delay(10) {
+            self.calibrate()
+        }
+    }
+    
+    func takeOff(){
+        if let mySpark = DJISDKManager.product() as? DJIAircraft {
+            if let flightController = mySpark.flightController {
+                flightController.startTakeoff(completion: { (err) in
+                    print(err.debugDescription)
+
+                })
+            }
+        }
+    }
     
     // MARK: - START CALIBRATION
-    @IBAction func startButtonClicked(_ sender: UIButton) {
+    func calibrate() {
         // ---------------------
         // Spark
         // ---------------------
@@ -221,35 +238,14 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     func setupVideoPreview() {
         
-        // Prev1 est de type VideoPreviewer
-        // Camera view est une view liée depuis le storyboard
-        
         prev1?.setView(self.cameraView)
-        /*
-         // ...
-         // plus loin
-         // ...
-         // ReceivedData est l'équivalent de ton callBack de reception
-         WebSocketManager.shared.receivedData{ data in
-         // On extrait les bytes de data sous la forme d'un pointeur sur UInt8
-         data.withUnsafeBytes { (bytes:UnsafePointer<UInt8>) in
-         // On push ces fameux bytes dans la vue
-         prev1?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(data.count))
-         }
-         }
-         */
-        
-        
-        //prev2?.setView(self.camera2View)
-        //VideoPreviewer.instance().setView(self.cameraView)
         if let _ = DJISDKManager.product(){
             let video = DJISDKManager.videoFeeder()
             
             DJISDKManager.videoFeeder()?.primaryVideoFeed.add(self, with: nil)
         }
         prev1?.start()
-        //prev2?.start()
-        //VideoPreviewer.instance().start()
+        
     }
     
     
@@ -276,18 +272,6 @@ class CalibrationAndHeadingViewController: UIViewController {
     func rotateToCenter(heading:Double){
         var sequence = [BasicAction]()
         let headingAdd = heading + 180
-        /*
-        if headingAdd > 354 || headingAdd < 6 {
-            self.isCenteredRotation = true
-            print("center")
-            self.moveToQR()
-        }
-        else if headingAdd < 6 || headingAdd > 180 {
-            sequence.append(RotateRight(duration: 0.3, speed: 0.4))
-        } else if headingAdd > 354 || headingAdd < 180 {
-            sequence.append(RotateLeft(duration: 0.3, speed: 0.4))
-        }*/
-        
         if headingAdd > 78 && headingAdd < 82 {
             self.isCenteredRotation = true
             print("center")
@@ -309,6 +293,8 @@ class CalibrationAndHeadingViewController: UIViewController {
     }
     
 }
+
+
 
 // Useful tools... ;-)
 extension CalibrationAndHeadingViewController {
@@ -376,14 +362,7 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
     }
     
     func peertalk(didReceiveData data: Data, ofType type: UInt32) {
-        /* if type == PTType.number.rawValue {
-            let count = data.convert() as! Int
-            print("count: \(count)")
-           // self.label.text = "\(count)"
-        } else if type == PTType.image.rawValue {
-            let image = UIImage(data: data)
-            //self.imageView.image = image
-        } */
+        
         if type == PTType.string.rawValue {
             let string = data.convert() as! String
             print("string Received: \(string)")
