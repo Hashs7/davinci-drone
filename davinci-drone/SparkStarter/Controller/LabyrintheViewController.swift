@@ -28,6 +28,7 @@ class LabyrintheViewController: UIViewController {
             }
         }
     }
+    
     //WHITE
     @IBAction func figure1Handler(_ sender: Any) {
         SocketIOManager.instance.emitValue("1", toChannel: SocketChannels.detectSymbol)

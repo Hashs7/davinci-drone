@@ -83,7 +83,12 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     @IBAction func takeOffCalibrateButtonClicked(_ sender: Any) {
         takeOff()
-        delay(10) {
+        delay(7) {
+            var sequence: [BasicAction] = [Down(duration: 1.3, speed: 0.5)]
+            self.sparkMovementManager = SparkActionManager(sequence: sequence)
+            self.sparkMovementManager?.playSequence()
+        }
+        delay(9) {
             self.calibrate()
         }
     }
@@ -112,10 +117,6 @@ class CalibrationAndHeadingViewController: UIViewController {
                         print(err ?? "Calibration OK")
                         print("Updated calibration state: \(compass.calibrationState.rawValue)")
                         GimbalManager.shared.lookUnder()
-                        var sequence: [BasicAction] = []
-                        sequence.append(Down(duration: 0.7, speed: 0.7))
-                        self.sparkMovementManager = SparkActionManager(sequence: sequence)
-                        self.sparkMovementManager?.playSequence()
                         
                         self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (t) in
                             if(!self.isCenteredRotation){
@@ -155,6 +156,7 @@ class CalibrationAndHeadingViewController: UIViewController {
     func calibrateWithQR() {
         self.prev1?.snapshotPreview({ (image) in
             if let img = image {
+                print(img.size)
                 let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
                 let ciImage: CIImage =  CIImage(image: img)!
                 let features = detector.features(in: ciImage)
@@ -195,10 +197,10 @@ class CalibrationAndHeadingViewController: UIViewController {
                         print("c'est centré\(codePosition)")
                         self.isCenteredQR = true;
                         sequence.append(BasicAction(duration: 1.0))
-                        sequence.append(Front(duration: 2.2, speed: 0.2))
+                        //sequence.append(Front(duration: 2.2, speed: 0.2))
                         sequence.append(Stop())
                         sequence.append(BasicAction(duration: 1.0))
-                        sequence.append(Down(duration: 1.6, speed: 1.0))
+                        sequence.append(Down(duration: 1.0, speed: 0.5))
                         self.sparkMovementManager = SparkActionManager(sequence: sequence)
                         self.sparkMovementManager?.playSequence()
                     }

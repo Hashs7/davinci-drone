@@ -16,7 +16,7 @@ class MovementLevelOneViewController: UIViewController {
     struct Movement {
 
         enum MovementType {
-            case forward,backward,left,right,up,down
+            case forward, backward, left, right, up, down
         }
 
         var value: Float
