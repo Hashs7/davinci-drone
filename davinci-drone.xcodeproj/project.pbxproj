@@ -59,6 +59,7 @@
 		CC834B902387534400BA2DB5 /* VisionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC834B8F2387534400BA2DB5 /* VisionHelpers.swift */; };
 		CC8680A8237C8BE100D8DA99 /* LabyrintheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8680A7237C8BE100D8DA99 /* LabyrintheViewController.swift */; };
 		CC8680AA237C8D3600D8DA99 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */; };
+		ED33DD9C238D336300DB162E /* SymbolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED33DD9B238D336300DB162E /* SymbolManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		CC834B8F2387534400BA2DB5 /* VisionHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionHelpers.swift; sourceTree = "<group>"; };
 		CC8680A7237C8BE100D8DA99 /* LabyrintheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabyrintheViewController.swift; sourceTree = "<group>"; };
 		CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		ED33DD9B238D336300DB162E /* SymbolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				CC3A27F923748376007FD460 /* GimbalManager.swift */,
+				ED33DD9B238D336300DB162E /* SymbolManager.swift */,
 				CC3A2804237496C1007FD460 /* SparkActionManager.swift */,
 				CC3A2805237496C1007FD460 /* GenericActionManager.swift */,
 				CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */,
@@ -541,6 +544,7 @@
 				CC046CF8237ED72200E83EE9 /* SymbolClassifierV1.mlmodel in Sources */,
 				CC7BD93D2370AFD500032CEF /* MobileNet.mlmodel in Sources */,
 				CC103FAD238BD940008A0EDC /* PTChannel.m in Sources */,
+				ED33DD9C238D336300DB162E /* SymbolManager.swift in Sources */,
 				CC7BD9492370AFD500032CEF /* ProductCommunicationManager.swift in Sources */,
 				CC7BD94F2370AFD500032CEF /* AutoMoveViewController.swift in Sources */,
 				CC7BD93E2370AFD500032CEF /* ImageRecognition.swift in Sources */,
@@ -724,7 +728,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"davinci-drone/Preview Content\"";
-				DEVELOPMENT_TEAM = Z2TU75QGAV;
+				DEVELOPMENT_TEAM = 8XFGQM7QG6;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -737,9 +741,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.clement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/hash/Documents/workspace/davinci-drone/davinci-drone/USBBridge/PeertalkSimple-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/digital/Desktop/davinci-drone/davinci-drone/USBBridge/PeertalkSimple-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -766,9 +770,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.clement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/hash/Documents/workspace/davinci-drone/davinci-drone/USBBridge/PeertalkSimple-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/digital/Desktop/davinci-drone/davinci-drone/USBBridge/PeertalkSimple-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

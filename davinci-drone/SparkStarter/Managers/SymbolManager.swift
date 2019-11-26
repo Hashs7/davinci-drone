@@ -1,35 +1,40 @@
-//
-//  LabyrintheViewController.swift
-//  davinci-drone
-//
-//  Created by Sébastien Hernoux on 13/11/2019.
-//  Copyright © 2019 Sébastien Hernoux. All rights reserved.
-//
 
-import UIKit
-
-class LabyrintheViewController: UIViewController {
-    
-    @IBOutlet weak var socketStatus: UILabel!
-    @IBOutlet weak var combinationText: UITextView!
+class SymbolManager {
     var sparkMovementManager: SparkActionManager? = nil
+    
     var sequence = [BasicAction]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func initSocket(){
         SocketIOManager.instance.connect { result in
-            self.socketStatus.text = result
+            print(result)
         }
         SocketIOManager.instance.listenToChannel(channel: "droneCombination") { (combination) in
             if let combi = combination {
-                self.combinationText.text = combi.joined(separator:",")
+                print(combi.joined(separator:","))
                 let sequence = SparkActionManager.createSymbolSequence(sequence: combi)
                 print("sequence: \(sequence)")
             }
         }
     }
+    
+    func moveFromSymbol(symbol:String){
+        switch symbol {
+        case "blue":
+            blueHandler()
+        case "white":
+            whiteHandler()
+        case "yellow":
+        yellowHandler()
+        case "red":
+        redHandler()
+        case "green":
+        greenHandler()
+        default:
+            break
+        }
+    }
     //WHITE
-    @IBAction func figure1Handler(_ sender: Any) {
+    func whiteHandler() {
         SocketIOManager.instance.emitValue("1", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
@@ -46,7 +51,7 @@ class LabyrintheViewController: UIViewController {
     }
     
     //BLUE
-    @IBAction func figure2Handler(_ sender: Any) {
+    func blueHandler() {
         SocketIOManager.instance.emitValue("2", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
@@ -63,7 +68,7 @@ class LabyrintheViewController: UIViewController {
     }
     
     //YELLOW
-    @IBAction func figure3Handler(_ sender: Any) {
+    func yellowHandler() {
         SocketIOManager.instance.emitValue("3", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
@@ -83,7 +88,7 @@ class LabyrintheViewController: UIViewController {
     }
     
     //RED
-    @IBAction func figure4Handler(_ sender: Any) {
+    func redHandler() {
         SocketIOManager.instance.emitValue("4", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
@@ -106,7 +111,7 @@ class LabyrintheViewController: UIViewController {
     }
     
     //GREEN
-    @IBAction func figure5Handler(_ sender: Any) {
+    func greenHandler() {
         SocketIOManager.instance.emitValue("5", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
@@ -121,15 +126,4 @@ class LabyrintheViewController: UIViewController {
         self.sequence.append(BasicAction(duration: 1.0))
         sparkMovementManager?.playSequence()
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

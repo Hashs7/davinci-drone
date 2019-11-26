@@ -70,19 +70,17 @@ class TP1ViewController: UIViewController {
     }
     
     @IBAction func rotate180Handler(_ sender: Any) {
-        self.sequence.append(Right(duration: 1.3, speed: 0.2))
+        self.sequence.append(Front(duration: 1.3, speed: 0.2))
+        self.sequence.append(Stop())
+        self.sequence.append(BasicAction(duration: 1.0))
+        self.sequence.append(Front(duration: 1.3, speed: 0.2))
         self.sequence.append(Stop())
         self.sequence.append(BasicAction(duration: 1.0))
         self.sequence.append(Right(duration: 1.3, speed: 0.2))
         self.sequence.append(Stop())
         self.sequence.append(BasicAction(duration: 1.0))
         self.sequence.append(Front(duration: 1.3, speed: 0.2))
-        self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Left(duration: 1.3, speed: 0.2))
-        self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Left(duration: 1.3, speed: 0.2))
+   
     }
     
     

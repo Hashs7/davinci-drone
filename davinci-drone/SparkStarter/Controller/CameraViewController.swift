@@ -23,12 +23,16 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var pictureName: UITextField!
     
     var sparkMovementManager: SparkActionManager? = nil
+    var symbolManager: SymbolManager? = nil
+
     
     let prev1 = VideoPreviewer()
     @IBOutlet weak var cameraView: UIView!
     var pathLayer: CALayer?
     var currentImage: UIImage?
     var isSaved: Bool = false
+    var startSequence: Bool = false
+
     
     
     override func viewDidLoad() {
@@ -75,6 +79,48 @@ class CameraViewController: UIViewController {
     }
     
     
+    
+    @IBAction func startSequenceButtonClicked(_ sender: Any) {
+        startSequence = true
+        detectSymbol()
+    }
+    
+    func detectSymbol(){
+        isSaved = false
+              self.prev1?.snapshotThumnnail { image in
+                  if let img = image {
+                      self.currentImage = img
+                      let resoImg = img.resized(to: CGSize(width: 480/2, height: 360/2))
+                      let croppedImg = resoImg.cropToBounds(width: 360/2, height: 360/2)
+                      self.extractedFrameImageView.image = croppedImg
+                      
+                      
+                      let cgOrientation = CGImagePropertyOrientation(img.imageOrientation)
+                      // Fire off request based on URL of chosen photo.
+                      guard let cgImage = img.cgImage else {
+                          return
+                      }
+                      
+                      let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage,
+                                                                      orientation: cgOrientation,
+                                                                      options: [:])
+                      
+                      let requests: [VNRequest] = [self.rectangleDetectionRequest]
+                      
+                      
+                      DispatchQueue.global(qos: .userInitiated).async {
+                          do {
+                              try imageRequestHandler.perform(requests)
+                          } catch let error as NSError {
+                              print("Failed to perform image request: \(error)")
+                              return
+                          }
+                      }
+                  }
+              }
+    }
+    
+    
     @IBAction func startStopCameraButtonClicked(_ sender: UIButton) {
         isSaved = true
         self.prev1?.snapshotPreview({ (image) in
@@ -85,14 +131,6 @@ class CameraViewController: UIViewController {
                 let croppedImg = resoImg.cropToBounds(width: 360/2, height: 360/2)
                 self.extractedFrameImageView.image = croppedImg
                 print(resoImg.size)
-                /* Acquisition
-                 if let dataImg = croppedImg.pngData() {
-                 let strId = UUID().uuidString
-                 let dir = getDocumentsDirectory()
-                 let imgName = self.pictureName.text ?? "picture"
-                 let imgUrl = dir.appendingPathComponent("\(imgName)-\(strId).png")
-                 try! dataImg.write(to: imgUrl)
-                 }*/
                 
                 let cgOrientation = CGImagePropertyOrientation(img.imageOrientation)
                 // Fire off request based on URL of chosen photo.
@@ -119,44 +157,11 @@ class CameraViewController: UIViewController {
         })
     }
     
+    
+    
     @IBAction func detectArrowHandler(_ sender: Any) {
-        isSaved = false
-        self.prev1?.snapshotThumnnail { image in
-            if let img = image {
-                self.currentImage = img
-                let resoImg = img.resized(to: CGSize(width: 480/2, height: 360/2))
-                let croppedImg = resoImg.cropToBounds(width: 360/2, height: 360/2)
-                self.extractedFrameImageView.image = croppedImg
-                
-                
-                let cgOrientation = CGImagePropertyOrientation(img.imageOrientation)
-                // Fire off request based on URL of chosen photo.
-                guard let cgImage = img.cgImage else {
-                    return
-                }
-                
-                let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage,
-                                                                orientation: cgOrientation,
-                                                                options: [:])
-                
-                let requests: [VNRequest] = [self.rectangleDetectionRequest]
-                
-                
-                DispatchQueue.global(qos: .userInitiated).async {
-                    do {
-                        try imageRequestHandler.perform(requests)
-                    } catch let error as NSError {
-                        print("Failed to perform image request: \(error)")
-                        //self.presentAlert("Image Request Failed", error: error)
-                        return
-                    }
-                }
-                
-                
-                
-                
-            }
-        }
+        startSequence = false
+      detectSymbol()
     }
     
     
@@ -166,7 +171,7 @@ class CameraViewController: UIViewController {
         rectDetectRequest.maximumObservations = 1 // Vision currently supports up to 16.
         rectDetectRequest.minimumConfidence = 0.6 // Be confident.
         rectDetectRequest.minimumAspectRatio = 0.3 // height / width
-        rectDetectRequest.minimumSize = 500
+        rectDetectRequest.minimumSize = 0.6
         
         return rectDetectRequest
     }()
@@ -182,7 +187,6 @@ class CameraViewController: UIViewController {
         
         if let results = request?.results as? [VNRectangleObservation] {
             print("requestSSSS", results)
-            
             for observation in results {
                 let bounds = CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: self.currentImage!.size)
                 let rectBox = boundingBox(forRegionOfInterest: observation.boundingBox, withinImageBounds: bounds)
@@ -191,9 +195,7 @@ class CameraViewController: UIViewController {
                 //let rectLayer = shapeLayer(color: .blue, frame: rectBox)
                 
                 var symbolCropped = self.currentImage!.croppedWithRect(boundingBox: newRectangle);
-                
-                
-                
+
                 DispatchQueue.main.async {
                     self.extractedFrameImageView.image = symbolCropped
                     if(self.isSaved){
@@ -218,11 +220,7 @@ class CameraViewController: UIViewController {
                                 do {
                                     try handler.perform([self.classificationRequest])
                                 } catch {
-                                    /*
-                                     This handler catches general image processing errors. The `classificationRequest`'s
-                                     completion handler `processClassifications(_:error:)` catches errors specific
-                                     to processing that request.
-                                     */
+        
                                     print("Failed to perform classification.\n\(error.localizedDescription)")
                                 }
                             }
@@ -230,69 +228,12 @@ class CameraViewController: UIViewController {
                         
                     }
                 }
-                print("resized")
-                // Add to pathLayer on top of image.
-                //pathLayer?.addSublayer(rectLayer)
             }
             
         } 
-        /*
-         // Since handlers are executing on a background thread, explicitly send draw calls to the main thread.
-         DispatchQueue.main.async {
-         guard let drawLayer = self.pathLayer,
-         let results = request?.results as? [VNRectangleObservation] else {
-         return
-         }
-         print("results", results)
-         self.draw(rectangles: results, onImageWithBounds: drawLayer.bounds)
-         drawLayer.setNeedsDisplay()
-         }*/
+
     }
     
-    
-    
-    
-    /*
-     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-     self.prev1?.snapshotThumnnail { (image) in
-     
-     if let img = image {
-     print(img.size)
-     // Resize it and put it in a neural network! :)
-     
-     if let infos = ImageRecognition.shared.predictUsingCoreML(image: img){
-     self.extractedFrameImageView.image = infos.0
-     self.resultLabel.text = infos.1
-     } else{
-     self.extractedFrameImageView.image = nil
-     self.resultLabel.text = ""
-     }
-     
-     
-     img.detector.crop(type: DetectionType.face) { result in
-     DispatchQueue.main.async { [weak self] in
-     switch result {
-     case .success(let croppedImages):
-     // When the `Vision` successfully find type of object you set and successfuly crops it.
-     self?.extractedFrameImageView.image = croppedImages.first
-     case .notFound:
-     // When the image doesn't contain any type of object you did set, `result` will be `.notFound`.
-     print("Not Found")
-     case .failure(let error):
-     // When the any error occured, `result` will be `failure`.
-     print(error.localizedDescription)
-     }
-     }
-     }
-     
-     
-     }
-     
-     }
-     }
-     
-     }
-     */
     
     @IBAction func captureModeValueChanged(_ sender: UISegmentedControl) {
         
@@ -334,6 +275,12 @@ class CameraViewController: UIViewController {
                 }
                 print(descriptions.joined(separator: "\n"))
                 self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
+                if(self.startSequence){
+                    if let symbolMng = self.symbolManager{
+                        symbolMng.moveFromSymbol(symbol: descriptions[0])
+                        print(descriptions)
+                    }
+                }
             }
         }
     }
@@ -349,31 +296,12 @@ class CameraViewController: UIViewController {
     
     func setupVideoPreview() {
         prev1?.setView(self.cameraView)
-        /*
-         // ...
-         // plus loin
-         // ...
-         // ReceivedData est l'équivalent de ton callBack de reception
-         WebSocketManager.shared.receivedData{ data in
-         // On extrait les bytes de data sous la forme d'un pointeur sur UInt8
-         data.withUnsafeBytes { (bytes:UnsafePointer<UInt8>) in
-         // On push ces fameux bytes dans la vue
-         prev1?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(data.count))
-         }
-         }
-         */
-        
-        
-        //prev2?.setView(self.camera2View)
-        //VideoPreviewer.instance().setView(self.cameraView)
         if let _ = DJISDKManager.product(){
             let video = DJISDKManager.videoFeeder()
             
             DJISDKManager.videoFeeder()?.primaryVideoFeed.add(self, with: nil)
         }
         prev1?.start()
-        //prev2?.start()
-        //VideoPreviewer.instance().start()
     }
     
     func resetVideoPreview() {
