@@ -183,3 +183,28 @@ enum PTType: UInt32 {
     case image = 101
     case string = 102
 }
+
+
+private func createWeatherObjectWith<T: Decodable>(json: Data, Object:T.Type ,completion: @escaping (_ data: T?, _ error: Error?) -> Void) {
+    do {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let weather = try decoder.decode(T.self, from: json)
+        return completion(weather, nil)
+    } catch let error {
+        return completion(nil, error)
+    }
+}
+
+extension Decodable {
+    static func map(JSONString:String) -> Self? {
+        do {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            return try decoder.decode(Self.self, from: Data(JSONString.utf8))
+        } catch let error {
+            print(error)
+            return nil
+        }
+    }
+}

@@ -16,6 +16,7 @@
 		CC103FAD238BD940008A0EDC /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC103FA6238BD940008A0EDC /* PTChannel.m */; };
 		CC103FB3238C0B91008A0EDC /* SymbolClassifierV5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC103FB2238C0B91008A0EDC /* SymbolClassifierV5.mlmodel */; };
 		CC122096238989F00088C66D /* SymbolClassifierV4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC122095238989F00088C66D /* SymbolClassifierV4.mlmodel */; };
+		CC17DBA1238D3A8A00C63E87 /* UsbConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC17DBA0238D3A8A00C63E87 /* UsbConnector.swift */; };
 		CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946D23770D1B002A6BB9 /* MultipleMove.swift */; };
 		CC19947023775A6C002A6BB9 /* CircleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946F23775A6C002A6BB9 /* CircleMove.swift */; };
 		CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3A27F923748376007FD460 /* GimbalManager.swift */; };
@@ -105,6 +106,7 @@
 		CC103FAE238BDA05008A0EDC /* PeertalkSimple-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeertalkSimple-Bridging-Header.h"; sourceTree = "<group>"; };
 		CC103FB2238C0B91008A0EDC /* SymbolClassifierV5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SymbolClassifierV5.mlmodel; sourceTree = "<group>"; };
 		CC122095238989F00088C66D /* SymbolClassifierV4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SymbolClassifierV4.mlmodel; sourceTree = "<group>"; };
+		CC17DBA0238D3A8A00C63E87 /* UsbConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbConnector.swift; sourceTree = "<group>"; };
 		CC19946D23770D1B002A6BB9 /* MultipleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleMove.swift; sourceTree = "<group>"; };
 		CC19946F23775A6C002A6BB9 /* CircleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleMove.swift; sourceTree = "<group>"; };
 		CC3A27F923748376007FD460 /* GimbalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalManager.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				CC3A2804237496C1007FD460 /* SparkActionManager.swift */,
 				CC3A2805237496C1007FD460 /* GenericActionManager.swift */,
 				CC8680A9237C8D3600D8DA99 /* SocketIOManager.swift */,
+				CC17DBA0238D3A8A00C63E87 /* UsbConnector.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC17DBA1238D3A8A00C63E87 /* UsbConnector.swift in Sources */,
 				CC7BD94B2370AFD500032CEF /* DirectionSequence.swift in Sources */,
 				CC5DE447237453550032C98F /* ConnectionViewController.swift in Sources */,
 				CC7BD9502370AFD500032CEF /* AccelerometerViewController.swift in Sources */,

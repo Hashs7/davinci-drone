@@ -47,19 +47,13 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SocketIOManager.instance.connect { result in
-            self.socketStatus.text = result
-        }
-        SocketIOManager.instance.listenToChannel(channel: "droneCombination") { (combination) in
-            if let combi = combination {
-                self.combinationText.text = combi.joined(separator:",")
-            }
-        }
+        
         
         ptManager.delegate = self
         ptManager.connect(portNumber: PORT_NUMBER)
-        
+        //initSockets()
     }
+
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -127,7 +121,7 @@ class CalibrationAndHeadingViewController: UIViewController {
                             if(!self.isCenteredRotation){
                                 self.readHeading()
                             }
-                            
+
                         })
                         
                     })
@@ -200,11 +194,13 @@ class CalibrationAndHeadingViewController: UIViewController {
                     } else {
                         print("c'est centré\(codePosition)")
                         self.isCenteredQR = true;
-                        sequence.append(BasicAction(duration: 1.0))
+                        /*sequence.append(BasicAction(duration: 1.0))
                         sequence.append(Front(duration: 2.2, speed: 0.2))
                         sequence.append(Stop())
                         sequence.append(BasicAction(duration: 1.0))
-                        sequence.append(Down(duration: 1.6, speed: 1.0))
+                        sequence.append(Down(duration: 1.6, speed: 1.0))*/
+                        sequence.append(Down(duration: 2.0, speed: 0.5))
+
                         self.sparkMovementManager = SparkActionManager(sequence: sequence)
                         self.sparkMovementManager?.playSequence()
                     }
@@ -373,6 +369,32 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
             let string = data.convert() as! String
             print("string Received: \(string)")
             // self.label.text = "\(count)"
+            let decoder = JSONDecoder()
+            let socketData = try! decoder.decode(SocketDataDecode.self, from: string.data(using: .utf8)!)
+            switch socketData.channel {
+            case "drone_start":
+                print("Drone Start")
+                break
+            case "drone_stop":
+                print("Drone Start")
+                break
+            case "drone_backhome":
+                print("drone_backhome", socketData.data)
+                break
+            case "drone_combination":
+                print("drone_combination", socketData.data)
+                break
+            default:
+                break
+            }
+            print("datas received", socketData.data)
+            
+            //let data = String(decoding: string, as: UTF8.self)
+            //print(data)
+           // self.label.text = "\(count)"
+            /*if let values = SocketData.map(JSONString: string) {
+                print("SkocketData \(values.channel) \(values.data)")
+            }*/
         }
     }
     
@@ -383,3 +405,13 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
     
 }
 
+struct SocketDataDecode: Decodable {
+    let channel: String
+    let data: [String]
+}
+
+
+struct SocketDataCodable: Codable {
+    let channel: String
+    let data: String
+}
