@@ -29,16 +29,16 @@ class SparkActionManager: GenericActionManager {
         for move in sequence {
             switch move {
             case "front":
-                symbolSequence.append(Front(duration: 0.5, speed: 0.3))
+                symbolSequence.append(Front(duration: 1.3, speed: 0.2))
                 break
             case "back":
-                symbolSequence.append(Back(duration: 0.5, speed: 0.3))
+                symbolSequence.append(Back(duration: 1.3, speed: 0.2))
                 break
             case "left":
-                symbolSequence.append(Left(duration: 0.5, speed: 0.3))
+                symbolSequence.append(Left(duration: 1.3, speed: 0.2))
                 break
             case "right":
-                symbolSequence.append(Right(duration: 0.5, speed: 0.3))
+                symbolSequence.append(Right(duration: 1.3, speed: 0.2))
                 break
             case "blocked":
                 print("Blocked move")
@@ -47,6 +47,8 @@ class SparkActionManager: GenericActionManager {
                 print("default move")
                 break
             }
+            symbolSequence.append(Stop())
+            symbolSequence.append(BasicAction(duration: 1.0))
         }
         return symbolSequence
     }
