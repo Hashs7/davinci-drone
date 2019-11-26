@@ -47,19 +47,13 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SocketIOManager.instance.connect { result in
-            self.socketStatus.text = result
-        }
-        SocketIOManager.instance.listenToChannel(channel: "droneCombination") { (combination) in
-            if let combi = combination {
-                self.combinationText.text = combi.joined(separator:",")
-            }
-        }
+        
         
         ptManager.delegate = self
         ptManager.connect(portNumber: PORT_NUMBER)
-        
+        //initSockets()
     }
+
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -127,7 +121,7 @@ class CalibrationAndHeadingViewController: UIViewController {
                             if(!self.isCenteredRotation){
                                 self.readHeading()
                             }
-                            
+
                         })
                         
                     })
@@ -372,7 +366,32 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
         if type == PTType.string.rawValue {
             let string = data.convert() as! String
             print("string Received: \(string)")
-            // self.label.text = "\(count)"
+            let decoder = JSONDecoder()
+            let socketData = try! decoder.decode(SocketDataDecode.self, from: string.data(using: .utf8)!)
+            switch socketData.channel {
+            case "drone_start":
+                print("Drone Start")
+                break
+            case "drone_stop":
+                print("Drone Start")
+                break
+            case "drone_backhome":
+                print("drone_backhome", socketData.data)
+                break
+            case "drone_combination":
+                print("drone_combination", socketData.data)
+                break
+            default:
+                break
+            }
+            print("datas received", socketData.data)
+            
+            //let data = String(decoding: string, as: UTF8.self)
+            //print(data)
+           // self.label.text = "\(count)"
+            /*if let values = SocketData.map(JSONString: string) {
+                print("SkocketData \(values.channel) \(values.data)")
+            }*/
         }
     }
     
@@ -383,3 +402,13 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
     
 }
 
+struct SocketDataDecode: Decodable {
+    let channel: String
+    let data: [String]
+}
+
+
+struct SocketDataCodable: Codable {
+    let channel: String
+    let data: String
+}
