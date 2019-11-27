@@ -161,6 +161,7 @@ class CameraViewController: UIViewController {
     
     
     @IBAction func detectArrowHandler(_ sender: Any) {
+
         isSaved = false
         self.prev1?.snapshotThumnnail { image in
             if let img = image {
@@ -194,6 +195,7 @@ class CameraViewController: UIViewController {
                 }
             }
         }
+
     }
     
     

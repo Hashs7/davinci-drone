@@ -17,9 +17,7 @@ class SparkActionManager: GenericActionManager {
     
     override func doAction(action: BasicAction, moveDidFinish: @escaping (() -> ())) {
         action.talkWithSDK()
-        print("action.duration \(action.duration)")
         delay(action.duration) {
-            print("action Finished")
             moveDidFinish()
         }
     }
