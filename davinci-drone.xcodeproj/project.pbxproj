@@ -747,7 +747,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sebhernoux.davinci-drone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/digital/Desktop/davinci-drone/davinci-drone/USBBridge/PeertalkSimple-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/hash/Documents/workspace/davinci-drone/davinci-drone/USBBridge/PeertalkSimple-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
