@@ -428,6 +428,8 @@ extension CameraViewController: PTManagerDelegate {
             case "drone_combination":
                 print("drone_combination: \(socketData.data)")
                 let sequence = SparkActionManager.createSymbolSequence(sequence: socketData.data)
+                self.sparkMovementManager = SparkActionManager(sequence: sequence)
+                self.sparkMovementManager?.playSequence()
                 print("sequence: \(sequence)")
                 break
             default:

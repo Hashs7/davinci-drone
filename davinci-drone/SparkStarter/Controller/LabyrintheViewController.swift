@@ -28,97 +28,106 @@ class LabyrintheViewController: UIViewController {
             }
         }
     }
+    
     //WHITE
     @IBAction func figure1Handler(_ sender: Any) {
-        SocketIOManager.instance.emitValue("1", toChannel: SocketChannels.detectSymbol)
+        //SocketIOManager.instance.emitValue("1", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
-        self.sequence.append(Right(duration: 1.3, speed: 0.2))
+        self.sequence.append(Right(duration: 3.4, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Right(duration: 1.3, speed: 0.2))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Right(duration: 3.4, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Back(duration: 1.3, speed: 0.2))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Back(duration: 2.3, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sparkMovementManager = SparkActionManager(sequence: sequence)
         sparkMovementManager?.playSequence()
     }
     
     //BLUE
     @IBAction func figure2Handler(_ sender: Any) {
-        SocketIOManager.instance.emitValue("2", toChannel: SocketChannels.detectSymbol)
+        //SocketIOManager.instance.emitValue("2", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
-        self.sequence.append(Right(duration: 1.3, speed: 0.2))
+        self.sequence.append(Right(duration: 3.2, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Front(duration: 1.3, speed: 0.2))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Front(duration: 4, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Front(duration: 1.3, speed: 0.2))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Front(duration: 4.2, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sparkMovementManager = SparkActionManager(sequence: sequence)
         sparkMovementManager?.playSequence()
     }
     
     //YELLOW
     @IBAction func figure3Handler(_ sender: Any) {
-        SocketIOManager.instance.emitValue("3", toChannel: SocketChannels.detectSymbol)
+        //SocketIOManager.instance.emitValue("3", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
-        self.sequence.append(Left(duration: 1.3, speed: 0.2))
+        self.sequence.append(Left(duration: 3.2, speed: 0.1))
+        self.sequence.append(Stop())
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Left(duration: 3.2, speed: 0.1))
+        self.sequence.append(Stop())
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Left(duration: 3.2, speed: 0.1))
+        self.sequence.append(Stop())
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Front(duration: 2.7, speed: 0.1))
         self.sequence.append(Stop())
         self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Left(duration: 1.3, speed: 0.2))
-        self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Left(duration: 1.3, speed: 0.2))
-        self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Front(duration: 1.3, speed: 0.2))
-        self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
+        self.sparkMovementManager = SparkActionManager(sequence: sequence)
+
         sparkMovementManager?.playSequence()
     }
     
     //RED
     @IBAction func figure4Handler(_ sender: Any) {
-        SocketIOManager.instance.emitValue("4", toChannel: SocketChannels.detectSymbol)
+        //SocketIOManager.instance.emitValue("4", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
-        self.sequence.append(Front(duration: 1.3, speed: 0.2))
+        self.sequence.append(Front(duration: 3, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Right(duration: 1.3, speed: 0.2))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Right(duration: 3.2, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Right(duration: 1.3, speed: 0.2))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Right(duration: 3.2, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Right(duration: 1.3, speed: 0.2))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Right(duration: 3.2, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Back(duration: 1.3, speed: 0.2))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Back(duration: 2.3, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sparkMovementManager = SparkActionManager(sequence: sequence)
+
         sparkMovementManager?.playSequence()
     }
     
     //GREEN
     @IBAction func figure5Handler(_ sender: Any) {
-        SocketIOManager.instance.emitValue("5", toChannel: SocketChannels.detectSymbol)
+        //SocketIOManager.instance.emitValue("5", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
-        self.sequence.append(Left(duration: 1.3, speed: 0.2))
+        self.sequence.append(Left(duration: 3.4, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Back(duration: 1.3, speed: 0.2))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Back(duration: 2.5, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
-        self.sequence.append(Back(duration: 1.3, speed: 0.2))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sequence.append(Back(duration: 2.7, speed: 0.1))
         self.sequence.append(Stop())
-        self.sequence.append(BasicAction(duration: 1.0))
+        self.sequence.append(BasicAction(duration: 2.0))
+        self.sparkMovementManager = SparkActionManager(sequence: sequence)
+
         sparkMovementManager?.playSequence()
     }
     

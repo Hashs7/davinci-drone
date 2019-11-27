@@ -36,7 +36,6 @@ class GenericActionManager {
         } else {
             if let first = sequence.first {
                 doAction(action: first) {
-                    print("finish move")
                     let seqMinusFirst = Array(sequence.dropFirst())
                     self.startSequence(sequence: seqMinusFirst)
                 }
