@@ -16,6 +16,7 @@
 		CC103FAD238BD940008A0EDC /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC103FA6238BD940008A0EDC /* PTChannel.m */; };
 		CC103FB3238C0B91008A0EDC /* SymbolClassifierV5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC103FB2238C0B91008A0EDC /* SymbolClassifierV5.mlmodel */; };
 		CC122096238989F00088C66D /* SymbolClassifierV4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC122095238989F00088C66D /* SymbolClassifierV4.mlmodel */; };
+		CC1627C4238EB0ED002BD625 /* SymbolClassifierV7.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC1627C3238EB0ED002BD625 /* SymbolClassifierV7.mlmodel */; };
 		CC17DBA1238D3A8A00C63E87 /* UsbConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC17DBA0238D3A8A00C63E87 /* UsbConnector.swift */; };
 		CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946D23770D1B002A6BB9 /* MultipleMove.swift */; };
 		CC19947023775A6C002A6BB9 /* CircleMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19946F23775A6C002A6BB9 /* CircleMove.swift */; };
@@ -106,6 +107,7 @@
 		CC103FAE238BDA05008A0EDC /* PeertalkSimple-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeertalkSimple-Bridging-Header.h"; sourceTree = "<group>"; };
 		CC103FB2238C0B91008A0EDC /* SymbolClassifierV5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SymbolClassifierV5.mlmodel; sourceTree = "<group>"; };
 		CC122095238989F00088C66D /* SymbolClassifierV4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SymbolClassifierV4.mlmodel; sourceTree = "<group>"; };
+		CC1627C3238EB0ED002BD625 /* SymbolClassifierV7.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SymbolClassifierV7.mlmodel; sourceTree = "<group>"; };
 		CC17DBA0238D3A8A00C63E87 /* UsbConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbConnector.swift; sourceTree = "<group>"; };
 		CC19946D23770D1B002A6BB9 /* MultipleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleMove.swift; sourceTree = "<group>"; };
 		CC19946F23775A6C002A6BB9 /* CircleMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleMove.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				CC3A2806237496C1007FD460 /* Entity */,
 				CC3A2803237496C1007FD460 /* Managers */,
 				CC046CF9237EEBDB00E83EE9 /* SymbolClassifierV2.mlmodel */,
+				CC1627C3238EB0ED002BD625 /* SymbolClassifierV7.mlmodel */,
 				CC103FB2238C0B91008A0EDC /* SymbolClassifierV5.mlmodel */,
 				CC122095238989F00088C66D /* SymbolClassifierV4.mlmodel */,
 				CC046CFB237EFEF100E83EE9 /* SymbolClassifierV3.mlmodel */,
@@ -570,6 +573,7 @@
 				CC3A280A237496C1007FD460 /* MovementLevelOneViewController.swift in Sources */,
 				CC3A27FA23748377007FD460 /* GimbalManager.swift in Sources */,
 				CC3A2812237496C1007FD460 /* BasicAction.swift in Sources */,
+				CC1627C4238EB0ED002BD625 /* SymbolClassifierV7.mlmodel in Sources */,
 				CC19946E23770D1B002A6BB9 /* MultipleMove.swift in Sources */,
 				CC7BD94C2370AFD500032CEF /* Movement.swift in Sources */,
 				CC7BD93F2370AFD500032CEF /* LocationDelegate.swift in Sources */,
@@ -745,7 +749,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sebhernoux.davinci-drone;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/hash/Documents/workspace/davinci-drone/davinci-drone/USBBridge/PeertalkSimple-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -774,7 +778,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sebhernoux.davinci-drone;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sebhernoux.davinci-drone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/digital/Desktop/davinci-drone/davinci-drone/USBBridge/PeertalkSimple-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

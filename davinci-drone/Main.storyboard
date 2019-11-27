@@ -430,8 +430,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UvX-1n-3vh">
-                                <rect key="frame" x="143" y="347" width="89" height="30"/>
-                                <state key="normal" title="Headingprint"/>
+                                <rect key="frame" x="121.66666666666669" y="347" width="132" height="30"/>
+                                <state key="normal" title="Calibrate a la mano"/>
                                 <connections>
                                     <action selector="printHeading:" destination="6yA-Rb-RDa" eventType="touchUpInside" id="Ujb-AN-KJ3"/>
                                 </connections>

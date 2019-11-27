@@ -17,6 +17,7 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     var sparkMovementManager: SparkActionManager? = nil
     var sequence = [BasicAction]()
+    var startCalib = false
     
     var timer:Timer? = nil
     @IBOutlet weak var extractedFrameImageView: UIImageView!
@@ -69,7 +70,7 @@ class CalibrationAndHeadingViewController: UIViewController {
             self.sparkMovementManager = SparkActionManager(sequence: sequence)
             self.sparkMovementManager?.playSequence()
         }
-        delay(9) {
+       delay(9) {
             self.calibrate()
         }
     }
@@ -79,11 +80,11 @@ class CalibrationAndHeadingViewController: UIViewController {
             if let flightController = mySpark.flightController {
                 flightController.startTakeoff(completion: { (err) in
                     print(err.debugDescription)
-                    
                 })
             }
         }
     }
+    
     
     // MARK: - START CALIBRATION
     func calibrate() {
@@ -99,7 +100,7 @@ class CalibrationAndHeadingViewController: UIViewController {
                         print("Updated calibration state: \(compass.calibrationState.rawValue)")
                         GimbalManager.shared.lookUnder()
                         
-                        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (t) in
+                        self.timer = Timer.scheduledTimer(withTimeInterval: 1.2, repeats: true, block: { (t) in
                             if(!self.isCenteredRotation){
                                 self.readHeading()
                             }
@@ -120,14 +121,76 @@ class CalibrationAndHeadingViewController: UIViewController {
         locationManager.startUpdatingHeading()
     }
     
-    @IBAction func printHeading(_ sender: Any) {
-        if let heading = (DJISDKManager.product() as? DJIAircraft)?.flightController?.compass?.heading {
-                   print("Base heading \(heading+180)")
-                   UIView.animate(withDuration: 0.5) {
-                       self.sparkHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
-                   }
-               }
+    @IBAction func printHeading(_ sender: Any) { takeOff()
+ 
+            self.prev1?.snapshotPreview({ (image) in
+                if let img = image {
+                    print(img.size)
+                    let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
+                    let ciImage: CIImage =  CIImage(image: img)!
+                    let features = detector.features(in: ciImage)
+                    for feature in features as! [CIQRCodeFeature] {
+                        print("feature.bounds \(feature.bounds)")
+                        
+                        print(features)
+                        
+                        let topRightX = feature.topRight.x / 1010
+                        let topLeftX = feature.topLeft.x / 1010
+                        let topLeftY = feature.topLeft.y / 800
+                        let bottomLeftY = feature.bottomLeft.y / 800
+                        
+                        print(topRightX)
+                        
+                        let center = CGPoint(x: 0.5, y: 0.57)
+                        
+                        let x = CGFloat(((topRightX - topLeftX) / 2) + topLeftX)
+                        let y = CGFloat(((topLeftY - bottomLeftY) / 2) + topLeftY)
+                        let codePosition = CGPoint(x: x, y: y)
+                        
+                        let gap = CGFloat(0.18)
+                        let centerRect = CGRect(x: 0.5 - gap, y: 0.52 - gap, width: gap, height: gap)
+                        var sequence = [BasicAction]()
+                        
+                        if !centerRect.contains(codePosition) {
+                            
+                            if center.y > codePosition.y {
+                                print("GO BACK")
+                                sequence.append(Back(duration: 0.4, speed: 0.1))
+                            } else {
+                                print("GO FRONT")
+                                sequence.append(Front(duration: 0.4, speed: 0.1))
+                            }
+                            if center.x > codePosition.x {
+                                print("GO LEFT")
+                                sequence.append(Left(duration: 0.3, speed: 0.1))
+                            } else {
+                                print("GO RIGHT")
+                                sequence.append(Right(duration: 0.3, speed: 0.1))
+                            }
+                            
+                            
+                            self.sparkMovementManager = SparkActionManager(sequence: sequence)
+                            self.sparkMovementManager?.playSequence()
+                        } else {
+                            print("c'est centré\(codePosition)")
+                            self.isCenteredQR = true;
+                            
+                            sequence.append(BasicAction(duration: 1.0))
+                            //sequence.append(Front(duration: 2.2, speed: 0.2))
+                            sequence.append(Stop())
+                            sequence.append(BasicAction(duration: 1.0))
+                            sequence.append(Down(duration: 0.7, speed: 0.5))
+                            self.sparkMovementManager = SparkActionManager(sequence: sequence)
+                            self.sparkMovementManager?.playSequence()
+                        }
+                        
+                        print("qr position \(codePosition)")
+                    }
+                }
+            })
+        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         timer?.invalidate()
@@ -162,7 +225,7 @@ class CalibrationAndHeadingViewController: UIViewController {
                     let topLeftY = feature.topLeft.y / 800
                     let bottomLeftY = feature.bottomLeft.y / 800
                     
-
+                    
                     print("\(topRightX): topRightX")
                     print("\(topLeftX): topLeftX")
                     print("\(topLeftY): topLeftY")
@@ -189,8 +252,8 @@ class CalibrationAndHeadingViewController: UIViewController {
                     
                     print(features)
                     
-                    let topRightX = feature.topRight.x / 1000
-                    let topLeftX = feature.topLeft.x / 1000
+                    let topRightX = feature.topRight.x / 1010
+                    let topLeftX = feature.topLeft.x / 1010
                     let topLeftY = feature.topLeft.y / 800
                     let bottomLeftY = feature.bottomLeft.y / 800
                     
@@ -202,22 +265,27 @@ class CalibrationAndHeadingViewController: UIViewController {
                     let y = CGFloat(((topLeftY - bottomLeftY) / 2) + topLeftY)
                     let codePosition = CGPoint(x: x, y: y)
                     
-                    let gap = CGFloat(0.16)
-                    let centerRect = CGRect(x: 0.5 - (gap/2), y: 0.52 - (gap/2), width: gap, height: gap)
+                    let gap = CGFloat(0.18)
+                    let centerRect = CGRect(x: 0.5 - gap, y: 0.52 - gap, width: gap, height: gap)
                     var sequence = [BasicAction]()
                     
                     if !centerRect.contains(codePosition) {
                         
+                        if center.y > codePosition.y {
+                            print("GO BACK")
+                            sequence.append(Back(duration: 0.4, speed: 0.1))
+                        } else {
+                            print("GO FRONT")
+                            sequence.append(Front(duration: 0.4, speed: 0.1))
+                        }
                         if center.x > codePosition.x {
+                            print("GO LEFT")
                             sequence.append(Left(duration: 0.3, speed: 0.1))
                         } else {
+                            print("GO RIGHT")
                             sequence.append(Right(duration: 0.3, speed: 0.1))
                         }
-                        if center.y > codePosition.y {
-                            sequence.append(Back(duration: 0.3, speed: 0.1))
-                        } else {
-                            sequence.append(Front(duration: 0.3, speed: 0.1))
-                        }
+                        
                         
                         self.sparkMovementManager = SparkActionManager(sequence: sequence)
                         self.sparkMovementManager?.playSequence()
