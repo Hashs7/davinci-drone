@@ -30,8 +30,6 @@ class BasicMove: BasicAction {
     
     override func talkWithSDK(resetStick: Bool = true) {
         let speed = Float(self.speed)
-        print(self.description)
-        print("reset sticks = \(resetStick)")
         if(resetStick) {
             self.resetSticks()
         }

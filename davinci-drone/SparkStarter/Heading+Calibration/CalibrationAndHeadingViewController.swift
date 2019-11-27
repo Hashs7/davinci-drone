@@ -15,9 +15,10 @@ class CalibrationAndHeadingViewController: UIViewController {
     var isCenteredRotation = false;
     var isCenteredQR = false;
     
+    var sparkMovementManager: SparkActionManager? = nil
+    var sequence = [BasicAction]()
     
     var timer:Timer? = nil
-    var sparkMovementManager: SparkActionManager? = nil
     @IBOutlet weak var extractedFrameImageView: UIImageView!
     
     // Properties
@@ -53,38 +54,18 @@ class CalibrationAndHeadingViewController: UIViewController {
         ptManager.connect(portNumber: PORT_NUMBER)
         //initSockets()
     }
-
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         //USBBridge.shared.disconnect()
     }
     
-    @IBAction func figure1Handler(_ sender: Any) {
-        SocketIOManager.instance.emitValue("1", toChannel: SocketChannels.detectSymbol)
-    }
-    
-    @IBAction func figure2Handler(_ sender: Any) {
-        SocketIOManager.instance.emitValue("2", toChannel: SocketChannels.detectSymbol)
-    }
-    
-    @IBAction func figure3Handler(_ sender: Any) {
-        SocketIOManager.instance.emitValue("3", toChannel: SocketChannels.detectSymbol)
-    }
-    
-    @IBAction func figure4Handler(_ sender: Any) {
-        SocketIOManager.instance.emitValue("4", toChannel: SocketChannels.detectSymbol)
-    }
-    
-    @IBAction func figure5Handler(_ sender: Any) {
-        SocketIOManager.instance.emitValue("5", toChannel: SocketChannels.detectSymbol)
-    }
-    
     
     @IBAction func takeOffCalibrateButtonClicked(_ sender: Any) {
         takeOff()
         delay(7) {
-            var sequence: [BasicAction] = [Down(duration: 1.3, speed: 0.5)]
+            var sequence: [BasicAction] = [Down(duration: 1.6, speed: 0.5)]
             self.sparkMovementManager = SparkActionManager(sequence: sequence)
             self.sparkMovementManager?.playSequence()
         }
@@ -98,7 +79,7 @@ class CalibrationAndHeadingViewController: UIViewController {
             if let flightController = mySpark.flightController {
                 flightController.startTakeoff(completion: { (err) in
                     print(err.debugDescription)
-
+                    
                 })
             }
         }
@@ -122,7 +103,7 @@ class CalibrationAndHeadingViewController: UIViewController {
                             if(!self.isCenteredRotation){
                                 self.readHeading()
                             }
-
+                            
                         })
                         
                     })
@@ -139,6 +120,14 @@ class CalibrationAndHeadingViewController: UIViewController {
         locationManager.startUpdatingHeading()
     }
     
+    @IBAction func printHeading(_ sender: Any) {
+        if let heading = (DJISDKManager.product() as? DJIAircraft)?.flightController?.compass?.heading {
+                   print("Base heading \(heading+180)")
+                   UIView.animate(withDuration: 0.5) {
+                       self.sparkHeadingImageView.transform = CGAffineTransform(rotationAngle: CGFloat(heading).degreesToRadians)
+                   }
+               }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         timer?.invalidate()
@@ -153,6 +142,41 @@ class CalibrationAndHeadingViewController: UIViewController {
         }
     }
     
+    @IBAction func printInfosClick(_ sender: Any) {
+        self.prev1?.snapshotPreview({ (image) in
+            if let img = image {
+                print(img.size)
+                let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
+                let ciImage: CIImage =  CIImage(image: img)!
+                let features = detector.features(in: ciImage)
+                for feature in features as! [CIQRCodeFeature] {
+                    print("\(feature.bounds): Bounds")
+                    
+                    print("\(feature.topRight.x): feature:topRightX")
+                    print("\(feature.topLeft.x): feature:topLeftX")
+                    print("\(feature.topLeft.y): featuretopLeftY")
+                    print("\(feature.bottomLeft.y): feature:bottomLeftY")
+                    
+                    let topRightX = feature.topRight.x / 1000
+                    let topLeftX = feature.topLeft.x / 1000
+                    let topLeftY = feature.topLeft.y / 800
+                    let bottomLeftY = feature.bottomLeft.y / 800
+                    
+
+                    print("\(topRightX): topRightX")
+                    print("\(topLeftX): topLeftX")
+                    print("\(topLeftY): topLeftY")
+                    print("\(bottomLeftY): bottomLeftY")
+                    
+                    
+                }
+                
+            }
+            
+        })
+        
+    }
+    
     func calibrateWithQR() {
         self.prev1?.snapshotPreview({ (image) in
             if let img = image {
@@ -164,18 +188,23 @@ class CalibrationAndHeadingViewController: UIViewController {
                     print(feature.bounds)
                     print("feature.bounds \(feature.bounds)")
                     
+                    print(features)
+                    
                     let topRightX = feature.topRight.x / 1000
                     let topLeftX = feature.topLeft.x / 1000
                     let topLeftY = feature.topLeft.y / 800
                     let bottomLeftY = feature.bottomLeft.y / 800
-                    let center = CGPoint(x: 0.5, y: 0.43)
+                    
+                    print(topRightX)
+                    
+                    let center = CGPoint(x: 0.5, y: 0.57)
                     
                     let x = CGFloat(((topRightX - topLeftX) / 2) + topLeftX)
                     let y = CGFloat(((topLeftY - bottomLeftY) / 2) + topLeftY)
                     let codePosition = CGPoint(x: x, y: y)
                     
-                    let gap = CGFloat(0.1)
-                    let centerRect = CGRect(x: 0.5 - gap, y: 0.43 - gap, width: gap, height: gap)
+                    let gap = CGFloat(0.16)
+                    let centerRect = CGRect(x: 0.5 - (gap/2), y: 0.52 - (gap/2), width: gap, height: gap)
                     var sequence = [BasicAction]()
                     
                     if !centerRect.contains(codePosition) {
@@ -196,11 +225,12 @@ class CalibrationAndHeadingViewController: UIViewController {
                     } else {
                         print("c'est centré\(codePosition)")
                         self.isCenteredQR = true;
+                        
                         sequence.append(BasicAction(duration: 1.0))
                         //sequence.append(Front(duration: 2.2, speed: 0.2))
                         sequence.append(Stop())
                         sequence.append(BasicAction(duration: 1.0))
-                        sequence.append(Down(duration: 1.0, speed: 0.5))
+                        sequence.append(Down(duration: 0.7, speed: 0.5))
                         self.sparkMovementManager = SparkActionManager(sequence: sequence)
                         self.sparkMovementManager?.playSequence()
                     }
@@ -264,9 +294,12 @@ class CalibrationAndHeadingViewController: UIViewController {
     }
     
     func moveToQR(){
-        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (t) in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (t) in
             if(!self.isCenteredQR){
                 self.calibrateWithQR()
+            } else {
+                self.timer?.invalidate()
+                self.timer = nil
             }
         })
     }
@@ -274,15 +307,15 @@ class CalibrationAndHeadingViewController: UIViewController {
     func rotateToCenter(heading:Double){
         var sequence = [BasicAction]()
         let headingAdd = heading + 180
-        if headingAdd > 78 && headingAdd < 82 {
+        if headingAdd > 78 && headingAdd < 79 {
             self.isCenteredRotation = true
             print("center")
             self.moveToQR()
         }
         else if headingAdd < 78 || headingAdd > 250 {
-            sequence.append(RotateRight(duration: 0.3, speed: 0.4))
-        } else if headingAdd > 82 || headingAdd < 250 {
-            sequence.append(RotateLeft(duration: 0.3, speed: 0.4))
+            sequence.append(RotateRight(duration: 0.2, speed: 0.2))
+        } else if headingAdd > 79 || headingAdd < 250 {
+            sequence.append(RotateLeft(duration: 0.2, speed: 0.2))
         }
         
         self.sparkMovementManager = SparkActionManager(sequence: sequence)
@@ -368,6 +401,7 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
         if type == PTType.string.rawValue {
             let string = data.convert() as! String
             print("string Received: \(string)")
+            
             let decoder = JSONDecoder()
             let socketData = try! decoder.decode(SocketDataDecode.self, from: string.data(using: .utf8)!)
             switch socketData.channel {
@@ -390,10 +424,10 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
             
             //let data = String(decoding: string, as: UTF8.self)
             //print(data)
-           // self.label.text = "\(count)"
+            // self.label.text = "\(count)"
             /*if let values = SocketData.map(JSONString: string) {
-                print("SkocketData \(values.channel) \(values.data)")
-            }*/
+             print("SkocketData \(values.channel) \(values.data)")
+             }*/
         }
     }
     
