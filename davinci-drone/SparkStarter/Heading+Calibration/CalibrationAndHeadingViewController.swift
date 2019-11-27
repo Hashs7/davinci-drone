@@ -161,7 +161,6 @@ class CalibrationAndHeadingViewController: UIViewController {
                 let ciImage: CIImage =  CIImage(image: img)!
                 let features = detector.features(in: ciImage)
                 for feature in features as! [CIQRCodeFeature] {
-                    print(feature.bounds)
                     print("feature.bounds \(feature.bounds)")
                     
                     let topRightX = feature.topRight.x / 1000
