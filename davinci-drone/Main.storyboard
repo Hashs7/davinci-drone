@@ -422,13 +422,6 @@
                                     <action selector="takeOffCalibrateButtonClicked:" destination="6yA-Rb-RDa" eventType="touchUpInside" id="Uov-0V-Ful"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYH-SI-NPe">
-                                <rect key="frame" x="166" y="271" width="43" height="30"/>
-                                <state key="normal" title="PRINT"/>
-                                <connections>
-                                    <action selector="printInfosClick:" destination="6yA-Rb-RDa" eventType="touchUpInside" id="QCB-wJ-wlm"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UvX-1n-3vh">
                                 <rect key="frame" x="121.66666666666669" y="347" width="132" height="30"/>
                                 <state key="normal" title="Calibrate a la mano"/>
@@ -448,18 +441,15 @@
                             <constraint firstItem="UvX-1n-3vh" firstAttribute="centerX" secondItem="dye-O2-irz" secondAttribute="centerX" id="NPJ-ex-fe9"/>
                             <constraint firstItem="veO-5E-w6Q" firstAttribute="top" secondItem="UvX-1n-3vh" secondAttribute="bottom" constant="50" id="Rbv-eb-KGI"/>
                             <constraint firstItem="4X1-JM-TLD" firstAttribute="top" secondItem="dye-O2-irz" secondAttribute="top" constant="48" id="SXb-Ql-fdb"/>
-                            <constraint firstItem="xvz-BE-MPM" firstAttribute="top" secondItem="LYH-SI-NPe" secondAttribute="bottom" constant="8" id="UAe-wb-mpZ"/>
                             <constraint firstItem="2w3-DM-eJi" firstAttribute="centerX" secondItem="dye-O2-irz" secondAttribute="centerX" id="VVz-45-61L"/>
                             <constraint firstItem="Jlj-Wq-hvH" firstAttribute="centerX" secondItem="dye-O2-irz" secondAttribute="centerX" id="VYd-BH-4tW"/>
                             <constraint firstItem="cTa-38-w5X" firstAttribute="top" secondItem="G9g-u6-suM" secondAttribute="bottom" constant="15" id="Vt5-Yn-j0p"/>
-                            <constraint firstItem="LYH-SI-NPe" firstAttribute="centerX" secondItem="dye-O2-irz" secondAttribute="centerX" id="aXG-UU-mf7"/>
                             <constraint firstItem="dye-O2-irz" firstAttribute="bottom" secondItem="2w3-DM-eJi" secondAttribute="bottom" constant="25" id="g7U-go-ITx"/>
                             <constraint firstItem="UvX-1n-3vh" firstAttribute="top" secondItem="xvz-BE-MPM" secondAttribute="bottom" constant="8" id="jCZ-Wd-hHf"/>
                             <constraint firstItem="cTa-38-w5X" firstAttribute="centerX" secondItem="dye-O2-irz" secondAttribute="centerX" id="mQn-mg-8pi"/>
                             <constraint firstItem="2w3-DM-eJi" firstAttribute="top" secondItem="veO-5E-w6Q" secondAttribute="bottom" constant="25" id="oJg-jw-Tyr"/>
                             <constraint firstItem="xvz-BE-MPM" firstAttribute="centerX" secondItem="dye-O2-irz" secondAttribute="centerX" id="osV-GG-SyM"/>
                             <constraint firstItem="GV3-R7-qEz" firstAttribute="centerX" secondItem="dye-O2-irz" secondAttribute="centerX" id="qAa-jS-0cx"/>
-                            <constraint firstItem="LYH-SI-NPe" firstAttribute="top" secondItem="GV3-R7-qEz" secondAttribute="bottom" constant="28" id="u40-oO-APZ"/>
                             <constraint firstItem="GV3-R7-qEz" firstAttribute="top" secondItem="L5N-Dp-hcy" secondAttribute="bottom" constant="8" id="zJ6-3p-tyq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dye-O2-irz"/>
