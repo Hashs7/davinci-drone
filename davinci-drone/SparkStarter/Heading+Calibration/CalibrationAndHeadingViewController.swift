@@ -64,15 +64,19 @@ class CalibrationAndHeadingViewController: UIViewController {
     
     
     @IBAction func takeOffCalibrateButtonClicked(_ sender: Any) {
+        takeOffAndCalibrate()
+    }
+    
+    func takeOffAndCalibrate() {
         takeOff()
-        delay(7) {
-            var sequence: [BasicAction] = [Down(duration: 1.6, speed: 0.5)]
-            self.sparkMovementManager = SparkActionManager(sequence: sequence)
-            self.sparkMovementManager?.playSequence()
-        }
-       delay(9) {
-            self.calibrate()
-        }
+         delay(7) {
+             var sequence: [BasicAction] = [Down(duration: 1.4, speed: 0.5)]
+             self.sparkMovementManager = SparkActionManager(sequence: sequence)
+             self.sparkMovementManager?.playSequence()
+         }
+        delay(9) {
+             self.calibrate()
+         }
     }
     
     func takeOff(){
@@ -85,6 +89,15 @@ class CalibrationAndHeadingViewController: UIViewController {
         }
     }
     
+    func landing() {
+        if let mySpark = DJISDKManager.product() as? DJIAircraft {
+            if let flightController = mySpark.flightController {
+                flightController.startLanding(completion: { (err) in
+                    print(err.debugDescription)
+                })
+            }
+        }
+    }
     
     // MARK: - START CALIBRATION
     func calibrate() {
@@ -119,76 +132,6 @@ class CalibrationAndHeadingViewController: UIViewController {
             }
         }
         locationManager.startUpdatingHeading()
-    }
-    
-    @IBAction func printHeading(_ sender: Any) { takeOff()
- 
-            self.prev1?.snapshotPreview({ (image) in
-                if let img = image {
-                    print(img.size)
-                    let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
-                    let ciImage: CIImage =  CIImage(image: img)!
-                    let features = detector.features(in: ciImage)
-                    for feature in features as! [CIQRCodeFeature] {
-                        print("feature.bounds \(feature.bounds)")
-                        
-                        print(features)
-                        
-                        let topRightX = feature.topRight.x / 1010
-                        let topLeftX = feature.topLeft.x / 1010
-                        let topLeftY = feature.topLeft.y / 800
-                        let bottomLeftY = feature.bottomLeft.y / 800
-                        
-                        print(topRightX)
-                        
-                        let center = CGPoint(x: 0.5, y: 0.57)
-                        
-                        let x = CGFloat(((topRightX - topLeftX) / 2) + topLeftX)
-                        let y = CGFloat(((topLeftY - bottomLeftY) / 2) + topLeftY)
-                        let codePosition = CGPoint(x: x, y: y)
-                        
-                        let gap = CGFloat(0.3)
-                        let centerRect = CGRect(x: 0.5 - gap , y: 0.52 - gap, width: gap, height: gap)
-                        var sequence = [BasicAction]()
-                        
-                        if !centerRect.contains(codePosition) {
-                            
-                            if center.y > codePosition.y {
-                                print("GO BACK")
-                                sequence.append(Back(duration: 0.3, speed: 0.1))
-                            } else {
-                                print("GO FRONT")
-                                sequence.append(Front(duration: 0.3, speed: 0.1))
-                            }
-                            if center.x > codePosition.x {
-                                print("GO LEFT")
-                                sequence.append(Left(duration: 0.3, speed: 0.1))
-                            } else {
-                                print("GO RIGHT")
-                                sequence.append(Right(duration: 0.3, speed: 0.1))
-                            }
-                            
-                            
-                            self.sparkMovementManager = SparkActionManager(sequence: sequence)
-                            self.sparkMovementManager?.playSequence()
-                        } else {
-                            print("c'est centré\(codePosition)")
-                            self.isCenteredQR = true;
-                            
-                            sequence.append(BasicAction(duration: 1.0))
-                            //sequence.append(Front(duration: 2.2, speed: 0.2))
-                            sequence.append(Stop())
-                            sequence.append(BasicAction(duration: 1.0))
-                            sequence.append(Down(duration: 0.7, speed: 0.5))
-                            self.sparkMovementManager = SparkActionManager(sequence: sequence)
-                            self.sparkMovementManager?.playSequence()
-                        }
-                        
-                        print("qr position \(codePosition)")
-                    }
-                }
-            })
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -259,11 +202,11 @@ class CalibrationAndHeadingViewController: UIViewController {
                         print("c'est centré\(codePosition)")
                         self.isCenteredQR = true;
                         
-                        //sequence.append(BasicAction(duration: 1.0))
-                        //sequence.append(Front(duration: 2.2, speed: 0.2))
-                        //sequence.append(Stop())
-                        //sequence.append(BasicAction(duration: 1.0))
+                        sequence.append(BasicAction(duration: 1.0))
                         sequence.append(Down(duration: 0.7, speed: 0.5))
+                        sequence.append(Stop())
+                        sequence.append(BasicAction(duration: 1.0))
+                        sequence.append(Front(duration: 1.8, speed: 0.2))
                         self.sparkMovementManager = SparkActionManager(sequence: sequence)
                         self.sparkMovementManager?.playSequence()
                     }
@@ -441,15 +384,7 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
             let socketData = try! decoder.decode(SocketDataDecode.self, from: string.data(using: .utf8)!)
             switch socketData.channel {
             case "drone_start":
-                takeOff()
-                 delay(7) {
-                     var sequence: [BasicAction] = [Down(duration: 1.6, speed: 0.5)]
-                     self.sparkMovementManager = SparkActionManager(sequence: sequence)
-                     self.sparkMovementManager?.playSequence()
-                 }
-                delay(9) {
-                     self.calibrate()
-                 }
+                self.takeOffAndCalibrate()
                 break
                 
             case "drone_stop":
@@ -458,7 +393,8 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
                 break
                 
             case "drone_backhome":
-                print("drone_backhome", socketData.data)
+                landing()
+                print("drone_backhome")
                 break
                 
             case "drone_combination":
@@ -468,10 +404,21 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
                 self.sparkMovementManager = SparkActionManager(sequence: sequence)
                 self.sparkMovementManager?.playSequence()
                 break
+                
+            case "drone_color-combination":
+                print("drone_color", socketData.data.first)
+                //TODO tester si color ou combinaison
+                if let color = socketData.data.first {
+                    let sequence = SparkActionManager.createSymbolSequenceColor(color: color)
+                    print(color, sequence)
+                    self.sparkMovementManager = SparkActionManager(sequence: sequence)
+                    self.sparkMovementManager?.playSequence()
+                }
+                break
             
             case "drone_moveTo":
                 print("drone_moveTo", socketData.data.first)
-                let sequence = SparkActionManager.createSymbolSequence(sequence: socketData.data)
+                let sequence = SparkActionManager.createSymbolSequence(sequence: socketData.data, duration: 0.4)
                 self.sparkMovementManager = SparkActionManager(sequence: sequence)
                 self.sparkMovementManager?.playSequence()
                 break

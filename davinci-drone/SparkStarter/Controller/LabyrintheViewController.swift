@@ -34,7 +34,7 @@ class LabyrintheViewController: UIViewController {
         //SocketIOManager.instance.emitValue("1", toChannel: SocketChannels.detectSymbol)
         sparkMovementManager?.clearSequence()
         sequence = []
-        self.sequence.append(Right(duration: 1.6, speed: 0.2))
+        self.sequence.append(Right(duration: 1.4, speed: 0.2))
         self.sequence.append(Stop())
         self.sequence.append(BasicAction(duration: 2.0))
         self.sequence.append(Right(duration: 1.9, speed: 0.2))
