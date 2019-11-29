@@ -418,7 +418,7 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
             
             case "drone_moveTo":
                 print("drone_moveTo", socketData.data.first)
-                let sequence = SparkActionManager.createSymbolSequence(sequence: socketData.data, duration: 0.4)
+                let sequence = SparkActionManager.createSymbolSequence(sequence: socketData.data, duration: 0.5)
                 self.sparkMovementManager = SparkActionManager(sequence: sequence)
                 self.sparkMovementManager?.playSequence()
                 break
@@ -432,7 +432,7 @@ extension CalibrationAndHeadingViewController: PTManagerDelegate {
                 break
             
             case "drone_detection":
-                // TODO
+                // TODO detect 
                 print("drone_combination", socketData.data)
                 break
             default:

@@ -113,7 +113,7 @@ protocol PTManagerDelegate {
         
     }
     
-    
+
     
     // MARK: - Channel Delegate
     extension PTManager: PTChannelDelegate {

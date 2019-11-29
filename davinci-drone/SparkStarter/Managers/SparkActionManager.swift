@@ -59,7 +59,7 @@ class SparkActionManager: GenericActionManager {
             sequence.append(Right(duration: 1.4, speed: 0.2))
             sequence.append(Stop())
             sequence.append(BasicAction(duration: 2.0))
-            sequence.append(Right(duration: 1.9, speed: 0.2))
+            sequence.append(Right(duration: 2, speed: 0.2))
             sequence.append(Stop())
             sequence.append(BasicAction(duration: 2.0))
             sequence.append(Back(duration: 1, speed: 0.2))
@@ -68,13 +68,13 @@ class SparkActionManager: GenericActionManager {
             break
             
         case "Blue":
-            sequence.append(Right(duration: 2.1, speed: 0.2))
+            sequence.append(Right(duration: 2.3, speed: 0.2))
             sequence.append(Stop())
             sequence.append(BasicAction(duration: 2.0))
             sequence.append(Front(duration: 1.5, speed: 0.2))
             sequence.append(Stop())
             sequence.append(BasicAction(duration: 2.0))
-            sequence.append(Front(duration: 1.7, speed: 0.2))
+            sequence.append(Front(duration: 1.8, speed: 0.2))
             sequence.append(Stop())
             sequence.append(BasicAction(duration: 2.0))
             break
@@ -86,10 +86,10 @@ class SparkActionManager: GenericActionManager {
             sequence.append(Left(duration: 1.6, speed: 0.2))
             sequence.append(Stop())
             sequence.append(BasicAction(duration: 2.0))
-            sequence.append(Left(duration: 1.6, speed: 0.2))
+            sequence.append(Left(duration: 1.75, speed: 0.2))
             sequence.append(Stop())
             sequence.append(BasicAction(duration: 2.0))
-            sequence.append(Front(duration: 2.1, speed: 0.2))
+            sequence.append(Front(duration: 2.0, speed: 0.2))
             break
 
         case "Red":
@@ -110,13 +110,13 @@ class SparkActionManager: GenericActionManager {
             break
             
         case "Green":
-            sequence.append(Left(duration: 1.4, speed: 0.2))
+            sequence.append(Left(duration: 1.6, speed: 0.2))
             sequence.append(Stop())
             sequence.append(BasicAction(duration: 2.0))
-            sequence.append(Back(duration: 1.4, speed: 0.2))
+            sequence.append(Back(duration: 1.5, speed: 0.2))
             sequence.append(Stop())
             sequence.append(BasicAction(duration: 2.0))
-            sequence.append(Back(duration: 1.3, speed: 0.2))
+            sequence.append(Back(duration: 1.6, speed: 0.2))
             break
             
         case "Blocked":
